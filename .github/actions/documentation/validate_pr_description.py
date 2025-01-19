@@ -42,7 +42,7 @@ def validate_pr_description(file_path):
             "Not for changelog (changelog entry is not required)"
         ]
 
-        if category not in valid_categories:
+        if not any(cat.startswith(category) for cat in valid_categories):
             print(f"::warning::Invalid Changelog category: {category}")
             sys.exit(1)
 
