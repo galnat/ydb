@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Use custom PR validation action
-        uses: ./actions/documentation/validate-pr-description
+        uses: ./actions/validate_pr_description
         with:
           pr_body: "${{ github.event.pull_request.body }}"
 
