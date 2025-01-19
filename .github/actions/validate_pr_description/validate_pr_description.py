@@ -24,7 +24,7 @@ def validate_pr_description(file_path):
             sys.exit(1)
 
         # Extract changelog category section
-        category_section = re.search(r"### Changelog category\n(.*?)(\n###|$)", description, re.DOTALL)
+        category_section = re.search(r"### Changelog category.*?\n(.*?)(\n###|$)", description, re.DOTALL)
         if not category_section:
             print("::warning::Changelog category section not found.")
             sys.exit(1)
