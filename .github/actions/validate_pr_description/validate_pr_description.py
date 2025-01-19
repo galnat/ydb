@@ -1,6 +1,11 @@
 import sys
 import re
 
+issue_patterns = [
+    r"https://github.com/ydb-platform/ydb/issues/\d+"
+    # TODO: Add pattern for Yandex issue
+]
+
 def validate_pr_description(file_path):
     try:
         with open(file_path, 'r') as file:
@@ -37,26 +42,32 @@ def validate_pr_description(file_path):
             "Improvement",
             "Performance improvement",
             "Bugfix",
-            "Backward incompatible change",
+            "Backward incompatible change"
+        ]
+
+        not_for_cl_categories = [
             "Documentation (changelog entry is not required)",
             "Not for changelog (changelog entry is not required)"
         ]
+        
+        valid_categories += not_for_cl_categories
 
         if not any(cat.startswith(category) for cat in valid_categories):
             print(f"::warning::Invalid Changelog category: {category}")
             sys.exit(1)
 
-        if category not in ["Not for changelog (changelog entry is not required)", "Documentation (changelog entry is not required)"]:
+        if not any(cat.startswith(category) for cat in not_for_cl_categories):
             entry_section = re.search(r"### Changelog entry\n(.*?)(\n###|$)", description, re.DOTALL)
             if not entry_section or len(entry_section.group(1).strip()) < 20:
                 print("::warning::Changelog entry is too short or missing.")
                 sys.exit(1)
 
             if category == "Bugfix":
-                # TODO: Add check for Yandex issue in addition to GitHub issue
-                issue_pattern = r"https://github.com/ydb-platform/ydb/issues/\d+"
-                if not re.search(issue_pattern, entry_section.group(1)):
-                    print("::warning::Bugfix requires a linked issue in the changelog entry with the format 'https://github.com/ydb-platform/ydb/issues/<issue_number>'.")
+                def check_issue_pattern(issue_pattern):
+                    return re.search(issue_pattern, entry_section.group(1))
+
+                if not any(check_issue_pattern(issue_pattern) for issue_pattern in issue_patterns):
+                    print("::warning::Bugfix requires a linked issue in the changelog entry")
                     sys.exit(1)
 
         print("PR description is valid.")
