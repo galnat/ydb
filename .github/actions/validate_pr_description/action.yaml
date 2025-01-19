@@ -9,6 +9,7 @@ runs:
         echo "${{ inputs.pr_body }}" > pr_body.txt
 
     - name: Run validation script
+      shell: bash
       run: |
         python3 validate_pr_description.py pr_body.txt
 
