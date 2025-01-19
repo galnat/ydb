@@ -11,7 +11,7 @@ runs:
     - name: Run validation script
       shell: bash
       run: |
-        python3 validate_pr_description.py pr_body.txt
+        python3 .github/actions/validate_pr_description/validate_pr_description.py pr_body.txt
 
 inputs:
   pr_body:
