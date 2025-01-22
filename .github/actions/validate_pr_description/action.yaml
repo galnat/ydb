@@ -9,16 +9,20 @@ runs:
         echo "${{ inputs.pr_body }}" > pr_body.txt
 
     - name: Run validation script
+      id: validate
       shell: bash
       run: |
-        python3 .github/actions/validate_pr_description/validate_pr_description.py pr_body.txt
+        python3 ${{ github.action_path }}/validate_pr_description.py pr_body.txt
 
 inputs:
   pr_body:
     description: "The body of the pull request."
     required: true
 
-outputs: {}
+outputs:
+  status:
+    description: "The status of the PR description validation."
+    value: ${{ steps.validate.outcome }}
 
 files:
   - validate_pr_description.py
