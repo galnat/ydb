@@ -1,0 +1,82 @@
+name: Weekly Changelog Update
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Every Sunday at 00:00:00
+
+  push:
+    branches:
+      - main
+      - stable-*
+
+jobs:
+  gather-prs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up date range
+        id: date-setup
+        run: |
+          LAST_WEEK_DATE=$(date -d "7 days ago" '+%Y-%m-%dT%H:%M:%SZ')
+          echo "LAST_WEEK_DATE=$LAST_WEEK_DATE" >> $GITHUB_ENV
+
+      - name: Get parent branch and branch creation date
+        id: branch-info
+        run: |
+          PARENT_BRANCH=$(git show-branch | grep '\*' | grep -v "\* ${GITHUB_REF_NAME}" | head -n 1 | sed 's/.*\[\([^]]*\)\].*/\1/')
+          BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $PARENT_BRANCH..${GITHUB_REF_NAME} | head -n 1)
+          echo "PARENT_BRANCH=$PARENT_BRANCH" >> $GITHUB_ENV
+          echo "BRANCH_CREATION_DATE=$BRANCH_CREATION_DATE" >> $GITHUB_ENV
+
+      - name: Get merged PRs based on branch creation date
+        id: pr-list
+        run: |
+          if [ -z "$BRANCH_CREATION_DATE" ]; then
+            PRS=$(gh pr list --state merged --json number,title,body,baseRefName,mergedAt \
+            --jq ".[] | select(.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$LAST_WEEK_DATE\") | {number: .number, body: .body}" | jq -c -s ".")
+          else
+            PRS=$(gh pr list --state merged --json number,title,body,baseRefName,mergedAt \
+            --jq ".[] | select((.baseRefName == \"$PARENT_BRANCH\" and .mergedAt >= \"$LAST_WEEK_DATE\" and .mergedAt < \"$BRANCH_CREATION_DATE\") or (.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$BRANCH_CREATION_DATE\")) | {number: .number, body: .body}" | jq -c -s ".")
+          fi
+          echo "PRS=$PRS" >> $GITHUB_ENV
+
+      - name: Output PRs
+        run: |
+          echo "PRs: ${{ env.PRS }}"
+
+  validate-pr-descriptions:
+    needs: gather-prs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pr: ${{ fromJson(env.PRS) }}
+
+    steps:
+      - name: Validate PR Description
+        id: validate-pr
+        uses: ./.github/actions/validate_pr_description # Replace with actual action
+        with:
+          pr_body: "${{ matrix.pr.body }}"
+
+      - name: Collect Valid PR IDs
+        if: ${{ success() }}
+        run: |
+          echo "${{ matrix.pr.number }}" >> valid_pr_ids.txt
+
+  update-changelog:
+    needs: validate-pr-descriptions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Valid PR IDs
+        id: gather-ids
+        run: |
+          VALID_IDS=$(cat valid_pr_ids.txt | tr '\n' ',')
+          echo "VALID_IDS=$VALID_IDS" >> $GITHUB_ENV
+
+      - name: Update Changelog
+        uses: ./.github/actions/update_changelog # Replace with the correct path to your composite action
+        with:
+          pr_ids: "${{ env.VALID_IDS }}"
+          changelog_path: "./CHANGELOG.md"
