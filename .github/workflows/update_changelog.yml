@@ -42,7 +42,7 @@ jobs:
             PRS=$(gh pr list --state merged --json number,title,body,baseRefName,mergedAt \
             --jq ".[] | select((.baseRefName == \"$PARENT_BRANCH\" and .mergedAt >= \"$LAST_WEEK_DATE\" and .mergedAt < \"$BRANCH_CREATION_DATE\") or (.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$BRANCH_CREATION_DATE\")) | {number: .number, body: .body}" | jq -c -s ".")
           fi
-          echo "$PRS"
+          echo "::notice::$PRS"
           echo "$PRS" > prs.json
           echo "prs=$PRS" >> "$GITHUB_OUTPUT"
 
