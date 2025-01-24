@@ -41,13 +41,14 @@ jobs:
             --jq ".[] | select((.baseRefName == \"$PARENT_BRANCH\" and .mergedAt >= \"$LAST_WEEK_DATE\" and .mergedAt < \"$BRANCH_CREATION_DATE\") or (.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$BRANCH_CREATION_DATE\")) | {number: .number, body: .body}" | jq -c -s ".")
           fi
           echo "$PRS" > prs.json
+          echo "prs=$PRS" >> "$GITHUB_OUTPUT"
 
   validate-pr-descriptions:
     needs: gather-prs
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        pr: ${{ fromJson(file('prs.json')) }}
+        pr: ${{ fromJson(needs.gather-prs.outputs.prs) }}
 
     steps:
       - name: Validate PR Description
