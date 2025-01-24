@@ -40,23 +40,19 @@ jobs:
             PRS=$(gh pr list --state merged --json number,title,body,baseRefName,mergedAt \
             --jq ".[] | select((.baseRefName == \"$PARENT_BRANCH\" and .mergedAt >= \"$LAST_WEEK_DATE\" and .mergedAt < \"$BRANCH_CREATION_DATE\") or (.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$BRANCH_CREATION_DATE\")) | {number: .number, body: .body}" | jq -c -s ".")
           fi
-          echo "PRS=$PRS" >> $GITHUB_ENV
-
-      - name: Output PRs
-        run: |
-          echo "PRs: ${{ env.PRS }}"
+          echo "$PRS" > prs.json
 
   validate-pr-descriptions:
     needs: gather-prs
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        pr: ${{ fromJson(env.PRS) }}
+        pr: ${{ fromJson(file('prs.json')) }}
 
     steps:
       - name: Validate PR Description
         id: validate-pr
-        uses: ./.github/actions/validate_pr_description # Replace with actual action
+        uses: ./.github/actions/validate_pr_description 
         with:
           pr_body: "${{ matrix.pr.body }}"
 
@@ -76,7 +72,7 @@ jobs:
           echo "VALID_IDS=$VALID_IDS" >> $GITHUB_ENV
 
       - name: Update Changelog
-        uses: ./.github/actions/update_changelog # Replace with the correct path to your composite action
+        uses: ./.github/actions/update_changelog 
         with:
           pr_ids: "${{ env.VALID_IDS }}"
           changelog_path: "./CHANGELOG.md"
