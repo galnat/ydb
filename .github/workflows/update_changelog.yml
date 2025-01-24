@@ -27,7 +27,7 @@ jobs:
       - name: Get parent branch and branch creation date
         id: branch-info
         run: |
-          PARENT_BRANCH=$(git show-branch | grep '\*' | grep -v "\* ${GITHUB_REF_NAME}" | head -n 1 | sed 's/.*\[\([^]]*\)\].*/\1/')
+          PARENT_BRANCH=$(git show-branch | grep '\*' | grep -v "\* \[${GITHUB_REF_NAME}" | head -n 1 | sed 's/.*\[\([^]]*\)\].*/\1/')
           BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $PARENT_BRANCH..${GITHUB_REF_NAME} | head -n 1)
           echo "PARENT_BRANCH=$PARENT_BRANCH" >> $GITHUB_ENV
           echo "BRANCH_CREATION_DATE=$BRANCH_CREATION_DATE" >> $GITHUB_ENV
@@ -35,7 +35,7 @@ jobs:
       - name: Get merged PRs based on branch creation date
         id: pr-list
         run: |
-          echo "::notice:: branch = ${GITHUB_REF_NAME}, date = $LAST_WEEK_DATE, parent = $PARENT_BRANCH, creation date = BRANCH_CREATION_DATE"
+          echo "::notice:: branch = ${GITHUB_REF_NAME}, date = $LAST_WEEK_DATE, parent = $PARENT_BRANCH, creation date = $BRANCH_CREATION_DATE"
           if [ -z "$BRANCH_CREATION_DATE" ]; then
             PRS=$(gh pr list --state merged --json number,title,body,baseRefName,mergedAt --jq ".[] | select(.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$LAST_WEEK_DATE\") | {number: .number, body: .body}" | jq -c -s ".")
           else
