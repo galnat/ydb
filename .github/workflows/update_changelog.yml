@@ -8,6 +8,8 @@ on:
     branches:
       - main
       - stable-*
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
 jobs:
   gather-prs:
