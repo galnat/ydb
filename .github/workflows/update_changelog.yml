@@ -27,6 +27,8 @@ jobs:
       - name: Get parent branch and branch creation date
         id: branch-info
         run: |
+          TEST_GIT=$(git show-branch)
+          echo "::notice:: Check git show-branch $TEST_GIT"
           PARENT_BRANCH=$(git show-branch | grep '\*' | grep -v "${GITHUB_REF_NAME}" | head -n 1 | sed 's/.*\[\([^]]*\)\].*/\1/')
           BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $PARENT_BRANCH..${GITHUB_REF_NAME} | head -n 1)
           echo "PARENT_BRANCH=$PARENT_BRANCH" >> $GITHUB_ENV
