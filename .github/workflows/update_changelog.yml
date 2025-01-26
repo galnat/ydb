@@ -16,7 +16,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Fetch commits from the last 7 days
+        run: |
+          # Calculate the date 7 days ago
+          date_since=$(date -d '7 days ago' --utc +%Y-%m-%dT%H:%M:%SZ)
+
+          # Fetch all commits since the last 7 days
+          git fetch --shallow-since="$date_since"
+
+          # Optional: List the fetched commits
+          echo "Fetched commits from the last 7 days:"
+          git log --since="$date_since" --oneline
 
       - name: Set up date range
         id: date-setup
