@@ -18,33 +18,72 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Fetch commits from the last 7 days
-        run: |
-          # Calculate the date 7 days ago
-          date_since=$(date -d '7 days ago' --utc +%Y-%m-%dT%H:%M:%SZ)
-
-          # Fetch all commits since the last 7 days
-          git fetch --shallow-since="$date_since"
-
-          # Optional: List the fetched commits
-          echo "Fetched commits from the last 7 days:"
-          git log --since="$date_since" --oneline
-
       - name: Set up date range
         id: date-setup
         run: |
           LAST_WEEK_DATE=$(date -d "7 days ago" '+%Y-%m-%dT%H:%M:%SZ')
           echo "LAST_WEEK_DATE=$LAST_WEEK_DATE" >> $GITHUB_ENV
 
+      - name: Fetch commits from the last 7 days
+        run: |
+          # Calculate the date 7 days ago
+          date_since=$(date -d '7 days ago' --utc +%Y-%m-%dT%H:%M:%SZ)
+
+          # Fetch all commits since the last 7 days
+          git fetch --shallow-since="$LAST_WEEK_DATE"
+
       - name: Get parent branch and branch creation date
         id: branch-info
         run: |
-          TEST_GIT="$(git show-branch -a)"
-          echo "::notice:: Check git show-branch $TEST_GIT"
-          PARENT_BRANCH=$(git show-branch -a | grep '\*' | grep -v "${GITHUB_REF_NAME}" | head -n 1 | sed 's/.*\[\([^]]*\)\].*/\1/')
           BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $PARENT_BRANCH..${GITHUB_REF_NAME} | head -n 1)
-          echo "PARENT_BRANCH=$PARENT_BRANCH" >> $GITHUB_ENV
           echo "BRANCH_CREATION_DATE=$BRANCH_CREATION_DATE" >> $GITHUB_ENV
+
+          # Get the current branch name
+          branch_name=${GITHUB_REF_NAME}
+
+          echo "Current branch: $branch_name"
+
+          # Get the timestamp for 1 week ago
+          one_week_ago=$(date -d '7 days ago' --utc +%s)
+
+          # Start with the latest commit
+          commit=$(git rev-parse HEAD)
+          parent_branch=""
+
+          while true; do
+            echo "Analyzing commit: $commit"
+
+            # Get the commit date in seconds since the epoch
+            commit_date=$(git show -s --format=%ct $commit)
+
+            # Break if the commit is older than 1 week
+            if [ $commit_date -lt $one_week_ago ]; then
+              echo "Reached the 1-week limit. Stopping search."
+              break
+            fi
+
+            # Check for the parent branches of the current commit
+            parents=$(git rev-list --parents -n 1 $commit)
+
+            # If there's only one parent, continue traversing
+            if [ $(echo "$parents" | wc -w) -eq 2 ]; then
+              commit=$(echo "$parents" | awk '{print $2}')
+            else
+              # If multiple parents are found, it's a merge commit
+              parent_branch=$(git branch --contains $(echo "$parents" | awk '{print $2}') | grep -v "$branch_name" | head -n 1 | sed 's/\* //')
+              break
+            fi
+          done
+
+          # Output the parent branch or root commit
+          if [ -n "$parent_branch" ]; then
+            echo "::notice:: Parent branch detected: $parent_branch"
+          else
+            echo "::notice:: No parent branch found. This might be the root branch."
+          fi
+
+          # Save the parent branch to an environment variable
+          echo "parent_branch=${parent_branch}" >> $GITHUB_ENV
 
       - name: Get merged PRs based on branch creation date
         id: pr-list
