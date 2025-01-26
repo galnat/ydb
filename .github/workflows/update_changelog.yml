@@ -81,9 +81,9 @@ jobs:
               echo "multiple parents $parents"
               parent_commit=$(echo "$parents" | awk '{print $2}')
               echo "parent commit $parent_commit"
-              echo "log contains $(git branch --contains $parent_commit)"
-              echo "log grep $(git branch --contains $parent_commit | grep -v \"$branch_name\")"
-              parent_branch=$(git branch --contains $parent_commit | grep -v "$branch_name" | head -n 1)
+              echo "log contains $(git branch -r --contains $parent_commit)"
+              echo "log grep $(git branch -r --contains $parent_commit | grep -v \"$branch_name\")"
+              parent_branch=$(git branch -r --contains $parent_commit | grep -v "$branch_name" | head -n 1)
               echo "parent branch $parent_branch"
               break
             fi
