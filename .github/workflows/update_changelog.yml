@@ -86,6 +86,7 @@ jobs:
 
               # Iterate through branches to find "main" or "stable-*"
               for branch in $branches; do
+                branch=$(echo "$branch"| sed 's/^[ \t]*//;s/[ \t]*$//' | sed 's/^origin\///' )
                 if [[ "$branch" == *"main"* || "$branch" == *"stable-"* ]]; then
                   parent_branch=$branch
                   echo "parent branch $parent_branch"
