@@ -66,6 +66,12 @@ jobs:
             parents=$(git rev-list --parents -n 1 $commit)
             echo "parents $parents"
 
+            # If there's only one commit hash, it's the root commit
+            if [ $(echo "$parents" | wc -w) -eq 1 ]; then
+              echo "Root commit found: $commit"
+              break
+            fi
+
             # If there's only one parent, continue traversing
             if [ $(echo "$parents" | wc -w) -eq 2 ]; then
               commit=$(echo "$parents" | awk '{print $2}')
@@ -73,7 +79,10 @@ jobs:
             else
               # If multiple parents are found, it's a merge commit
               echo "multiple parents $parents"
-              parent_branch=$(git branch --contains $(echo "$parents" | awk '{print $2}') | grep -v "$branch_name" | head -n 1 | sed 's/\* //')
+              parent_commit=$(echo "$parents" | awk '{print $2}')
+              echo "parent commit $parent_commit"
+              parent_branch=$(git branch --contains $parent_commit | grep -v "$branch_name" | head -n 1 | sed 's/  //')
+              echo "parent branch $parent_branch"
               break
             fi
           done
