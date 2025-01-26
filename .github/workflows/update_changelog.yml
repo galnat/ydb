@@ -85,7 +85,15 @@ jobs:
               echo "log grep $(git branch -r --contains $parent_commit | grep -v \"$branch_name\")"
               parent_branch=$(git branch -r --contains $parent_commit | grep -v "$branch_name" | head -n 1)
               echo "parent branch $parent_branch"
-              break
+
+              # Check if the parent branch is "main" or starts with "stable-"
+              if [[ "$parent_branch" == *"main"* || "$parent_branch" == *"stable-"* ]]; then
+                echo "::notice:: Parent branch is either 'main' or starts with 'stable-'"
+                break
+              else
+                # Continue traversing if the parent branch does not meet the criteria
+                commit=$parent_commit
+              fi
             fi
           done
 
