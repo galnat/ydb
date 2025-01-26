@@ -47,7 +47,7 @@ jobs:
           if [ -z "$PRS" ]; then
             PRS="{}"
           fi
-          echo "::notice::$PRS"
+          echo "::notice::PRS = $PRS"
           echo "$PRS" > prs.json
           echo "prs=$PRS" >> "$GITHUB_OUTPUT"
 
