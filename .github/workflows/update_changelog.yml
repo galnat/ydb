@@ -35,8 +35,6 @@ jobs:
       - name: Get parent branch and branch creation date
         id: branch-info
         run: |
-          BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $PARENT_BRANCH..${GITHUB_REF_NAME} | head -n 1)
-          echo "BRANCH_CREATION_DATE=$BRANCH_CREATION_DATE" >> $GITHUB_ENV
 
           # Get the current branch name
           branch_name=${GITHUB_REF_NAME}
@@ -64,12 +62,15 @@ jobs:
 
             # Check for the parent branches of the current commit
             parents=$(git rev-list --parents -n 1 $commit)
+            echo "parents $parents"
 
             # If there's only one parent, continue traversing
             if [ $(echo "$parents" | wc -w) -eq 2 ]; then
               commit=$(echo "$parents" | awk '{print $2}')
+              echo "new commit $commit"
             else
               # If multiple parents are found, it's a merge commit
+              echo "multiple parents $parents"
               parent_branch=$(git branch --contains $(echo "$parents" | awk '{print $2}') | grep -v "$branch_name" | head -n 1 | sed 's/\* //')
               break
             fi
@@ -82,8 +83,14 @@ jobs:
             echo "::notice:: No parent branch found. This might be the root branch."
           fi
 
+          if [ -n "$parent_branch" ]; then
+           BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $parent_branch..${GITHUB_REF_NAME} | head -n 1)
+          else
+           BRANCH_CREATION_DATE=$LAST_WEEK_DATE
+          fi
+          echo "BRANCH_CREATION_DATE=$BRANCH_CREATION_DATE" >> $GITHUB_ENV
           # Save the parent branch to an environment variable
-          echo "parent_branch=${parent_branch}" >> $GITHUB_ENV
+          echo "PARENT_BRANCH=${parent_branch}" >> $GITHUB_ENV
 
       - name: Get merged PRs based on branch creation date
         id: pr-list
