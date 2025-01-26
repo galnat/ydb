@@ -36,8 +36,7 @@
 #include <yt/cpp/mapreduce/io/proto_helpers.h>
 #include <yt/cpp/mapreduce/io/skiff_table_reader.h>
 
-#include <yt/cpp/mapreduce/raw_client/raw_batch_request.h>
-#include <yt/cpp/mapreduce/raw_client/raw_requests.h>
+#include <yt/cpp/mapreduce/http_client/raw_requests.h>
 
 #include <library/cpp/yson/node/serialize.h>
 
@@ -703,6 +702,9 @@ void BuildUserJobFluently(
         .Item("file_paths").List(preparer.GetFiles())
         .DoIf(!preparer.GetLayers().empty(), [&] (TFluentMap fluentMap) {
             fluentMap.Item("layer_paths").List(preparer.GetLayers());
+        })
+        .DoIf(userJobSpec.DockerImage_.Defined(), [&] (TFluentMap fluentMap) {
+            fluentMap.Item("docker_image").Value(*userJobSpec.DockerImage_);
         })
         .Item("command").Value(preparer.GetCommand())
         .Item("class_name").Value(preparer.GetClassName())
