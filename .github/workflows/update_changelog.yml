@@ -69,13 +69,13 @@ jobs:
             echo "parents $parents"
 
             # If there's only one commit hash, it's the root commit
-            if [ $(echo "$parents" | wc -w) -eq 1]; then
+            if [ $(echo "$parents" | wc -w) -eq 1 ]; then
               echo "Root commit found: $commit"
               break
             fi
 
             # If there's only one parent, continue traversing
-            if [ $(echo "$parents" | wc -w) -eq 2]; then
+            if [ $(echo "$parents" | wc -w) -eq 2 ]; then
               commit=$(echo "$parents" | awk '{print $2}')
               echo "new commit $commit"
             else
