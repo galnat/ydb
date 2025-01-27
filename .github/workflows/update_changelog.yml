@@ -153,53 +153,13 @@ jobs:
   validate-pr-descriptions:
     needs: gather-prs
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        pr: ${{ fromJson(needs.gather-prs.outputs.prs) }}
 
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
-
-      - name: Validate PR Description
-        id: validate-pr
-        uses: ./.github/actions/validate_pr_description 
-        continue-on-error: true
-        with:
-          pr_body: "${{ matrix.pr.body }}"
-
-      - name: Collect Valid PR Data
-        if: ${{ success() }}
-        run: |
-          echo "{\"number\": \"${{ matrix.pr.number }}\", \"body\": \"${{ matrix.pr.body }}\"}" >> valid_pr_data.json
-
-      - name: Upload Valid PR Data
-        uses: actions/upload-artifact@v3
-        with:
-          name: valid-pr-data
-          path: valid_pr_data.json
-
-  update-changelog:
-    needs: validate-pr-descriptions
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repository
-        uses: actions/checkout@v4
-        
-      - name: Download Valid PR Data
-        uses: actions/download-artifact@v3
-        with:
-          name: valid-pr-data
-          path: .
-
-      - name: Set up Valid PR Data
-        id: gather-data
-        run: |
-          VALID_PR_DATA=$(cat valid_pr_data.json | jq -c -s '.')
-          echo "VALID_PR_DATA=$VALID_PR_DATA" >> $GITHUB_ENV
 
       - name: Update Changelog
         uses: ./.github/actions/update_changelog 
         with:
-          pr_data: "${{ env.VALID_PR_DATA }}"
+          pr_data: "${{ needs.gather-prs.outputs.prs }}"
           changelog_path: "./CHANGELOG.md"
