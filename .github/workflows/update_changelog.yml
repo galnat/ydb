@@ -138,8 +138,8 @@ jobs:
           if [ -z "$PRS" ]; then
             PRS="[]"
           fi
-          echo '{"include":'"$PRS"'}' > prs.json
-          echo 'prs={"include":'"$PRS"'}' >> "$GITHUB_OUTPUT"
+          echo "$PRS" > prs.json
+          echo "prs=$PRS" >> "$GITHUB_OUTPUT"
 
       - name: Debug PR list output
         run: |
