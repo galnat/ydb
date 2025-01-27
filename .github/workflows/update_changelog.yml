@@ -113,9 +113,10 @@ jobs:
           fi
 
           if [ -n "$parent_branch" ]; then
-           BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $parent_branch..${GITHUB_REF_NAME} | head -n 1)
+            $(git fetch origin $parent_branch:$parent_branch)
+            BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $parent_branch..${GITHUB_REF_NAME} | head -n 1)
           else
-           BRANCH_CREATION_DATE=$LAST_WEEK_DATE
+            BRANCH_CREATION_DATE=$LAST_WEEK_DATE
           fi
           echo "BRANCH_CREATION_DATE=$BRANCH_CREATION_DATE" >> $GITHUB_ENV
           # Save the parent branch to an environment variable
