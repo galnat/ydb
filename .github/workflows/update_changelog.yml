@@ -136,11 +136,11 @@ jobs:
             PRS="[]"
           fi
           echo "$PRS" > prs.json
-          echo "prs=$PRS" >> "$GITHUB_OUTPUT"
+          echo 'prs=$PRS' >> "$GITHUB_OUTPUT"
 
       - name: Debug PR list output
         run: |
-          echo "PRS output: ${{ steps.pr-list.outputs.prs }}"
+          echo 'PRS output: ${{ steps.pr-list.outputs.prs }}'
 
       - name: Upload PRs JSON
         uses: actions/upload-artifact@v3
