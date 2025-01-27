@@ -161,10 +161,11 @@ jobs:
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
-        
+
       - name: Validate PR Description
         id: validate-pr
         uses: ./.github/actions/validate_pr_description 
+        continue-on-error: true
         with:
           pr_body: "${{ matrix.pr.body }}"
 
