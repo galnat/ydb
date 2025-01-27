@@ -178,6 +178,9 @@ jobs:
     needs: validate-pr-descriptions
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+        
       - name: Set up Valid PR IDs
         id: gather-ids
         run: |
