@@ -133,11 +133,20 @@ jobs:
           fi
 
           if [ -z "$PRS" ]; then
-            PRS="{}"
+            PRS="[]"
           fi
-          echo "::notice::PRS = $PRS"
           echo "$PRS" > prs.json
           echo "prs=$PRS" >> "$GITHUB_OUTPUT"
+
+      - name: Debug PR list output
+        run: |
+          echo "PRS output: ${{ steps.pr-list.outputs.prs }}"
+
+      - name: Upload PRs JSON
+        uses: actions/upload-artifact@v3
+        with:
+          name: prs-json
+          path: prs.json
 
   validate-pr-descriptions:
     needs: gather-prs
