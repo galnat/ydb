@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       prs: ${{ steps.pr-list.outputs.prs }}
-      prs_json: prs.json
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -70,13 +69,13 @@ jobs:
             echo "parents $parents"
 
             # If there's only one commit hash, it's the root commit
-            if [ $(echo "$parents" | wc -w) -eq 1 ]; then
+            if [ $(echo "$parents" | wc -w) -eq 1]; then
               echo "Root commit found: $commit"
               break
             fi
 
             # If there's only one parent, continue traversing
-            if [ $(echo "$parents" | wc -w) -eq 2 ]; then
+            if [ $(echo "$parents" | wc -w) -eq 2]; then
               commit=$(echo "$parents" | awk '{print $2}')
               echo "new commit $commit"
             else
@@ -169,10 +168,16 @@ jobs:
         with:
           pr_body: "${{ matrix.pr.body }}"
 
-      - name: Collect Valid PR IDs
+      - name: Collect Valid PR Data
         if: ${{ success() }}
         run: |
-          echo "${{ matrix.pr.number }}" >> valid_pr_ids.txt
+          echo "{\"number\": \"${{ matrix.pr.number }}\", \"body\": \"${{ matrix.pr.body }}\"}" >> valid_pr_data.json
+
+      - name: Upload Valid PR Data
+        uses: actions/upload-artifact@v3
+        with:
+          name: valid-pr-data
+          path: valid_pr_data.json
 
   update-changelog:
     needs: validate-pr-descriptions
@@ -181,14 +186,20 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
         
-      - name: Set up Valid PR IDs
-        id: gather-ids
+      - name: Download Valid PR Data
+        uses: actions/download-artifact@v3
+        with:
+          name: valid-pr-data
+          path: .
+
+      - name: Set up Valid PR Data
+        id: gather-data
         run: |
-          VALID_IDS=$(cat valid_pr_ids.txt | tr '\n' ',')
-          echo "VALID_IDS=$VALID_IDS" >> $GITHUB_ENV
+          VALID_PR_DATA=$(cat valid_pr_data.json | jq -c -s '.')
+          echo "VALID_PR_DATA=$VALID_PR_DATA" >> $GITHUB_ENV
 
       - name: Update Changelog
         uses: ./.github/actions/update_changelog 
         with:
-          pr_ids: "${{ env.VALID_IDS }}"
+          pr_data: "${{ env.VALID_PR_DATA }}"
           changelog_path: "./CHANGELOG.md"
