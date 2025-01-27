@@ -14,6 +14,9 @@ env:
 jobs:
   gather-prs:
     runs-on: ubuntu-latest
+    outputs:
+      prs: ${{ steps.pr-list.outputs.prs }}
+      prs_json: prs.json
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
