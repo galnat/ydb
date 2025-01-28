@@ -32,7 +32,7 @@ runs:
 
     - name: Save PR data to file
       shell: bash
-      run: echo "${{ inputs.pr_data }}" > pr_data.json
+      run: echo "${{ inputs.pr_data }}" | jq '.' > pr_data.json
 
     - name: Run update_changelog.py
       shell: bash
