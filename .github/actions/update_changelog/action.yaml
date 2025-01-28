@@ -30,11 +30,7 @@ runs:
         python -m pip install --upgrade pip
         pip install keepachangelog
 
-    - name: Save PR data to file
-      shell: bash
-      run: echo "${{ inputs.pr_data }}" | jq '.' > pr_data.json
-
     - name: Run update_changelog.py
       shell: bash
       run: |
-        python ${{ github.action_path }}/update_changelog.py pr_data.json "${{ inputs.changelog_path }}" "${{ inputs.base_branch }}" "${{ inputs.suffix }}"
+        python ${{ github.action_path }}/update_changelog.py "${{ inputs.pr_data }}" "${{ inputs.changelog_path }}" "${{ inputs.base_branch }}" "${{ inputs.suffix }}"
