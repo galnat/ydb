@@ -167,6 +167,6 @@ jobs:
         uses: ./.github/actions/update_changelog 
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
-          changelog_path: "./CHANGELOG.md"
+          changelog_path: "./CHANGELOG.md" # RODO: Use the correct path to your CHANGELOG.md file
           base_branch: "${{ github.ref_name }}"
           suffix: "${{ env.suffix }}"
