@@ -3,8 +3,8 @@ name: "Update Changelog"
 description: "Custom action to update changelog based on input parameters."
 
 inputs:
-  pr_ids:
-    description: "The type of update to perform."
+  pr_data:
+    description: "List of ids and PR bodies"
     required: true
   changelog_path:
     description: "The value associated with the type."
