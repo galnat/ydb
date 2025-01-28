@@ -44,7 +44,8 @@ if __name__ == "__main__":
 
     try:
         with open(pr_data_file, 'r') as file:
-            pr_data = json.load(file)
+            pr_data_json = file.read().strip('"')
+            pr_data = json.loads(pr_data_json)
     except json.JSONDecodeError as e:
         print(f"::error::Failed to parse PR data JSON: {e}")
         sys.exit(1)
