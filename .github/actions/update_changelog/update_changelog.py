@@ -37,13 +37,14 @@ if __name__ == "__main__":
         print("Usage: update_changelog.py <pr_data_json> <changelog_path> <base_branch> <suffix>")
         sys.exit(1)
 
-    pr_data_json = sys.argv[1]
+    pr_data_file = sys.argv[1]
     changelog_path = sys.argv[2]
     base_branch = sys.argv[3]
     suffix = sys.argv[4]
 
     try:
-        pr_data = json.loads(pr_data_json)
+        with open(pr_data_file, 'r') as file:
+            pr_data = json.load(file)
     except json.JSONDecodeError as e:
         print(f"::error::Failed to parse PR data JSON: {e}")
         sys.exit(1)
