@@ -2,8 +2,8 @@ import sys
 import re
 
 issue_patterns = [
-    r"https://github.com/ydb-platform/ydb/issues/\d+"
-    # TODO: Add pattern for Yandex issue
+    r"https://github.com/ydb-platform/ydb/issues/\d+",
+    r"https://st.yandex-team.ru/[a-zA-Z]+-\d+"
 ]
 
 def validate_pr_description(description):
@@ -61,7 +61,7 @@ def validate_pr_description(description):
 
             if category == "Bugfix":
                 def check_issue_pattern(issue_pattern):
-                    return re.search(issue_pattern, entry_section.group(1))
+                    return re.search(issue_pattern, description)
 
                 if not any(check_issue_pattern(issue_pattern) for issue_pattern in issue_patterns):
                     print("::warning::Bugfix requires a linked issue in the changelog entry")
