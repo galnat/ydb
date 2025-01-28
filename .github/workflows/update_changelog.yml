@@ -142,7 +142,7 @@ jobs:
 
       - name: Debug PR list output
         run: |
-          cat prs.json | jq '.'
+          cat prs.json
 
       - name: Upload PRs JSON
         uses: actions/upload-artifact@v3
