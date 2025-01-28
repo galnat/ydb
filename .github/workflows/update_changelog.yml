@@ -168,5 +168,5 @@ jobs:
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
           changelog_path: "./CHANGELOG.md"
-          base_branch: ${GITHUB_REF_NAME}
+          base_branch: "${{ github.ref_name }}"
           suffix: "${{ env.suffix }}"
