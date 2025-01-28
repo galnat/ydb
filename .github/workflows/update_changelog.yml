@@ -158,8 +158,15 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
+      - name: Get current date
+        id: get-date
+        shell: bash
+        run: echo "suffix=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
       - name: Update Changelog
         uses: ./.github/actions/update_changelog 
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
           changelog_path: "./CHANGELOG.md"
+          base_branch: ${GITHUB_REF_NAME}
+          suffix: "${{ env.suffix }}"
