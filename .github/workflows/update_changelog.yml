@@ -54,7 +54,6 @@ jobs:
 
           while true; do
             echo "Analyzing commit: $commit"
-            echo "Analyzing commit123123123: $commit"
 
             # Get the commit date in seconds since the epoch
             commit_date=$(git show -s --format=%ct $commit)
@@ -85,7 +84,7 @@ jobs:
               parent_commit=$(echo "$parents" | awk '{print $2}')
               echo "parent commit $parent_commit"
               echo "git branch command $(git branch -r --contains $parent_commit)"
-              echo "git branch command $(git branch -r --contains $parent_commit| grep -v \"$branch_name\")"
+              echo "git branch command $(git branch -r --contains $parent_commit| grep -v $branch_name)"
               branches=$(git branch -r --contains $parent_commit | grep -v "$branch_name")
               echo "branches $branches"
 
