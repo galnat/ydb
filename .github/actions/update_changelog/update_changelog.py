@@ -4,7 +4,38 @@ import re
 import subprocess
 import requests
 from validate_pr_description import validate_pr_description
-import keepachangelog
+
+UNRELEASED = "[Unreleased]"
+UNCATEGORIZED = "[Uncategorized]"
+
+def to_dict(changelog_path):
+    changelog = {}
+    current_version = UNRELEASED
+    current_category = UNCATEGORIZED
+
+    with open(changelog_path, 'r') as file:
+        for line in file:
+            line = line.strip()
+            if line.startswith("## "):
+                current_version = line
+                changelog[current_version] = {}
+            elif line.startswith("### "):
+                current_category = line
+                changelog[current_version][current_category] = []
+            elif line.startswith("- "):
+                changelog[current_version][current_category].append(line)
+    
+    return changelog
+
+def to_file(changelog_path, changelog):
+    with open(changelog_path, 'w') as file:
+        for version, categories in changelog.items():
+            file.write(f"## {version}\n\n")
+            for category, items in categories.items():
+                file.write(f"### {category}\n")
+                for item in items:
+                    file.write(f"- {item}\n")
+                file.write("\n")
 
 def extract_changelog_category(description):
     category_section = re.search(r"### Changelog category.*?\n(.*?)(\n###|$)", description, re.DOTALL)
@@ -15,19 +46,19 @@ def extract_changelog_category(description):
     return None
 
 def update_changelog(changelog_path, pr_data):
-    changelog = keepachangelog.to_dict(changelog_path)
-    if "unreleased" not in changelog:
-        changelog["unreleased"] = {}
+    changelog = to_dict(changelog_path)
+    if UNRELEASED not in changelog:
+        changelog[UNRELEASED] = {}
 
     for pr in pr_data:
         if validate_pr_description(pr["body"]):
             category = extract_changelog_category(pr["body"])
             if category:
-                if category not in changelog["unreleased"]:
-                    changelog["unreleased"][category] = []
-                changelog["unreleased"][category].append(f"PR #{pr['number']}: {pr['body']}")
+                if category not in changelog[UNRELEASED]:
+                    changelog[UNRELEASED][category] = []
+                changelog[UNRELEASED][category].append(f"PR #{pr['number']}: {pr['body']}")
 
-    keepachangelog.to_file(changelog_path, changelog)
+    to_file(changelog_path, changelog)
 
 def run_command(command):
     result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
