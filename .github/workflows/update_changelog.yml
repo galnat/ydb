@@ -25,15 +25,15 @@ jobs:
       - name: Set up date range
         id: date-setup
         run: |
-          LAST_WEEK_DATE=$(date -d "7 days ago" '+%Y-%m-%dT%H:%M:%SZ')
+          LAST_WEEK_DATE=$(date -d "14 days ago" '+%Y-%m-%dT%H:%M:%SZ')
           echo "LAST_WEEK_DATE=$LAST_WEEK_DATE" >> $GITHUB_ENV
 
-      - name: Fetch commits from the last 7 days
+      - name: Fetch commits from the last 14 days
         run: |
-          # Calculate the date 7 days ago
-          date_since=$(date -d '7 days ago' --utc +%Y-%m-%dT%H:%M:%SZ)
+          # Calculate the date 14 days ago
+          date_since=$(date -d '14 days ago' --utc +%Y-%m-%dT%H:%M:%SZ)
 
-          # Fetch all commits since the last 7 days
+          # Fetch all commits since the last 14 days
           git fetch --shallow-since="$LAST_WEEK_DATE"
 
       - name: Get parent branch and branch creation date
@@ -46,7 +46,7 @@ jobs:
           echo "Current branch: $branch_name"
 
           # Get the timestamp for 1 week ago
-          one_week_ago=$(date -d '7 days ago' --utc +%s)
+          one_week_ago=$(date -d '14 days ago' --utc +%s)
 
           # Start with the latest commit
           commit=$(git rev-parse HEAD)
