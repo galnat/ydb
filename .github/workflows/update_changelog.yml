@@ -86,7 +86,7 @@ jobs:
               echo "git branch command $(git branch -r --contains $parent_commit)"
               echo "git branch command $(git branch -r --contains $parent_commit| grep -v $branch_name)"
               branches=$(git branch -r --contains $parent_commit | grep -v "$branch_name")
-              echo "branches $branches"
+              echo "post branches "
 
               # Iterate through branches to find "main" or "stable-*"
               for branch in $branches; do
