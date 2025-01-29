@@ -85,8 +85,12 @@ jobs:
               echo "parent commit $parent_commit"
               echo "git branch command $(git branch -r --contains $parent_commit)"
               echo "git branch command $(git branch -r --contains $parent_commit| grep -v $branch_name)"
-              branches=$(git branch -r --contains $parent_commit | grep -v "$branch_name")
-              echo "post branches "
+              branches=$(git branch -r --contains $parent_commit | grep -v $branch_name)
+              if [ -z "$branches" ]; then
+                echo "No branches found for the parent commit: $parent_commit"
+                commit=$parent_commit
+                continue
+              fi
 
               # Iterate through branches to find "main" or "stable-*"
               for branch in $branches; do
