@@ -84,18 +84,19 @@ jobs:
               parent_commit=$(echo "$parents" | awk '{print $2}')
               echo "parent commit $parent_commit"
               branches=$(git branch -r --contains $parent_commit | grep -v "$branch_name")
-              echo "branches $branches"
+              echo "::notice::branches $branches"
 
               # Iterate through branches to find "main" or "stable-*"
               for branch in $branches; do
                 branch=$(echo "$branch"| sed 's/^[ \t]*//;s/[ \t]*$//' | sed 's/^origin\///' )
+                echo "::notice::branch $branch"
                 if [[ "$branch" == "$branch_name" ]]; then
                   echo "Skipping current branch: $branch"
                   continue
                 fi
                 if [[ "$branch" == *"main"* || "$branch" == *"stable-"* ]]; then
                   parent_branch=$branch
-                  echo "parent branch $parent_branch"
+                  echo "::notice::parent branch $parent_branch"
                   break
                 fi
               done
