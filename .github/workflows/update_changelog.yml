@@ -90,6 +90,9 @@ jobs:
                 echo "No branches found for the parent commit: $parent_commit"
                 commit=$parent_commit
                 continue
+              else
+                echo "Branches found for the parent commit: $parent_commit"
+                echo "branches $branches"
               fi
 
               # Iterate through branches to find "main" or "stable-*"
