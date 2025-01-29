@@ -54,6 +54,7 @@ jobs:
 
           while true; do
             echo "Analyzing commit: $commit"
+            echo "Analyzing commit123123123: $commit"
 
             # Get the commit date in seconds since the epoch
             commit_date=$(git show -s --format=%ct $commit)
