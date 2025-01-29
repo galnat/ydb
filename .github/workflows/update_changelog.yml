@@ -129,16 +129,16 @@ jobs:
         run: |
           echo "::notice:: branch = ${GITHUB_REF_NAME}, date = $LAST_WEEK_DATE, parent = $PARENT_BRANCH, creation date = $BRANCH_CREATION_DATE"
           if [ -z "$BRANCH_CREATION_DATE" ]; then
-            PRS=$(gh pr list --state merged --json number,title,body,baseRefName,mergedAt --jq ".[] | select(.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$LAST_WEEK_DATE\") | {number: .number, body: .body}" | jq -c -s ".")
+            PRS=$(gh pr list --state merged --json number,title,baseRefName,mergedAt --jq ".[] | select(.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$LAST_WEEK_DATE\") | {id: .number}" | jq -c -s ".")
           else
-            PRS=$(gh pr list --state merged --json number,title,body,baseRefName,mergedAt --jq ".[] | select((.baseRefName == \"$PARENT_BRANCH\" and .mergedAt >= \"$LAST_WEEK_DATE\" and .mergedAt < \"$BRANCH_CREATION_DATE\") or (.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$BRANCH_CREATION_DATE\")) | {number: .number, body: .body}" | jq -c -s ".")
+            PRS=$(gh pr list --state merged --json number,title,baseRefName,mergedAt --jq ".[] | select((.baseRefName == \"$PARENT_BRANCH\" and .mergedAt >= \"$LAST_WEEK_DATE\" and .mergedAt < \"$BRANCH_CREATION_DATE\") or (.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$BRANCH_CREATION_DATE\")) | {id: .numbe}" | jq -c -s ".")
           fi
 
           if [ -z "$PRS" ]; then
             PRS="[]"
           fi
           echo "$PRS" > prs.json
-          echo "prs=\"$PRS\"" >> "$GITHUB_OUTPUT"
+          echo "prs=$PRS" >> "$GITHUB_OUTPUT"
 
       - name: Debug PR list output
         run: |
