@@ -33,7 +33,7 @@ runs:
     - name: Store PR data to a temporary file
       shell: bash
       run: |
-        echo "${{ inputs.pr_data }}" > pr_data.txt
+        echo '${{ inputs.pr_data }}' > pr_data.txt
 
     - name: Run update_changelog.py
       shell: bash
