@@ -16,19 +16,19 @@ def to_dict(changelog_path):
 
     with open(changelog_path, 'r') as file:
         for line in file:
-            line = line.strip()
             if line.startswith("## ["):
-                current_version = line.strip("## [").strip("]")
+                current_version = line.strip().strip("## [").strip("]")
+                pr_number = None
                 changelog[current_version] = {}
             elif line.startswith("### ["):
-                current_category = line.strip("### [").strip("]")
+                current_category = line.strip().strip("### [").strip("]")
+                pr_number = None
                 changelog[current_version][current_category] = {}
             elif line.startswith("- "):
                 pr_number = extract_pr_number(line)
                 changelog[current_version][current_category][pr_number] = line.strip("- ")
-            elif line:
-                if pr_number:
-                    changelog[current_version][current_category][pr_number].append(f"\n{line}")
+            elif pr_number:
+                changelog[current_version][current_category][pr_number].append(f"\n{line}")
     
     return changelog
 
