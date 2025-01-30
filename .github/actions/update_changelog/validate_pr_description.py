@@ -6,7 +6,7 @@ issue_patterns = [
     r"https://st.yandex-team.ru/[a-zA-Z]+-\d+"
 ]
 
-def validate_pr_description(description):
+def validate_pr_description(description, is_not_for_cl_valid=True):
     try:
         if not description.strip():
             print("::warning::PR description is empty. Please fill it out.")
@@ -51,6 +51,10 @@ def validate_pr_description(description):
 
         if not any(cat.startswith(category) for cat in valid_categories):
             print(f"::warning::Invalid Changelog category: {category}")
+            return False
+
+        if not is_not_for_cl_valid and any(cat.startswith(category) for cat in not_for_cl_categories):
+            print(f"::notice::Category is not for changelog: {category}")
             return False
 
         if not any(cat.startswith(category) for cat in not_for_cl_categories):
