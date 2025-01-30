@@ -20,7 +20,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 50
+          fetch-depth: 200
 
       - name: Set up date range
         id: date-setup
@@ -85,7 +85,7 @@ jobs:
               echo "parent commit $parent_commit"
               echo "git branch command $(git branch -r --contains $parent_commit)"
               echo "git branch command $(git branch -r --contains $parent_commit| grep -v $branch_name)"
-              branches="" #$(git branch -r --contains $parent_commit | grep -v $branch_name)
+              branches=$(git branch -r --contains $parent_commit | grep -v $branch_name)
               if [ -z "$branches" ]; then
                 echo "No branches found for the parent commit: $parent_commit"
                 commit=$parent_commit
