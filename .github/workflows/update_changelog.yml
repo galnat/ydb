@@ -85,7 +85,8 @@ jobs:
               echo "parent commit $parent_commit"
               echo "git branch command $(git branch -r --contains $parent_commit)"
               echo "git branch command $(git branch -r --contains $parent_commit| grep -v $branch_name)"
-              branches=$(git branch -r --contains $parent_commit | grep -v $branch_name)
+              branches=$(git branch -r --contains $parent_commit | grep -v $branch_name || true)
+              echo "branches $branches"
               if [ -z "$branches" ]; then
                 echo "No branches found for the parent commit: $parent_commit"
                 commit=$parent_commit
