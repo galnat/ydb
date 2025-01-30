@@ -26,9 +26,9 @@ def to_dict(changelog_path):
                 changelog[current_version][current_category] = {}
             elif line.startswith("- "):
                 pr_number = extract_pr_number(line)
-                changelog[current_version][current_category][pr_number] = line.strip("- ")
+                changelog[current_version][current_category][pr_number] = line.strip(f"- PR #{pr_number}:")
             elif pr_number:
-                changelog[current_version][current_category][pr_number] += f"\n{line}"
+                changelog[current_version][current_category][pr_number] += f"{line}"
     
     return changelog
 
@@ -39,7 +39,7 @@ def to_file(changelog_path, changelog):
             for category, items in categories.items():
                 file.write(f"### [{category}]\n")
                 for id, body in items.items():
-                    file.write(f"- PR #{id}:{body}\n")
+                    file.write(f"- PR #{id}:{body.strip()}\n")
                 file.write("\n")
 
 def extract_changelog_category(description):
@@ -53,7 +53,7 @@ def extract_changelog_category(description):
 def extract_pr_number(changelog_entry):
     match = re.search(r"#(\d+)", changelog_entry)
     if match:
-        return match.group(1)
+        return int(match.group(1))
     return None
 
 def extract_changelog_body(description):
@@ -68,13 +68,14 @@ def update_changelog(changelog_path, pr_data):
         changelog[UNRELEASED] = {}
 
     for pr in pr_data:
-        if validate_pr_description(pr["body"]):
+        if validate_pr_description(pr["body"], is_not_for_cl_valid=False):
             category = extract_changelog_category(pr["body"])
             body = extract_changelog_body(pr["body"])
             if category and body:
                 if category not in changelog[UNRELEASED]:
                     changelog[UNRELEASED][category] = {}
-                changelog[UNRELEASED][category][pr['number']] = body
+                if pr['number'] not in changelog[UNRELEASED][category]:
+                    changelog[UNRELEASED][category][pr['number']] = body
 
     to_file(changelog_path, changelog)
 
@@ -123,7 +124,7 @@ if __name__ == "__main__":
             if validate_pr_description(pr_details["body"], is_not_for_cl_valid=False):
                 pr_data.append({
                     "number": pr_details["number"],
-                    "body": pr_details["body"]
+                    "body": pr_details["body"].strip()
                 })
         except Exception as e:
             print(f"::error::Failed to fetch PR details for PR #{pr['id']}: {e}")
