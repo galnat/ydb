@@ -15,9 +15,6 @@ inputs:
   suffix:
     description: "Suffix for the changelog update"
     required: true
-  token:
-    description: "Token to use for git operations"
-    required: true
 
 runs:
   using: "composite"
@@ -41,5 +38,7 @@ runs:
     - name: Run update_changelog.py
       shell: bash
       run: |
-        git config --global github.token ${{ inputs.token }}
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git config --local github.token ${{ env.UPDATE_REPO_TOKEN }}
         python ${{ github.action_path }}/update_changelog.py pr_data.txt "${{ inputs.changelog_path }}" "${{ inputs.base_branch }}" "${{ inputs.suffix }}"
