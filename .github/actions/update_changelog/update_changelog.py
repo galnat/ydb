@@ -73,6 +73,33 @@ def extract_changelog_body(description):
         return body_section.group(1).strip()
     return None
 
+def match_pr_to_changelog_category(category):
+# * New feature - Functionality
+# * Experimental feature - Functionality
+# * Performance improvement - Performance
+# * User Interface - YDB UI
+# * Bugfix - Bug fixes
+# * Backward incompatible change - Backward incompatible change
+# * Documentation (changelog entry is not required)
+# * Not for changelog (changelog entry is not required)
+    categories = {
+        "New feature": "Functionality",
+        "Experimental feature": "Functionality",
+        "Performance Improvement": "Functionality",
+        "User Interface": "YDB UI",
+        "Bugfix": "Bug fixes",
+        "Backward incompatible change": "Backward incompatible change",
+        "Documentation (changelog entry is not required)": None,
+        "Not for changelog (changelog entry is not required)": None
+    }
+    if category in categories:
+        return categories[category]
+    for key, value in categories.items():
+        if key.startswith(category):
+            return value
+    return None
+
+
 def update_changelog(changelog_path, pr_data):
     changelog = to_dict(changelog_path)
     if UNRELEASED not in changelog:
@@ -81,6 +108,7 @@ def update_changelog(changelog_path, pr_data):
     for pr in pr_data:
         if validate_pr_description(pr["body"], is_not_for_cl_valid=False):
             category = extract_changelog_category(pr["body"])
+            category = match_pr_to_changelog_category(category)
             body = extract_changelog_body(pr["body"])
             if category and body:
                 if category not in changelog[UNRELEASED]:
