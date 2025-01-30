@@ -89,15 +89,15 @@ def match_pr_to_changelog_category(category):
         "User Interface": "YDB UI",
         "Bugfix": "Bug fixes",
         "Backward incompatible change": "Backward incompatible change",
-        "Documentation (changelog entry is not required)": None,
-        "Not for changelog (changelog entry is not required)": None
+        "Documentation (changelog entry is not required)": UNCATEGORIZED,
+        "Not for changelog (changelog entry is not required)": UNCATEGORIZED
     }
     if category in categories:
         return categories[category]
     for key, value in categories.items():
         if key.startswith(category):
             return value
-    return None
+    return UNCATEGORIZED
 
 
 def update_changelog(changelog_path, pr_data):
