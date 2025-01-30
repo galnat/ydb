@@ -37,6 +37,8 @@ runs:
 
     - name: Run update_changelog.py
       shell: bash
+      env:
+        UPDATE_REPO_TOKEN: ${{ secrets.UPDATE_REPO_TOKEN }}
       run: |
-        git config --global github.token UPDATE_REPO_TOKEN
+        git config --global github.token $UPDATE_REPO_TOKEN
         python ${{ github.action_path }}/update_changelog.py pr_data.txt "${{ inputs.changelog_path }}" "${{ inputs.base_branch }}" "${{ inputs.suffix }}"
