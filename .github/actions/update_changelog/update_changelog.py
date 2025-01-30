@@ -120,7 +120,7 @@ if __name__ == "__main__":
     for pr in pr_ids:
         try:
             pr_details = fetch_pr_details(pr["id"])
-            if validate_pr_description(pr_details["body"]):
+            if validate_pr_description(pr_details["body"], is_not_for_cl_valid=False):
                 pr_data.append({
                     "number": pr_details["number"],
                     "body": pr_details["body"]
