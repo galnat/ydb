@@ -28,7 +28,7 @@ def to_dict(changelog_path):
                 pr_number = extract_pr_number(line)
                 changelog[current_version][current_category][pr_number] = line.strip("- ")
             elif pr_number:
-                changelog[current_version][current_category][pr_number].append(f"\n{line}")
+                changelog[current_version][current_category][pr_number] += f"\n{line}"
     
     return changelog
 
