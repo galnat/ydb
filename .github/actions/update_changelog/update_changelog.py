@@ -1,3 +1,4 @@
+import functools
 import sys
 import json
 import re
@@ -7,6 +8,16 @@ from validate_pr_description import validate_pr_description
 
 UNRELEASED = "Unreleased"
 UNCATEGORIZED = "Uncategorized"
+VERSION_PREFIX = "## "
+CATEGORY_PREFIX = "### "
+
+@functools.cache
+def get_github_repo():
+    return subprocess.run(["git", "config", "--get", "remote.origin.url"], capture_output=True, text=True).stdout.strip()
+
+@functools.cache
+def get_github_api_url():
+    return subprocess.run(["git", "config", "--get", "remote.origin.url"], capture_output=True, text=True).stdout.strip().split(':')[1].replace('//github.com/', '').replace('.git', '')
 
 def to_dict(changelog_path):
     changelog = {}
@@ -16,12 +27,12 @@ def to_dict(changelog_path):
 
     with open(changelog_path, 'r') as file:
         for line in file:
-            if line.startswith("## ["):
-                current_version = line.strip().strip("## [").strip("]")
+            if line.startswith(VERSION_PREFIX):
+                current_version = line.strip().strip(VERSION_PREFIX)
                 pr_number = None
                 changelog[current_version] = {}
-            elif line.startswith("### ["):
-                current_category = line.strip().strip("### [").strip("]")
+            elif line.startswith(CATEGORY_PREFIX):
+                current_category = line.strip().strip(CATEGORY_PREFIX)
                 pr_number = None
                 changelog[current_version][current_category] = {}
             elif line.startswith("- "):
@@ -35,9 +46,9 @@ def to_dict(changelog_path):
 def to_file(changelog_path, changelog):
     with open(changelog_path, 'w') as file:
         for version, categories in changelog.items():
-            file.write(f"## [{version}]\n\n")
+            file.write(f"{VERSION_PREFIX}{version}\n\n")
             for category, items in categories.items():
-                file.write(f"### [{category}]\n")
+                file.write(f"{CATEGORY_PREFIX}{category}\n")
                 for id, body in items.items():
                     file.write(f"- PR #{id}:{body.strip()}\n")
                 file.write("\n")
@@ -88,7 +99,7 @@ def branch_exists(branch_name):
     return result.stdout.decode().strip() != ""
 
 def fetch_pr_details(pr_id):
-    url = f"https://api.github.com/repos/{GITHUB_REPOSITORY}/pulls/{pr_id}"
+    url = f"https://api.github.com/repos/{get_github_api_url()}/pulls/{pr_id}"
     headers = {
         "Accept": "application/vnd.github.v3+json",
         "Authorization": f"token {GITHUB_TOKEN}"
@@ -107,7 +118,6 @@ if __name__ == "__main__":
     base_branch = sys.argv[3]
     suffix = sys.argv[4]
 
-    GITHUB_REPOSITORY = subprocess.run(["git", "config", "--get", "remote.origin.url"], capture_output=True, text=True).stdout.strip().split(':')[1].replace('//github.com/', '').replace('.git', '')
     GITHUB_TOKEN = subprocess.run(["git", "config", "--get", "github.token"], capture_output=True, text=True).stdout.strip()
 
     try:
