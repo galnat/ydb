@@ -1,15 +1,27 @@
-name: Weekly Changelog Update
+name: Update Changelog
 
 on:
-  schedule:
-    - cron: '0 0 * * 0' # Every Sunday at 00:00:00
+  workflow_dispatch:
+    inputs:
+      start_date:
+        description: "Start date for the changelog update in a format like '2021-01-01'"
+        required: true
+      changelog_path:
+        description: "The value associated with the type."
+        required: true
+        default: "CHANGELOG.md"
+      base_branch:
+        description: "The base branch for the changelog update"
+        required: true
+        default: "main"
+      prefix:
+        description: "Prefix for the changelog update"
+        required: true
+        default: "docs-for-"
 
-  push:
-    branches:
-      - main
-      - stable-*
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
+  SINCE_DATE: ${{ github.event.inputs.start_date }}
 
 jobs:
   gather-prs:
@@ -22,19 +34,10 @@ jobs:
         with:
           fetch-depth: 200
 
-      - name: Set up date range
-        id: date-setup
+      - name: Fetch commits since the ${{ env.SINCE_DATE }}
         run: |
-          LAST_WEEK_DATE=$(date -d "14 days ago" '+%Y-%m-%dT%H:%M:%SZ')
-          echo "LAST_WEEK_DATE=$LAST_WEEK_DATE" >> $GITHUB_ENV
-
-      - name: Fetch commits from the last 14 days
-        run: |
-          # Calculate the date 14 days ago
-          date_since=$(date -d '14 days ago' --utc +%Y-%m-%dT%H:%M:%SZ)
-
-          # Fetch all commits since the last 14 days
-          git fetch --shallow-since="$LAST_WEEK_DATE"
+          # Fetch all commits since the ${{ env.SINCE_DATE }}
+          git fetch --shallow-since="$SINCE_DATE"
 
       - name: Get parent branch and branch creation date
         id: branch-info
@@ -46,7 +49,7 @@ jobs:
           echo "Current branch: $branch_name"
 
           # Get the timestamp for 1 week ago
-          one_week_ago=$(date -d '14 days ago' --utc +%s)
+          start_date=${{ env.SINCE_DATE }}
 
           # Start with the latest commit
           commit=$(git rev-parse HEAD)
@@ -59,8 +62,8 @@ jobs:
             commit_date=$(git show -s --format=%ct $commit)
 
             # Break if the commit is older than 1 week
-            if [ $commit_date -lt $one_week_ago ]; then
-              echo "Reached the 1-week limit. Stopping search."
+            if [ $commit_date -lt $start_date ]; then
+              echo "Reached the date limit. Stopping search."
               break
             fi
 
@@ -83,8 +86,6 @@ jobs:
               echo "multiple parents $parents"
               parent_commit=$(echo "$parents" | awk '{print $2}')
               echo "parent commit $parent_commit"
-              echo "git branch command $(git branch -r --contains $parent_commit)"
-              echo "git branch command $(git branch -r --contains $parent_commit| grep -v $branch_name)"
               branches=$(git branch -r --contains $parent_commit | grep -v $branch_name || true)
               echo "branches $branches"
               if [ -z "$branches" ]; then
@@ -133,7 +134,7 @@ jobs:
             $(git fetch origin $parent_branch:$parent_branch)
             BRANCH_CREATION_DATE=$(git log --reverse --format=%cI $parent_branch..${GITHUB_REF_NAME} | head -n 1)
           else
-            BRANCH_CREATION_DATE=$LAST_WEEK_DATE
+            BRANCH_CREATION_DATE=$SINCE_DATE
           fi
           echo "BRANCH_CREATION_DATE=$BRANCH_CREATION_DATE" >> $GITHUB_ENV
           # Save the parent branch to an environment variable
@@ -142,11 +143,11 @@ jobs:
       - name: Get merged PRs based on branch creation date
         id: pr-list
         run: |
-          echo "::notice:: branch = ${GITHUB_REF_NAME}, date = $LAST_WEEK_DATE, parent = $PARENT_BRANCH, creation date = $BRANCH_CREATION_DATE"
+          echo "::notice:: branch = ${GITHUB_REF_NAME}, date = $SINCE_DATE, parent = $PARENT_BRANCH, creation date = $BRANCH_CREATION_DATE"
           if [ -z "$BRANCH_CREATION_DATE" ]; then
-            PRS=$(gh pr list --state merged --json number,title,baseRefName,mergedAt --jq ".[] | select(.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$LAST_WEEK_DATE\") | {id: .number}" | jq -c -s ".")
+            PRS=$(gh pr list --state merged --json number,title,baseRefName,mergedAt --jq ".[] | select(.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$SINCE_DATE\") | {id: .number}" | jq -c -s ".")
           else
-            PRS=$(gh pr list --state merged --json number,title,baseRefName,mergedAt --jq ".[] | select((.baseRefName == \"$PARENT_BRANCH\" and .mergedAt >= \"$LAST_WEEK_DATE\" and .mergedAt < \"$BRANCH_CREATION_DATE\") or (.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$BRANCH_CREATION_DATE\")) | {id: .number}" | jq -c -s ".")
+            PRS=$(gh pr list --state merged --json number,title,baseRefName,mergedAt --jq ".[] | select((.baseRefName == \"$PARENT_BRANCH\" and .mergedAt >= \"$SINCE_DATE\" and .mergedAt < \"$BRANCH_CREATION_DATE\") or (.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$BRANCH_CREATION_DATE\")) | {id: .number}" | jq -c -s ".")
           fi
 
           if [ -z "$PRS" ]; then
@@ -184,6 +185,6 @@ jobs:
           UPDATE_REPO_TOKEN: ${{ secrets.UPDATE_REPO_TOKEN }}
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
-          changelog_path: "./CHANGELOG.md" # RODO: Use the correct path to your CHANGELOG.md file
-          base_branch: "${{ github.ref_name }}"
-          suffix: "${{ env.suffix }}"
+          changelog_path: "${{ github.event.inputs.changelog_path }}"
+          base_branch: "${{ github.event.inputs.base_branch }}"
+          suffix: "${{ env.SINCE_DATE }}"
