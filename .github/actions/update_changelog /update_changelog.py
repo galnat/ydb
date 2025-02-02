@@ -13,6 +13,7 @@ UNRELEASED = "Unreleased"
 UNCATEGORIZED = "Uncategorized"
 VERSION_PREFIX = "## "
 CATEGORY_PREFIX = "### "
+ITEM_PREFIX = "* "
 
 @functools.cache
 def get_github_repo():
@@ -20,15 +21,17 @@ def get_github_repo():
 
 @functools.cache
 def get_github_api_url():
-    return subprocess.run(["git", "config", "--get", "remote.origin.url"], capture_output=True, text=True).stdout.strip().split(':')[1].replace('//github.com/', '').replace('.git', '')
+    return get_github_repo().split(':')[1].replace('//github.com/', '').replace('.git', '')
 
-def to_dict(changelog_path):
+def to_dict(changelog_path, encoding='utf-8'):
     changelog = {}
     current_version = UNRELEASED
     current_category = UNCATEGORIZED
     pr_number = None
+    changelog[current_version] = {}
+    changelog[current_version][current_category] = {}
 
-    with open(changelog_path, 'r') as file:
+    with open(changelog_path, 'r', encoding=encoding) as file:
         for line in file:
             if line.startswith(VERSION_PREFIX):
                 current_version = line.strip().strip(VERSION_PREFIX)
@@ -38,22 +41,36 @@ def to_dict(changelog_path):
                 current_category = line.strip().strip(CATEGORY_PREFIX)
                 pr_number = None
                 changelog[current_version][current_category] = {}
-            elif line.startswith("- "):
+            elif line.startswith(ITEM_PREFIX):
                 pr_number = extract_pr_number(line)
-                changelog[current_version][current_category][pr_number] = line.strip(f"- PR #{pr_number}:")
+                changelog[current_version][current_category][pr_number] = line.strip(f"{ITEM_PREFIX}{pr_number}:")
             elif pr_number:
                 changelog[current_version][current_category][pr_number] += f"{line}"
     
     return changelog
 
 def to_file(changelog_path, changelog):
-    with open(changelog_path, 'w') as file:
-        for version, categories in changelog.items():
-            file.write(f"{VERSION_PREFIX}{version}\n\n")
-            for category, items in categories.items():
+    with open(changelog_path, 'w', encoding='utf-8') as file:
+        if UNRELEASED in changelog:
+            file.write(f"{VERSION_PREFIX}{UNRELEASED}\n\n")
+            for category, items in changelog[UNRELEASED].items():
+                if(len(changelog[UNRELEASED][category]) == 0):
+                    continue
                 file.write(f"{CATEGORY_PREFIX}{category}\n")
                 for id, body in items.items():
-                    file.write(f"- PR #{id}:{body.strip()}\n")
+                    file.write(f"{ITEM_PREFIX}{id}:{body.strip()}\n")
+                file.write("\n")
+
+        for version, categories in changelog.items():
+            if version == UNRELEASED:
+                continue
+            file.write(f"{VERSION_PREFIX}{version}\n\n")
+            for category, items in categories.items():
+                if(len(changelog[version][category]) == 0):
+                    continue
+                file.write(f"{CATEGORY_PREFIX}{category}\n")
+                for id, body in items.items():
+                    file.write(f"{ITEM_PREFIX}{id}:{body.strip()}\n")
                 file.write("\n")
 
 def extract_changelog_category(description):
@@ -114,6 +131,8 @@ def update_changelog(changelog_path, pr_data):
             category = match_pr_to_changelog_category(category)
             body = extract_changelog_body(pr["body"])
             if category and body:
+                body += f" [#{pr['number']}]({pr['url']})"
+                body += f" ([{pr['name']}]({pr['user_url']}))"
                 if category not in changelog[UNRELEASED]:
                     changelog[UNRELEASED][category] = {}
                 if pr['number'] not in changelog[UNRELEASED][category]:
@@ -122,15 +141,31 @@ def update_changelog(changelog_path, pr_data):
     to_file(changelog_path, changelog)
 
 def run_command(command):
-    result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    try:
+        result = subprocess.run(command, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    except subprocess.CalledProcessError as e:
+        print(f"::error::Command failed with exit code {e.returncode}: {e.stderr.decode()}")
+        print(f"::error::Command: {e.cmd}")
+        print(f"::error::Output: {e.stdout.decode()}")
+        sys.exit(1)
     return result.stdout.decode().strip()
 
 def branch_exists(branch_name):
-    result = subprocess.run(f"git branch --list {branch_name}", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return result.stdout.decode().strip() != ""
+    result = subprocess.run(["git", "ls-remote", "--heads", "origin", branch_name], capture_output=True, text=True)
+    return branch_name in result.stdout
 
 def fetch_pr_details(pr_id):
     url = f"https://api.github.com/repos/{get_github_api_url()}/pulls/{pr_id}"
+    headers = {
+        "Accept": "application/vnd.github.v3+json",
+        "Authorization": f"token {GITHUB_TOKEN}"
+    }
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    return response.json()
+
+def fetch_user_details(username):
+    url = f"https://api.github.com/users/{username}"
     headers = {
         "Accept": "application/vnd.github.v3+json",
         "Authorization": f"token {GITHUB_TOKEN}"
@@ -162,10 +197,14 @@ if __name__ == "__main__":
     for pr in pr_ids:
         try:
             pr_details = fetch_pr_details(pr["id"])
+            user_details = fetch_user_details(pr_details["user"]["login"])
             if validate_pr_description(pr_details["body"], is_not_for_cl_valid=False):
                 pr_data.append({
                     "number": pr_details["number"],
-                    "body": pr_details["body"].strip()
+                    "body": pr_details["body"].strip(),
+                    "url": pr_details["html_url"],
+                    "name": user_details.get("name", pr_details["user"]["login"]),  # Use login if name is not available
+                    "user_url": pr_details["user"]["html_url"]
                 })
         except Exception as e:
             print(f"::error::Failed to fetch PR details for PR #{pr['id']}: {e}")
@@ -173,15 +212,18 @@ if __name__ == "__main__":
 
     update_changelog(changelog_path, pr_data)
 
-    branch_name = f"docs-for-{base_branch}-{suffix}"
-    if branch_exists(branch_name):
-        run_command(f"git checkout {branch_name}")
-    else:
-        run_command(f"git checkout -b {branch_name}")
+    base_branch_name = f"changelog-for-{base_branch}-{suffix}"
+    branch_name = base_branch_name
+    index = 1
+    while branch_exists(branch_name):
+        branch_name = f"{base_branch_name}-{index}"
+    run_command(f"git checkout -b {branch_name}")
     run_command(f"git add {changelog_path}")
     run_command(f"git commit -m \"Update CHANGELOG.md for {suffix}\"")
     run_command(f"git push origin {branch_name}")
 
     pr_title = f"Update CHANGELOG.md for {suffix}"
     pr_body = f"This PR updates the CHANGELOG.md file for {suffix}."
-    run_command(f"gh pr create --title \"{pr_title}\" --body \"{pr_body}\" --base {base_branch} --head {branch_name}")
+    pr_create_command = f"gh pr create --title \"{pr_title}\" --body \"{pr_body}\" --base {base_branch} --head {branch_name}"
+    pr_url = run_command(pr_create_command)
+    # run_command(f"gh pr edit {pr_url} --add-assignee galnat") # TODO: Make assignee customizable
