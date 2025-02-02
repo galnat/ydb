@@ -12,10 +12,6 @@ def validate_pr_description(description, is_not_for_cl_valid=True):
             print("::warning::PR description is empty. Please fill it out.")
             return False
 
-        if "### Changelog entry" not in description:
-            print("::warning::Missing '### Changelog entry'.")
-            return False
-
         if "### Changelog category" not in description:
             print("::warning::Missing '### Changelog category'.")
             return False
@@ -36,7 +32,8 @@ def validate_pr_description(description, is_not_for_cl_valid=True):
         valid_categories = [
             "New feature",
             "Experimental feature",
-            "Improvement",
+            "User Interface",
+            # "Improvement", # Obsolete category
             "Performance improvement",
             "Bugfix",
             "Backward incompatible change"

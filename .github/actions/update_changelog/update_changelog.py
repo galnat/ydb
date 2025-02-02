@@ -85,7 +85,7 @@ def match_pr_to_changelog_category(category):
     categories = {
         "New feature": "Functionality",
         "Experimental feature": "Functionality",
-        "Performance Improvement": "Functionality",
+        "Performance improvement": "Functionality",
         "User Interface": "YDB UI",
         "Bugfix": "Bug fixes",
         "Backward incompatible change": "Backward incompatible change",
