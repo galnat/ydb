@@ -10,10 +10,6 @@ on:
         description: "The value associated with the type."
         required: true
         default: "CHANGELOG.md"
-      base_branch:
-        description: "The base branch for the changelog update"
-        required: true
-        default: "main"
       prefix:
         description: "Prefix for the changelog update"
         required: true
@@ -186,5 +182,5 @@ jobs:
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
           changelog_path: "${{ github.event.inputs.changelog_path }}"
-          base_branch: "${{ github.event.inputs.base_branch }}"
+          base_branch: "${GITHUB_REF_NAME}"
           suffix: "${{ env.SINCE_DATE }}"
