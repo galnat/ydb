@@ -3,11 +3,9 @@ name: Weekly Changelog Update
 on:
   schedule:
     - cron: '0 0 * * 0' # Every Sunday at 00:00:00
-
-  push:
-    branches:
-      - main
-      - stable-*
+      branches:
+        - main
+        - stable-*
 env:
   GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
