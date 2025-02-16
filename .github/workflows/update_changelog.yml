@@ -21,6 +21,9 @@ on:
         required: true
         default: "changelog-for-"
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   gather-prs:
     runs-on: ubuntu-latest
