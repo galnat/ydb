@@ -10,7 +10,6 @@
 #include <library/cpp/yson_pull/detail/output/buffered.h>
 #include <library/cpp/yson_pull/detail/output/stream.h>
 #include <library/cpp/yson_pull/detail/output/stdio_file.h>
-
 #include <util/generic/ptr.h>
 #include <util/generic/strbuf.h>
 #include <util/generic/string.h>
