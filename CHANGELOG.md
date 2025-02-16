@@ -162,4 +162,6 @@
 * 6454:Previously, errors from spilling caused a deadlock. Error handling has now been added. [#6454](https://github.com/ydb-platform/ydb/pull/6454) ([Filitov Mikhail](https://github.com/lll-phill-lll)).
 * 6491:Fix a bug where tablets could get stuck in boot queue. [#6491](https://github.com/ydb-platform/ydb/pull/6491) ([vporyadke](https://github.com/vporyadke)).
 * 6492:Fix a bug where tablets total counter was not updated on followers deletion. [#6492](https://github.com/ydb-platform/ydb/pull/6492) ([vporyadke](https://github.com/vporyadke)).
+* 25:Very important text for very important feature [#25](https://github.com/galnat/ydb/pull/25) ([Natasha Pirogova](https://github.com/galnat))
+* 12:Merge script for generate changelog [#12](https://github.com/galnat/ydb/pull/12) ([Natasha Pirogova](https://github.com/galnat))
 
