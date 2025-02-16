@@ -41,7 +41,7 @@ def check_pr_description(description, is_not_for_cl_valid=True) -> Tuple[bool, s
         if "### Changelog category" not in description and "### Changelog entry" not in description:
             return is_not_for_cl_valid, "Changelog category and entry sections are not found."
 
-        if pull_request_template.strip in description.strip:
+        if pull_request_template in description:
             return is_not_for_cl_valid, "Pull request template as is."
 
         # Extract changelog category section
