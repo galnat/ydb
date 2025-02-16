@@ -31,6 +31,4 @@ jobs:
 
       - name: Set status
         if: failure()
-        run: |
-          echo "Validation failed."
-          exit 78  # Нейтральный статус
+        run: echo "Validation failed."
