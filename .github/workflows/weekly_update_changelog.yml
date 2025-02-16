@@ -8,6 +8,9 @@ on:
         - stable-*
   workflow_dispatch:
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   gather-prs:
     runs-on: ubuntu-latest
