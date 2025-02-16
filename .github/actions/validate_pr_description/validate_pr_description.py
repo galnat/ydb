@@ -5,6 +5,8 @@ from typing import Tuple
 issue_patterns = [
     r"https://github.com/ydb-platform/ydb/issues/\d+",
     r"https://st.yandex-team.ru/[a-zA-Z]+-\d+"
+    r"#+d+",
+    r"[a-zA-Z]+-\d+"
 ]
 def validate_pr_description(description, is_not_for_cl_valid=True) -> bool:
     result, _  = check_pr_description(description, is_not_for_cl_valid)
