@@ -21,8 +21,8 @@ on:
         required: true
         default: "changelog-for-"
 
-  env:
-    GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
+env:
+  GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
 
 jobs:
   gather-prs:
