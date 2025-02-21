@@ -21,6 +21,9 @@ on:
         required: true
         default: "changelog-for-"
 
+  env:
+    GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
+
 jobs:
   gather-prs:
     runs-on: ubuntu-latest
@@ -32,8 +35,6 @@ jobs:
 
       - name: Get merged PRs
         id: pr-list
-        env:
-          GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
         run: |
           TYPE="${{ github.event.inputs.type }}"
           START="${{ github.event.inputs.start }}"

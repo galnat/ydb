@@ -6,6 +6,8 @@ on:
       branches:
         - main
   workflow_dispatch:
+env:
+  GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
 
 jobs:
   gather-prs:
@@ -24,8 +26,6 @@ jobs:
 
       - name: Get merged PRs
         id: pr-list
-        env:
-          GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
         run: |
           echo "::notice:: branch = ${GITHUB_REF_NAME}, date = $LAST_WEEK_DATE"
           PRS=$(gh pr list --state merged --json number,title,baseRefName,mergedAt --jq ".[] | select(.baseRefName == \"${GITHUB_REF_NAME}\" and .mergedAt >= \"$LAST_WEEK_DATE\") | {id: .number}" | jq -c -s ".")
