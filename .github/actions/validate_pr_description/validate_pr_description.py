@@ -3,10 +3,8 @@ import re
 from typing import Tuple
 
 issue_patterns = [
-    r"https://github.com/ydb-platform/ydb/issues/\d+",
-    r"https://st.yandex-team.ru/[a-zA-Z]+-\d+",
-    r"#+d+",
-    r"[a-zA-Z]+-\d+"
+    r"https://github.com/ydb-platform/[a-z\-]+/issues/\d+",
+    r"https://st.yandex-team.ru/[a-zA-Z]+-\d+"
 ]
 
 pull_request_template = """
@@ -27,7 +25,7 @@ pull_request_template = """
 * Not for changelog (changelog entry is not required)
 """
 
-def validate_pr_description(description, is_not_for_cl_valid=True) -> bool:
+def validate_pr_description(description:str, is_not_for_cl_valid:bool=True) -> bool:
     try:
         result, _  = check_pr_description(description, is_not_for_cl_valid)
         return result
@@ -35,7 +33,7 @@ def validate_pr_description(description, is_not_for_cl_valid=True) -> bool:
         print(f"::error::Error during validation: {e}")
         return False
 
-def check_pr_description(description, is_not_for_cl_valid=True) -> Tuple[bool, str]:
+def check_pr_description(description:str, is_not_for_cl_valid:bool=True) -> Tuple[bool, str]:
     if not description.strip():
         txt = "PR description is empty. Please fill it out."
         print(f"::warning::{txt}")

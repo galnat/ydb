@@ -5,7 +5,7 @@ from github import Github, Auth as GithubAuth
 from github.PullRequest import PullRequest
 
 def post(is_valid, error_description):
-    gh = Github(auth=GithubAuth.Token(os.environ["GITHUB_TOKEN"]))
+    gh = Github(auth=GithubAuth.Token(os.environ["YDBOT_TOKEN"]))
 
     with open(os.environ["GITHUB_EVENT_PATH"]) as fp:
         event = json.load(fp)
