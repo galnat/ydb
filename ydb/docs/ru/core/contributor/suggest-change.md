@@ -360,7 +360,7 @@ git push
 #### Как изменить сообщение в CHANGELOG.md
 
 Если Pull Request еще не замержен в ветку, то можно изменить блок Changelog Entry в описании Pull Request. 
-Если Pull Request был замержен в ветку, то следует создать Pull Request, в котором отредактировано сообщение в файле CHANGELOG.md этой ветки.
+Если Pull Request был замержен в ветку, то следует создать Pull Request, в котором изменить соответствующее сообщение в файле CHANGELOG.md этой ветки.
 
 ### Предварительные проверки {#precommit_checks}
 
