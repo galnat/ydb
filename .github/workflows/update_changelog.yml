@@ -35,6 +35,8 @@ jobs:
 
       - name: Get merged PRs
         id: pr-list
+        env:
+          GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
         run: |
           TYPE="${{ github.event.inputs.type }}"
           START="${{ github.event.inputs.start }}"
