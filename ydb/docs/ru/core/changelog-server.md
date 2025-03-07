@@ -1,5 +1,23 @@
 # Список изменений {{ ydb-short-name }} Server
 
+## Версия 24.4 {#24-4}
+
+### Версия 24.4.2 {#24-4-2}
+
+Дата выхода:
+
+#### Функциональность
+
+* Включена по умолчанию поддержка [представлений (VIEW)](https://ydb.tech/docs/ru/concepts/datamodel/view).
+* Включен по умолчанию режим [автопартиционирования](./concepts/topic#autopartitioning) топиков, в котором топики могут разбивать партиции в зависимости от нагрузки с сохранением гарантий порядка чтения сообщений и exactly once записи.
+* Включены по умолчанию [транзакции](./concepts/transactions#topic-table-transactions) с участием [топиков](https://ydb.tech/docs/ru/concepts/topic) и строковых таблиц.
+* Включены по умолчанию [волатильные распределенные транзакции](https://ydb.tech/docs/ru/contributor/datashard-distributed-txs#bazovyj-protokol-vypolneniya-raspredelyonnyh-tranzakcij).
+* Включен по умолчанию [автоматический выбор индекса](https://ydb.tech/docs/ru/dev/secondary-indexes#avtomaticheskoe-ispolzovanie-indeksov-pri-vyborke) при выполнении запроса.
+
+#### Производительность
+
+#### Исправления ошибок
+
 ## Версия 24.3 {#24-3}
 
 ### Версия 24.3.15.5 {#24-3-15-5}
