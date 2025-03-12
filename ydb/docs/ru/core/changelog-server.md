@@ -13,11 +13,10 @@
   * поддержка [представлений (VIEW)](https://ydb.tech/docs/ru/concepts/datamodel/view);
   * режим [автопартиционирования](./concepts/topic#autopartitioning) топиков;
   * [транзакции](./concepts/transactions#topic-table-transactions) с участием топиков и строковых таблиц;
-  * [волатильные распределенные транзакции](https://ydb.tech/docs/ru/contributor/datashard-distributed-txs#bazovyj-protokol-vypolneniya-raspredelyonnyh-tranzakcij);
-  * [автоматический выбор индекса](https://ydb.tech/docs/ru/dev/secondary-indexes#avtomaticheskoe-ispolzovanie-indeksov-pri-vyborke) при выполнении запроса.
+  * [волатильные распределенные транзакции](./contributor/datashard-distributed-txs#bazovyj-protokol-vypolneniya-raspredelyonnyh-tranzakcij);
+  * [автоматический выбор индекса](./dev/secondary-indexes#avtomaticheskoe-ispolzovanie-indeksov-pri-vyborke) при выполнении запроса.
 
 * Добавлена возможность [чтения и записи в топик](./reference/kafka-api/examples#primery-raboty-s-kafka-api) с использованием Kafka API без аутентификации.
- 
 
 #### Исправления ошибок
 
@@ -27,7 +26,6 @@
 * [Исправлена](https://github.com/ydb-platform/ydb/pull/15074) редкая ошибка, которая приводила к сбою при перезапуске удалённого datashard с неконсистентными изменениями.
 * [Исправлена](https://github.com/ydb-platform/ydb/pull/15194) ошибка, из-за которой мог нарушаться порядок обработки сообщений в топике.
 * [Исправлена](https://github.com/ydb-platform/ydb/pull/15308) редкая ошибка, из-за которой могло зависать чтение из топика.
-   
 
 ## Версия 24.3 {#24-3}
 
