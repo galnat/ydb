@@ -11,12 +11,12 @@
 * Включены по умолчанию:
 
   * поддержка [представлений (VIEW)](https://ydb.tech/docs/ru/concepts/datamodel/view);
-  * режим [автопартиционирования](./concepts/topic#autopartitioning) топиков, в котором топики могут разбивать партиции в зависимости от нагрузки с сохранением гарантий порядка чтения сообщений и exactly once записи;
+  * режим [автопартиционирования](./concepts/topic#autopartitioning) топиков;
   * [транзакции](./concepts/transactions#topic-table-transactions) с участием топиков и строковых таблиц;
   * [волатильные распределенные транзакции](https://ydb.tech/docs/ru/contributor/datashard-distributed-txs#bazovyj-protokol-vypolneniya-raspredelyonnyh-tranzakcij);
   * [автоматический выбор индекса](https://ydb.tech/docs/ru/dev/secondary-indexes#avtomaticheskoe-ispolzovanie-indeksov-pri-vyborke) при выполнении запроса.
 
-* Добавлена возможность чтения и записи в топик через Kafka API без аутентификации.
+* Добавлена возможность [чтения и записи в топик](./reference/kafka-api/examples#primery-raboty-s-kafka-api) с использованием Kafka API без аутентификации.
  
 
 #### Исправления ошибок
