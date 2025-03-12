@@ -13,7 +13,7 @@
   * поддержка [представлений (VIEW)](https://ydb.tech/docs/ru/concepts/datamodel/view),
   * режим [автопартиционирования](./concepts/topic#autopartitioning) топиков,
   * [транзакции](./concepts/transactions#topic-table-transactions) с участием топиков и строковых таблиц,
-  * [волатильные распределенные транзакции](./contributor/datashard-distributed-txs#bazovyj-protokol-vypolneniya-raspredelyonnyh-tranzakcij),
+  * [волатильные распределенные транзакции](./contributor/datashard-distributed-txs#osobennosti-vypolneniya-volatilnyh-tranzakcij),
   * [автоматический выбор индекса](./dev/secondary-indexes#avtomaticheskoe-ispolzovanie-indeksov-pri-vyborke) при выполнении запроса.
 
 * Добавлена возможность [чтения и записи в топик](./reference/kafka-api/examples#primery-raboty-s-kafka-api) с использованием Kafka API без аутентификации.
