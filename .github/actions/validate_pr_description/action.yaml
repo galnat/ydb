@@ -17,11 +17,6 @@ runs:
         python3 -m pip install PyGithub
         python3 ${{ github.action_path }}/validate_pr_description.py pr_body.txt
 
-     - name: Test 
-      shell: bash
-      run: |
-        echo "::warning::lalalal"
-
 inputs:
   pr_body:
     description: "The body of the pull request."
