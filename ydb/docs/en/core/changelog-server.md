@@ -15,7 +15,7 @@ Release date:
   * transactions involving [topics](./concepts/topic) and row-based tables,
   * [volatile distributed transactions](./contributor/datashard-distributed-txs#volatile-transactions),
   * [automatic index selection](./dev/secondary-indexes#avtomaticheskoe-ispolzovanie-indeksov-pri-vyborke) for queries.
- 
+
 * Added the ability to [read and write to a topic](./reference/kafka-api/examples#primery-rabot-s-kafka-api) using the Kafka API without authentication.
 
 #### Bug Fixes
