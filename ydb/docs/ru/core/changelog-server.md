@@ -16,6 +16,9 @@
   * [волатильные распределенные транзакции](https://ydb.tech/docs/ru/contributor/datashard-distributed-txs#bazovyj-protokol-vypolneniya-raspredelyonnyh-tranzakcij);
   * [автоматический выбор индекса](https://ydb.tech/docs/ru/dev/secondary-indexes#avtomaticheskoe-ispolzovanie-indeksov-pri-vyborke) при выполнении запроса.
 
+* Добавлена возможность чтения и записи в топик через Kafka API без аутентификации.
+ 
+
 #### Исправления ошибок
 
 * [Исправлены](https://github.com/ydb-platform/ydb/pull/14811) проблемы, из-за которых чтение производилось с мастеров, а не с [подписчиков таблетки](./concepts/glossary#tablet-follower). Это позволило увеличить скорость чтения при использовании подписчиков таблетки в десятки раз.
