@@ -1,4 +1,4 @@
-### YDB release HEAD (9cb9dec87f5bac630075d63568accc93a792bafa) as compared to 44a1cd02b9d9f3e11eed6d02ac5fe4649e6f6dd7 (44a1cd02b9d)
+### 25.1
 
 #### Backward incompatible change
 * Remove time difference public api fields. [#6335](https://github.com/ydb-platform/ydb/pull/6335) ([Andrei Rykov](https://github.com/StekPerepolnen)).
@@ -16,10 +16,7 @@
 * Allow to set trace verbosity and ttl. [#6310](https://github.com/ydb-platform/ydb/pull/6310) ([Alexey Efimov](https://github.com/adameat)).
 * Adding query 'ALTER TABLE table ALTER COLUMN column DROP NOT NULL'. [#6342](https://github.com/ydb-platform/ydb/pull/6342) ([flown4qqqq](https://github.com/flown4qqqq)).
 * Support load cpu threshold. [#6360](https://github.com/ydb-platform/ydb/pull/6360) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* ... [#6420](https://github.com/ydb-platform/ydb/pull/6420) ([pilik](https://github.com/pashandor789)).
-* Add UserSID (Security ID) who created long-running operation (export, import). [#6463](https://github.com/ydb-platform/ydb/pull/6463) ([Ilia Shakhov](https://github.com/pixcc)).
 * Add security_tags table write hint. [#6574](https://github.com/ydb-platform/ydb/pull/6574) ([Vadim Averin](https://github.com/avevad)).
-* Add sensors for duration of tablet starts and number of tablets currently starting. [#6584](https://github.com/ydb-platform/ydb/pull/6584) ([vporyadke](https://github.com/vporyadke)).
 * ... [#6603](https://github.com/ydb-platform/ydb/pull/6603) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
 * ... [#6680](https://github.com/ydb-platform/ydb/pull/6680) ([kruall](https://github.com/kruall)).
 * YDB FQ: support Oracle as an external data source. [#6723](https://github.com/ydb-platform/ydb/pull/6723) ([Grigorii Papashvili](https://github.com/lifthelm)).
@@ -35,7 +32,6 @@
 * Support ydb scheme ls for resource pools. [#6956](https://github.com/ydb-platform/ydb/pull/6956) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * New Change Data Capture (CDC) record format — `DEBEZIUM_JSON`. [#7052](https://github.com/ydb-platform/ydb/pull/7052) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * ... [#7077](https://github.com/ydb-platform/ydb/pull/7077) ([Hor911](https://github.com/Hor911)).
-* Add config option to specify ttl for user logins closes [#7035](https://github.com/ydb-platform/ydb/issues/7035). [#7083](https://github.com/ydb-platform/ydb/pull/7083) ([Alexey Efimov](https://github.com/adameat)).
 * Async replication: concept, yql reference. [#7110](https://github.com/ydb-platform/ydb/pull/7110) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * ... [#7112](https://github.com/ydb-platform/ydb/pull/7112) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Added the ability to merge additional config to the main config. [#7136](https://github.com/ydb-platform/ydb/pull/7136) ([Nikita-Levuskin](https://github.com/Nikita-Levuskin)).
@@ -46,14 +42,12 @@
 * Include port in worker-name header. [#7250](https://github.com/ydb-platform/ydb/pull/7250) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#7338](https://github.com/ydb-platform/ydb/pull/7338) ([Vitaly Stoyan](https://github.com/vitstn)).
 * ... [#7383](https://github.com/ydb-platform/ydb/pull/7383) ([Vitaly Stoyan](https://github.com/vitstn)).
-* Support sql for resource pool classifiers. [#7389](https://github.com/ydb-platform/ydb/pull/7389) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#7416](https://github.com/ydb-platform/ydb/pull/7416) ([yumkam](https://github.com/yumkam)).
 * ... [#7430](https://github.com/ydb-platform/ydb/pull/7430) ([Vitaly Stoyan](https://github.com/vitstn)).
 * ... [#7432](https://github.com/ydb-platform/ydb/pull/7432) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Resource pools enabled. [#7443](https://github.com/ydb-platform/ydb/pull/7443) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#7447](https://github.com/ydb-platform/ydb/pull/7447) ([Hor911](https://github.com/Hor911)).
 * Add YQL syntax highlighting to YDB CLI. [#7448](https://github.com/ydb-platform/ydb/pull/7448) ([Victor Smirnov](https://github.com/vityaman)).
-* Support resource pool classifiers objects saving. [#7491](https://github.com/ydb-platform/ydb/pull/7491) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Add database parameter to viewer/tabletinfo handler closes [#7171](https://github.com/ydb-platform/ydb/issues/7171). [#7499](https://github.com/ydb-platform/ydb/pull/7499) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#7503](https://github.com/ydb-platform/ydb/pull/7503) ([Alexey Ozeritskiy](https://github.com/resetius)).
 * Add spilling stats per task. [#7505](https://github.com/ydb-platform/ydb/pull/7505) ([Vladluk](https://github.com/vladl2802)).
@@ -69,13 +63,10 @@
 * ... [#7609](https://github.com/ydb-platform/ydb/pull/7609) ([Alexey Ozeritskiy](https://github.com/resetius)).
 * Added decompression support for schema inference (https://st.yandex-team.ru/YQ-3528). [#7632](https://github.com/ydb-platform/ydb/pull/7632) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * Collect statistic about unsuccessful block rewrites for callables and types. [#7642](https://github.com/ydb-platform/ydb/pull/7642) ([Andrey Neporada](https://github.com/nepal)).
-* Support resource pool classifiers cache in kqp_proxy. [#7688](https://github.com/ydb-platform/ydb/pull/7688) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#7707](https://github.com/ydb-platform/ydb/pull/7707) ([Alexey Ozeritskiy](https://github.com/resetius)).
 * Add limit_rows and truncated to viewer/query closes [#7702](https://github.com/ydb-platform/ydb/issues/7702). [#7715](https://github.com/ydb-platform/ydb/pull/7715) ([Alexey Efimov](https://github.com/adameat)).
-* Config option for dynamic node registration token. Like config option `StaffApiUserToken` for CMS request. [#7754](https://github.com/ydb-platform/ydb/pull/7754) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * The client receives the code `EES_WRITTEN_IN_TX` in response if he writes a message as part of a transaction. [#7766](https://github.com/ydb-platform/ydb/pull/7766) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * ... [#7794](https://github.com/ydb-platform/ydb/pull/7794) ([Vitaly Stoyan](https://github.com/vitstn)).
-* Support filter on DNS names in client cert authentication. [#7797](https://github.com/ydb-platform/ydb/pull/7797) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * Tests preparation before resource pool enable. [#7818](https://github.com/ydb-platform/ydb/pull/7818) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Prepared canondata tests before enable resource pools. [#7819](https://github.com/ydb-platform/ydb/pull/7819) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Implement additional state for TKqpDataExecuter in which it will wait for all children Compute Actors for graceful shutdown. [#7829](https://github.com/ydb-platform/ydb/pull/7829) ([Ivan](https://github.com/abyss7)).
@@ -103,7 +94,6 @@
 * Allow to alter CDC topic's retention period. [#8264](https://github.com/ydb-platform/ydb/pull/8264) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * ... [#8284](https://github.com/ydb-platform/ydb/pull/8284) ([Alexander Avdonkin](https://github.com/aavdonkin)).
 * ... [#8287](https://github.com/ydb-platform/ydb/pull/8287) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
-* Fix cors headers, closes [#7906](https://github.com/ydb-platform/ydb/issues/7906). [#8303](https://github.com/ydb-platform/ydb/pull/8303) ([Alexey Efimov](https://github.com/adameat)).
 * Add storage/groups latencies and ignore empty vslot status. [#8320](https://github.com/ydb-platform/ydb/pull/8320) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#8334](https://github.com/ydb-platform/ydb/pull/8334) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
 * ... [#8340](https://github.com/ydb-platform/ydb/pull/8340) ([Alexey Ozeritskiy](https://github.com/resetius)).
@@ -142,7 +132,6 @@
 * Fixes [#8658](https://github.com/ydb-platform/ydb/issues/8658). [#9158](https://github.com/ydb-platform/ydb/pull/9158) ([Artem Alekseev](https://github.com/fexolm)).
 * Ydb/tests/postgres_integrations/go-libpq/[docker_wrapper_test.py] chunk chunk. [#9160](https://github.com/ydb-platform/ydb/pull/9160) ([Kirill Rysin](https://github.com/naspirato)).
 * Fixes [#8659](https://github.com/ydb-platform/ydb/issues/8659). [#9246](https://github.com/ydb-platform/ydb/pull/9246) ([Artem Alekseev](https://github.com/fexolm)).
-* Add field `sanitized_token` for audit log. It contains token without signature. [#9287](https://github.com/ydb-platform/ydb/pull/9287) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * ... [#9336](https://github.com/ydb-platform/ydb/pull/9336) ([azevaykin](https://github.com/azevaykin)).
 * There is a problem in handling operation_timeout parameter during rate limiter request. The ways how in works causes race, when rate limiter can reply OK (and spend resource), but RPC timeout will say to the user that request timeouted. It is much better to support more safe cancel_after parameter < operation_timeout. In this case response will be consistent with quoter service. [#9348](https://github.com/ydb-platform/ydb/pull/9348) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * Adds `--emulate-pq` option for dqrun. [#9349](https://github.com/ydb-platform/ydb/pull/9349) ([Fiodar Miron](https://github.com/fedor-miron)).
@@ -158,7 +147,6 @@
 * Fix nodes type, introduce storage type for nodes. [#9575](https://github.com/ydb-platform/ydb/pull/9575) ([Alexey Efimov](https://github.com/adameat)).
 * Pass decimal parameters from KQP and SDK to Datashard and ColumnShard. [#9587](https://github.com/ydb-platform/ydb/pull/9587) ([azevaykin](https://github.com/azevaykin)).
 * ... [#9627](https://github.com/ydb-platform/ydb/pull/9627) ([Alexander Avdonkin](https://github.com/aavdonkin)).
-* Add setting to configure min delay before node shutdown. [#9688](https://github.com/ydb-platform/ydb/pull/9688) ([Ilia Shakhov](https://github.com/pixcc)).
 * ... [#9738](https://github.com/ydb-platform/ydb/pull/9738) ([Sergey Belyakov](https://github.com/serbel324)).
 * Improvements in the SDK. The Commit call waits for the topic writing session to receive all Acks. [#9761](https://github.com/ydb-platform/ydb/pull/9761) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * YDB FQ: Connector filtering modes. [#9778](https://github.com/ydb-platform/ydb/pull/9778) ([Vitaly Isaev](https://github.com/vitalyisaev2)).
@@ -173,7 +161,6 @@
 * ... [#10065](https://github.com/ydb-platform/ydb/pull/10065) ([Alexander Avdonkin](https://github.com/aavdonkin)).
 * Fix nodes grouping and uptime calculations. [#10075](https://github.com/ydb-platform/ydb/pull/10075) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#10117](https://github.com/ydb-platform/ydb/pull/10117) ([Vitaly Stoyan](https://github.com/vitstn)).
-* Support output for audit logs siilar to json log format for usual debug logs. [#10143](https://github.com/ydb-platform/ydb/pull/10143) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * YDB FQ: set up filtering options for YQL Generic Read Actor and Lookup Actor. [#10161](https://github.com/ydb-platform/ydb/pull/10161) ([Vitaly Isaev](https://github.com/vitalyisaev2)).
 * Add rate limiting settings to http. [#10164](https://github.com/ydb-platform/ydb/pull/10164) ([Alexey Efimov](https://github.com/adameat)).
 * Add hint for compact Join. [#10236](https://github.com/ydb-platform/ydb/pull/10236) ([Vadim Averin](https://github.com/avevad)).
@@ -206,7 +193,6 @@
 * ... [#11393](https://github.com/ydb-platform/ydb/pull/11393) ([Evgeniy Ivanov](https://github.com/eivanov89)).
 * ... [#11411](https://github.com/ydb-platform/ydb/pull/11411) ([Artem Alekseev](https://github.com/fexolm)).
 * Https://nebius.atlassian.net/browse/nbydb-594. [#11449](https://github.com/ydb-platform/ydb/pull/11449) ([Andrei Rykov](https://github.com/StekPerepolnen)).
-* Support the configuration setting to wrap log records into a fixed json envelope, based on the log record nature. To be used when a single-stream unified logs delivery system is in place (like stderr in k8s installations), with all logs streamed there (including audit), and which needs to have some environment-specific information in the message to decide which system to forward a particular record to. [#11466](https://github.com/ydb-platform/ydb/pull/11466) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * ... [#11546](https://github.com/ydb-platform/ydb/pull/11546) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
 * ... [#11585](https://github.com/ydb-platform/ydb/pull/11585) ([Oleg Doronin](https://github.com/dorooleg)).
 * A new balancing option "group_slots" has been added, which enables uniform distribution of VDisks belonging to specific storage groups or storage pool across PDisks. [#11589](https://github.com/ydb-platform/ydb/pull/11589) ([kruall](https://github.com/kruall)).
@@ -248,6 +234,7 @@
 * Ydb/apps/ydb/ut ydbworkloadtopic.full_statistics_usetx. [#12786](https://github.com/ydb-platform/ydb/pull/12786) ([Kirill Rysin](https://github.com/naspirato)).
 * Added BSController transaction to stop PDisk - Added new PDisk state `Stopped`. [#12799](https://github.com/ydb-platform/ydb/pull/12799) ([Semyon Danilov](https://github.com/SammyVimes)).
 * Snapshot Isolation. [#12825](https://github.com/ydb-platform/ydb/pull/12825) ([Nikita Vasilev](https://github.com/nikvas0)).
+* Add TagQueue, UntagQueue, ListQueueTags methods to YMQ. [#12872](https://github.com/ydb-platform/ydb/pull/12872) ([qyryq](https://github.com/qyryq)).
 * Export changefeed's configuration to s3. [#12882](https://github.com/ydb-platform/ydb/pull/12882) ([stanislav_shchetinin](https://github.com/stanislav-shchetinin)).
 * ... [#12897](https://github.com/ydb-platform/ydb/pull/12897) ([Dmitry O](https://github.com/alephonea)).
 * Add validation of backup file checksums during importing from S3. [#12909](https://github.com/ydb-platform/ydb/pull/12909) ([Ilia Shakhov](https://github.com/pixcc)).
@@ -267,6 +254,7 @@
 * Added CREATE TABLE text suggestion on scheme error during `ydb import file csv`. [#13247](https://github.com/ydb-platform/ydb/pull/13247) ([Nikolay Perfilov](https://github.com/pnv1)).
 * Add top-level security config declaration. [#13273](https://github.com/ydb-platform/ydb/pull/13273) ([mregrock](https://github.com/mregrock)).
 * ... [#13307](https://github.com/ydb-platform/ydb/pull/13307) ([Alexey Efimov](https://github.com/adameat)).
+* Implemented BATCH UPDATE/DELETE syntax with query checks for idempotent, multi tables and multi statements. New queries with new PartitionedExecuterActor make per row updates for every data shard as an immediate commit. [#13340](https://github.com/ydb-platform/ydb/pull/13340) ([Daniil Timizhev](https://github.com/dahbka-lis)).
 * ... [#13371](https://github.com/ydb-platform/ydb/pull/13371) ([Alexander Avdonkin](https://github.com/aavdonkin)).
 * Also fix heap-use-after-free for failed allocation backtrace. [#13376](https://github.com/ydb-platform/ydb/pull/13376) ([Ivan](https://github.com/abyss7)).
 * ... [#13389](https://github.com/ydb-platform/ydb/pull/13389) ([Alexander Avdonkin](https://github.com/aavdonkin)).
@@ -276,16 +264,42 @@
 * ... [#13680](https://github.com/ydb-platform/ydb/pull/13680) ([Alexander Avdonkin](https://github.com/aavdonkin)).
 * The new sensor name is "Stats/MemMapsCount". [#13758](https://github.com/ydb-platform/ydb/pull/13758) ([Ivan](https://github.com/abyss7)).
 * ... [#13768](https://github.com/ydb-platform/ydb/pull/13768) ([Oleg Doronin](https://github.com/dorooleg)).
+* ... [#13785](https://github.com/ydb-platform/ydb/pull/13785) ([ggerlakh](https://github.com/ggerlakh)).
 * Add command line option for kafka ports. [#13799](https://github.com/ydb-platform/ydb/pull/13799) ([FloatingCrowbar](https://github.com/FloatingCrowbar)).
+* Adding new query:. [#13825](https://github.com/ydb-platform/ydb/pull/13825) ([flown4qqqq](https://github.com/flown4qqqq)).
+* Support shred orchestration in BSC. [#13881](https://github.com/ydb-platform/ydb/pull/13881) ([Alexander Rutkovsky](https://github.com/alexvru)).
+* ... [#13921](https://github.com/ydb-platform/ydb/pull/13921) ([Oleg Doronin](https://github.com/dorooleg)).
+* The PQ tablet does not remove repackaged blobs immediately. Instead, she puts their keys in the `DeletedHeadKeys` queue. At the start, the tablet checks that the offset can fall into several blobs and leaves the "longest" one. [#13937](https://github.com/ydb-platform/ydb/pull/13937) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
+* ... [#13943](https://github.com/ydb-platform/ydb/pull/13943) ([stanislav_shchetinin](https://github.com/stanislav-shchetinin)).
+* Make working builtin security params and move them into security config. [#13987](https://github.com/ydb-platform/ydb/pull/13987) ([mregrock](https://github.com/mregrock)).
+* Added sensors `MAX(StartTimeUs)`, `SUM(StartTimeUs)` to `tablet` subgroup ` - reporting duration of tablet starts, aggregated by tablet type. [#14041](https://github.com/ydb-platform/ydb/pull/14041) ([vporyadke](https://github.com/vporyadke)).
+* Implement expected behavior for Kafka Metarequest without any topics (list everything). [#14110](https://github.com/ydb-platform/ydb/pull/14110) ([FloatingCrowbar](https://github.com/FloatingCrowbar)).
+* ... [#14168](https://github.com/ydb-platform/ydb/pull/14168) ([beehelit](https://github.com/beehelit)).
+* Add per-database dynamic configs. [#14173](https://github.com/ydb-platform/ydb/pull/14173) ([Innokentii Mokin](https://github.com/Enjection)).
+* YDB FQ: enable Timestamp pushdown for Generic provider. [#14222](https://github.com/ydb-platform/ydb/pull/14222) ([Vitaly Isaev](https://github.com/vitalyisaev2)).
+* ... [#14224](https://github.com/ydb-platform/ydb/pull/14224) ([Alexander Avdonkin](https://github.com/aavdonkin)).
+* First version of FQ run tool. [#14259](https://github.com/ydb-platform/ydb/pull/14259) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Https://st.yandex-team.ru/yq-3792. [#14287](https://github.com/ydb-platform/ydb/pull/14287) ([Oleg Doronin](https://github.com/dorooleg)).
+* ... [#14350](https://github.com/ydb-platform/ydb/pull/14350) ([Innokentii Mokin](https://github.com/Enjection)).
+* To enable the default allocator option - build with `-DALLOW_DEFAULT_ALLOCATOR`. [#14372](https://github.com/ydb-platform/ydb/pull/14372) ([Ivan](https://github.com/abyss7)).
+* Add cleanup feature for keyvalue tablets. [#14440](https://github.com/ydb-platform/ydb/pull/14440) ([kruall](https://github.com/kruall)).
+* Data erasure manage to remove data from datashards and BS controller. [#14460](https://github.com/ydb-platform/ydb/pull/14460) ([Andrey Molotkov](https://github.com/molotkov-and)).
+* Добавлена возможность делать полный бекап и восстановление кластера и базы данных. [#14481](https://github.com/ydb-platform/ydb/pull/14481) ([Ilia Shakhov](https://github.com/pixcc)).
+* ... [#14563](https://github.com/ydb-platform/ydb/pull/14563) ([Oleg Doronin](https://github.com/dorooleg)).
+* ... [#14600](https://github.com/ydb-platform/ydb/pull/14600) ([Oleg Doronin](https://github.com/dorooleg)).
+* Add command that generate dynamic config from startup static config. [#14711](https://github.com/ydb-platform/ydb/pull/14711) ([mregrock](https://github.com/mregrock)).
+* ... [#14774](https://github.com/ydb-platform/ydb/pull/14774) ([Oleg Doronin](https://github.com/dorooleg)).
+* ... [#14815](https://github.com/ydb-platform/ydb/pull/14815) ([Sergey Belyakov](https://github.com/serbel324)).
+* ... [#14866](https://github.com/ydb-platform/ydb/pull/14866) ([Oleg Doronin](https://github.com/dorooleg)).
+* Add config node init command. [#14869](https://github.com/ydb-platform/ydb/pull/14869) ([mregrock](https://github.com/mregrock)).
+* API changes to allow for some use-cases, required for certification closes [#14877](https://github.com/ydb-platform/ydb/issues/14877). [#14878](https://github.com/ydb-platform/ydb/pull/14878) ([Alexey Efimov](https://github.com/adameat)).
 
 #### Performance improvement
 * ... [#6333](https://github.com/ydb-platform/ydb/pull/6333) ([Roman Udovichenko](https://github.com/rvu1024)).
 * Permanently enable extended payload format generation. [#6434](https://github.com/ydb-platform/ydb/pull/6434) ([Alexander Rutkovsky](https://github.com/alexvru)).
-* Do not trigger tablet balancer when all nodes have high usage. [#6532](https://github.com/ydb-platform/ydb/pull/6532) ([vporyadke](https://github.com/vporyadke)).
 * Added milestone queue in replication to reduce work unit computations. [#6561](https://github.com/ydb-platform/ydb/pull/6561) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * ... [#6705](https://github.com/ydb-platform/ydb/pull/6705) ([yumkam](https://github.com/yumkam)).
 * ... [#6753](https://github.com/ydb-platform/ydb/pull/6753) ([Oleg Doronin](https://github.com/dorooleg)).
-* Make less coordinator&mediator moves. [#6840](https://github.com/ydb-platform/ydb/pull/6840) ([vporyadke](https://github.com/vporyadke)).
 * ... [#6951](https://github.com/ydb-platform/ydb/pull/6951) ([yumkam](https://github.com/yumkam)).
 * Optimize tenantinfo handler add trace spans. [#7699](https://github.com/ydb-platform/ydb/pull/7699) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#8146](https://github.com/ydb-platform/ydb/pull/8146) ([yumkam](https://github.com/yumkam)).
@@ -323,12 +337,10 @@
 * ... [#11872](https://github.com/ydb-platform/ydb/pull/11872) ([Pavel Velikhov](https://github.com/pavelvelikhov)).
 * Increased ydb import file csv throughput approximately from 90 to 130 MiB/s. [#11907](https://github.com/ydb-platform/ydb/pull/11907) ([Nikolay Perfilov](https://github.com/pnv1)).
 * Removed mutex for purecalc compilation. [#12136](https://github.com/ydb-platform/ydb/pull/12136) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* Now we are giving all messages to the end of the blob in which they are stored to reduce the load when reading small messages. [#12153](https://github.com/ydb-platform/ydb/pull/12153) ([Nikolay Shestakov](https://github.com/nshestakov)).
 * Enhanced parallelism of data restoring in `ydb tools restore`. [#12203](https://github.com/ydb-platform/ydb/pull/12203) ([Ilia Shakhov](https://github.com/pixcc)).
 * Previous pr - https://github.com/ydb-platform/ydb/pull/9332. [#12366](https://github.com/ydb-platform/ydb/pull/12366) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
 * Use new YQL mechanic for the Arrow buffer resize - to shrink in 100% of times when consuming blocks for DqOutput. Otherwise we get over-allocated buffers with very small accounted logical size - it leads to OOMs. [#12373](https://github.com/ydb-platform/ydb/pull/12373) ([Ivan](https://github.com/abyss7)).
 * Added parallel purecalc compilation and abort requests. [#12505](https://github.com/ydb-platform/ydb/pull/12505) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* Add caching for `ListNodes` request in `DynamicNameserver`. [#12694](https://github.com/ydb-platform/ydb/pull/12694) ([Ilia Shakhov](https://github.com/pixcc)).
 * Node TNodeLocation processing to NodeWarden in order to reduce CPU consumption. [#12776](https://github.com/ydb-platform/ydb/pull/12776) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * ... [#13174](https://github.com/ydb-platform/ydb/pull/13174) ([Maksim Zinal](https://github.com/zinal)).
 
@@ -352,10 +364,12 @@
 * Added new `ydb debug latency` kind `ActorChain`. [#12917](https://github.com/ydb-platform/ydb/pull/12917) ([Evgeniy Ivanov](https://github.com/eivanov89)).
 * Add log_config and better templating for ydbd_slice. [#12956](https://github.com/ydb-platform/ydb/pull/12956) ([Alexander Petrukhin](https://github.com/shmel1k)).
 * Link udf function 'roaring'. [#13071](https://github.com/ydb-platform/ydb/pull/13071) ([azevaykin](https://github.com/azevaykin)).
+* Feature flag `EnableStrictAclCheck` turn on strict ACL checks: * `GRANT` or `REVOKE` requires the existence of a subject. * `DROP` requires that a subject does not have ACLs. [#14075](https://github.com/ydb-platform/ydb/pull/14075) ([azevaykin](https://github.com/azevaykin)).
+* Read config from cache dir. [#14091](https://github.com/ydb-platform/ydb/pull/14091) ([mregrock](https://github.com/mregrock)).
+* Persist config in nodewarden. [#14363](https://github.com/ydb-platform/ydb/pull/14363) ([mregrock](https://github.com/mregrock)).
 
 #### Improvement
 * Copy section `host_configs` into `config.yaml` configuration. [#3012](https://github.com/ydb-platform/ydb/pull/3012) ([Aleksei Kobzev](https://github.com/kobzonega)).
-* Add reason for pending action in maintenance public API. [#3289](https://github.com/ydb-platform/ydb/pull/3289) ([Ilia Shakhov](https://github.com/pixcc)).
 * Add `ydb scheme permissions {clear,set}-inheritance` commands. Add `ydbd db schema access {clear,set}-inheritance` commands. [#3776](https://github.com/ydb-platform/ydb/pull/3776) ([ijon](https://github.com/ijon)).
 * Add Pack/Unpack method implementations to TTupleLayoutFallback class. [#4905](https://github.com/ydb-platform/ydb/pull/4905) ([Alexander](https://github.com/san-kir-k)).
 * [issue](https://github.com/orgs/ydb-platform/projects/37?pane=issue&itemId=67157010) - Added oidc-proxy configuration parameters. This includes `auth-profile`, which determines the logic that oidc_proxy will follow. Possible options: `y-profile`, `n-profile`. Default is `y-profile` - For oidc_proxy handlers, added a new version of logic depending on `auth-profile`. The old handlers were not changed, so some logic is duplicated. I plan to combine some of the logic in a minor refactoring later. - For tokenator (mvp authentithication) added a new version of logic depending on `auth-profile` also. I plan to new version support for `meta` later. - Moved new iam spec to github into public api - Changed the endpoint names in tests to more neutral ones. [#6059](https://github.com/ydb-platform/ydb/pull/6059) ([Andrei Rykov](https://github.com/StekPerepolnen)).
@@ -388,14 +402,12 @@
 * ... [#6791](https://github.com/ydb-platform/ydb/pull/6791) ([Pavel Velikhov](https://github.com/pavelvelikhov)).
 * Added feature flag for resource pools on sls. [#6808](https://github.com/ydb-platform/ydb/pull/6808) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Allow enabling spilling for compute nodes. [#6895](https://github.com/ydb-platform/ydb/pull/6895) ([Vitalii Gridnev](https://github.com/gridnevvvit)).
-* ... [#6916](https://github.com/ydb-platform/ydb/pull/6916) ([vporyadke](https://github.com/vporyadke)).
 * Add queued time into query stats. [#6965](https://github.com/ydb-platform/ydb/pull/6965) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Periodically update node resource maximum to reflect as thread pool sizes changes. [#6967](https://github.com/ydb-platform/ydb/pull/6967) ([vporyadke](https://github.com/vporyadke)).
 * ... [#7042](https://github.com/ydb-platform/ydb/pull/7042) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * Refactor viewer backend closes [#6668](https://github.com/ydb-platform/ydb/issues/6668). [#7071](https://github.com/ydb-platform/ydb/pull/7071) ([Alexey Efimov](https://github.com/adameat)).
 * Temporary files that are created during spilling now will be stored in /tmp/spilling-service-tmp/node_\<nodeId\>_\<guid\> and will be removed on next SpillingService run. [#7108](https://github.com/ydb-platform/ydb/pull/7108) ([Vladluk](https://github.com/vladl2802)).
 * Added pools cache. [#7186](https://github.com/ydb-platform/ydb/pull/7186) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* Improve node deletion in hive. [#7218](https://github.com/ydb-platform/ydb/pull/7218) ([vporyadke](https://github.com/vporyadke)).
 * Added grpc endpoint into kqprun. [#7231](https://github.com/ydb-platform/ydb/pull/7231) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Renamed oidc `endpoint` parameters to `url-path`. [#7246](https://github.com/ydb-platform/ydb/pull/7246) ([Andrei Rykov](https://github.com/StekPerepolnen)).
 * Fix handling of schema elements in .sys directory. [#7429](https://github.com/ydb-platform/ydb/pull/7429) ([Alexey Efimov](https://github.com/adameat)).
@@ -406,7 +418,6 @@
 * Https://github.com/orgs/ydb-platform/projects/37/views/1?filterquery=%5b%5bnebius+iam+integration%5d%5d&pane=issue&itemid=67157010 remove unnecessary - unused variable accessservicetype - handle tevhttpincomingresponse dublicates - removeappliedcookie method. cookie removed like in the first version now. [#7487](https://github.com/ydb-platform/ydb/pull/7487) ([Andrei Rykov](https://github.com/StekPerepolnen)).
 * Remove start message for kqprun. [#7490](https://github.com/ydb-platform/ydb/pull/7490) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Support memory pools configurations & improve spilling settings. [#7510](https://github.com/ydb-platform/ydb/pull/7510) ([Vitalii Gridnev](https://github.com/gridnevvvit)).
-* Support EnforceUserTokenCheckRequirement option for the case of mTLS. [#7511](https://github.com/ydb-platform/ydb/pull/7511) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * Add `--pgwire-port` and `--pgwire-address` command line options for ydbd process. [#7528](https://github.com/ydb-platform/ydb/pull/7528) ([Timofey Koolin](https://github.com/rekby)).
 * [refactoring] Remove unused GatherParents API. [#7541](https://github.com/ydb-platform/ydb/pull/7541) ([Andrey Neporada](https://github.com/nepal)).
 * Add audit logging for login operation. [#7546](https://github.com/ydb-platform/ydb/pull/7546) ([ijon](https://github.com/ijon)).
@@ -422,31 +433,25 @@
 * Add interrupt-inheritance flag to acl handler. [#7701](https://github.com/ydb-platform/ydb/pull/7701) ([Alexey Efimov](https://github.com/adameat)).
 * Https://st.yandex-team.ru/yq-2830. [#7734](https://github.com/ydb-platform/ydb/pull/7734) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * Add stats for queries with errors. [#7753](https://github.com/ydb-platform/ydb/pull/7753) ([Vitalii Gridnev](https://github.com/gridnevvvit)).
-* Added validations on not existing for alter/drop object. [#7757](https://github.com/ydb-platform/ydb/pull/7757) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Don't penalize resource pools after consumption peaks. [#7763](https://github.com/ydb-platform/ydb/pull/7763) ([Mikhail Surin](https://github.com/ssmike)).
 * Добавил версии RetryQuery, которые возращают TASyncStatus и TStatus и которые принимают ламбду, принимающую TQueryClient. [#7777](https://github.com/ydb-platform/ydb/pull/7777) ([stanislav_shchetinin](https://github.com/stanislav-shchetinin)).
-* Increase future wait timeout. [#7780](https://github.com/ydb-platform/ydb/pull/7780) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Refactoring tests for `ydb-cli`. The tests use a recipe. It creates a database `/local` with the user `root`. [#7781](https://github.com/ydb-platform/ydb/pull/7781) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Removed session creation per file and added saving for describe result before import start, that allows to load more than 50 files without "active sessions limit" error. [#7785](https://github.com/ydb-platform/ydb/pull/7785) ([Bulat](https://github.com/Gazizonoki)).
-* Support client cert in WhoAmI (it has separate implementation). [#7816](https://github.com/ydb-platform/ydb/pull/7816) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * ... [#7836](https://github.com/ydb-platform/ydb/pull/7836) ([Vadim Averin](https://github.com/avevad)).
 * Fix for [yq-2576](https://st.yandex-team.ru/yq-2576). [#7842](https://github.com/ydb-platform/ydb/pull/7842) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * Pass allow local files into runtime listing and schema inference. [#7844](https://github.com/ydb-platform/ydb/pull/7844) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * [ydb-cli] saving plan & ast even on errors. [#7874](https://github.com/ydb-platform/ydb/pull/7874) ([Vitalii Gridnev](https://github.com/gridnevvvit)).
 * Minor style fixes. [#7907](https://github.com/ydb-platform/ydb/pull/7907) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * Add more introspection into PDisk's ChunkWrite and LogWrite. [#7941](https://github.com/ydb-platform/ydb/pull/7941) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
-* Currently mkql allocator makes requests by chunks of 30mib minimum, so making that configurable and changing that limit to 8mib. [#7951](https://github.com/ydb-platform/ydb/pull/7951) ([Vitalii Gridnev](https://github.com/gridnevvvit)).
 * Improve error in s3 applicator actor. [#7976](https://github.com/ydb-platform/ydb/pull/7976) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Added s3 wildcards validations. [#8017](https://github.com/ydb-platform/ydb/pull/8017) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Ensure per_az followers are created when new datacenter is registered & are deleted when it is deregistered. [#8069](https://github.com/ydb-platform/ydb/pull/8069) ([vporyadke](https://github.com/vporyadke)).
-* Add monitoring sensors for `Node Broker` tablet. [#8091](https://github.com/ydb-platform/ydb/pull/8091) ([Ilia Shakhov](https://github.com/pixcc)).
 * Type inference json suppoty. [#8102](https://github.com/ydb-platform/ydb/pull/8102) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * Optimize nodes handler fix issues with serverless databases fix http redirects issues switch viewer ut to in-memory disks add cookie to scheme board actor. [#8111](https://github.com/ydb-platform/ydb/pull/8111) ([Alexey Efimov](https://github.com/adameat)).
 * Implement tpc benchmarks as tests. [#8125](https://github.com/ydb-platform/ydb/pull/8125) ([Vladluk](https://github.com/vladl2802)).
 * ... [#8131](https://github.com/ydb-platform/ydb/pull/8131) ([Sergey Belyakov](https://github.com/serbel324)).
 * Add support redirects for oidc proxy. [#8151](https://github.com/ydb-platform/ydb/pull/8151) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * ... [#8160](https://github.com/ydb-platform/ydb/pull/8160) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
-* Fix for [#7989](https://github.com/ydb-platform/ydb/issues/7989). [#8210](https://github.com/ydb-platform/ydb/pull/8210) ([Ivan](https://github.com/abyss7)).
 * ... [#8232](https://github.com/ydb-platform/ydb/pull/8232) ([Oleg Doronin](https://github.com/dorooleg)).
 * Support for `partitioned_by`, `file_pattern` and `csv_delimiter` parameters with schema inference. [#8252](https://github.com/ydb-platform/ydb/pull/8252) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * Added default values for `Family` and `FamilyName` fields when use describe handler. [#8266](https://github.com/ydb-platform/ydb/pull/8266) ([Andrei Rykov](https://github.com/StekPerepolnen)).
@@ -454,11 +459,9 @@
 * If DataShard detects IsSubDomainOutOfSpace than it should return DISK_SPACE_EXHAUSTED error. [#8318](https://github.com/ydb-platform/ydb/pull/8318) ([azevaykin](https://github.com/azevaykin)).
 * Do not use Likely() as a sign of already performed pushdown * Add more cases when pushdown should not be done. [#8360](https://github.com/ydb-platform/ydb/pull/8360) ([Andrey Neporada](https://github.com/nepal)).
 * ... [#8376](https://github.com/ydb-platform/ydb/pull/8376) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
-* CMS request priorities is enabled by default. [#8380](https://github.com/ydb-platform/ydb/pull/8380) ([Ilia Shakhov](https://github.com/pixcc)).
 * ... [#8395](https://github.com/ydb-platform/ydb/pull/8395) ([pilik](https://github.com/pashandor789)).
 * ... [#8396](https://github.com/ydb-platform/ydb/pull/8396) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
 * Change a little how feature flags are returned. [#8434](https://github.com/ydb-platform/ydb/pull/8434) ([Alexey Efimov](https://github.com/adameat)).
-* Improved overload issues. [#8437](https://github.com/ydb-platform/ydb/pull/8437) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Fix cors headers for traces. [#8458](https://github.com/ydb-platform/ydb/pull/8458) ([Alexey Efimov](https://github.com/adameat)).
 * Support per-query limits [#4889](https://github.com/ydb-platform/ydb/issues/4889). [#8520](https://github.com/ydb-platform/ydb/pull/8520) ([Mikhail Surin](https://github.com/ssmike)).
 * Collect security tags properly from table content files. [#8542](https://github.com/ydb-platform/ydb/pull/8542) ([Vadim Averin](https://github.com/avevad)).
@@ -484,7 +487,6 @@
 * Better spilling errors ... [#8812](https://github.com/ydb-platform/ydb/pull/8812) ([Filitov Mikhail](https://github.com/lll-phill-lll)).
 * Enable column shard by default in kqprun. [#8820](https://github.com/ydb-platform/ydb/pull/8820) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Added validations for resource pool parametres. [#8831](https://github.com/ydb-platform/ydb/pull/8831) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* Support PG types in YT export and some build fixes. [#8833](https://github.com/ydb-platform/ydb/pull/8833) ([Ivan Nikolaev](https://github.com/lex007in)).
 * ... [#8902](https://github.com/ydb-platform/ydb/pull/8902) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Add IListBuilder to UDF ABI. [#8914](https://github.com/ydb-platform/ydb/pull/8914) ([Vadim Averin](https://github.com/avevad)).
 * Move redirects to base class, solve problem with redirects in serverless databases. [#8934](https://github.com/ydb-platform/ydb/pull/8934) ([Alexey Efimov](https://github.com/adameat)).
@@ -495,7 +497,6 @@
 * ... [#8982](https://github.com/ydb-platform/ydb/pull/8982) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * Fixed AS pools and added validations. [#9030](https://github.com/ydb-platform/ydb/pull/9030) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Added resource pools classifiers validations. [#9037](https://github.com/ydb-platform/ydb/pull/9037) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* Add audit logging for web logout operation. [#9050](https://github.com/ydb-platform/ydb/pull/9050) ([ijon](https://github.com/ijon)).
 * Added DisableExternalDataSourcesOnServerless feature flag. [#9062](https://github.com/ydb-platform/ydb/pull/9062) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#9080](https://github.com/ydb-platform/ydb/pull/9080) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * General improvements for in-test tpc benchs that run in nightly-run. [#9124](https://github.com/ydb-platform/ydb/pull/9124) ([Vladluk](https://github.com/vladl2802)).
@@ -529,7 +530,6 @@
 * Added session settings. [#9589](https://github.com/ydb-platform/ydb/pull/9589) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Added kqp proxy database cache. [#9644](https://github.com/ydb-platform/ydb/pull/9644) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Help is now printed if a command is executed without required free arguments. [#9693](https://github.com/ydb-platform/ydb/pull/9693) ([Nikolay Perfilov](https://github.com/pnv1)).
-* CMS allows to evict all vdisks from a rack. [#9740](https://github.com/ydb-platform/ydb/pull/9740) ([Ilia Shakhov](https://github.com/pixcc)).
 * Add traces and database redirects to local rpc calls unify parameters and method checks and bootstrap procedures. [#9745](https://github.com/ydb-platform/ydb/pull/9745) ([Alexey Efimov](https://github.com/adameat)).
 * This way profiler stacks are resolved much more precisely - and include inlined frames now. [#9766](https://github.com/ydb-platform/ydb/pull/9766) ([Ivan](https://github.com/abyss7)).
 * Added database id for workload manager. [#9768](https://github.com/ydb-platform/ydb/pull/9768) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
@@ -578,15 +578,12 @@
 * `tools restore`: print location in error messages. [#10948](https://github.com/ydb-platform/ydb/pull/10948) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * Stop wide combiner state from growing unlimited and spill it if spilling is enabled. [#10997](https://github.com/ydb-platform/ydb/pull/10997) ([Vladluk](https://github.com/vladl2802)).
 * Use -FreeSlots() as PickerScore in BSC to properly populate disks of unequal size. [#11008](https://github.com/ydb-platform/ydb/pull/11008) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
-* Add test for shard splitting by PG key * Support PG types for PartitionKeySchema in PQ. [#11023](https://github.com/ydb-platform/ydb/pull/11023) ([Ivan Nikolaev](https://github.com/lex007in)).
 * ... [#11068](https://github.com/ydb-platform/ydb/pull/11068) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Support PG and Decimal in scheme board cache viewer. [#11076](https://github.com/ydb-platform/ydb/pull/11076) ([Ivan Nikolaev](https://github.com/lex007in)).
-* #10907 Don't take locks in ShapshotReadOnly. [#11085](https://github.com/ydb-platform/ydb/pull/11085) ([Mikhail Surin](https://github.com/ssmike)).
 * ... [#11091](https://github.com/ydb-platform/ydb/pull/11091) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Added new options to `ydb workload topic`: --tx-commit-interval and --tx-commit-messages, allowing you to specify commit interval either in milliseconds or in number of messages written. Also now you can load test YDB topics, using wide transactions that span over all partitions in the topic. This works both in write and in end-to-end workload scenarios. ... [#11141](https://github.com/ydb-platform/ydb/pull/11141) ([Andrey Serebryanskiy](https://github.com/a-serebryanskiy)).
 * Supported Json columns without predicate. [#11150](https://github.com/ydb-platform/ydb/pull/11150) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#11152](https://github.com/ydb-platform/ydb/pull/11152) ([Vitaly Stoyan](https://github.com/vitstn)).
-* Add simplified mirror-3dc support in CMS. [#11190](https://github.com/ydb-platform/ydb/pull/11190) ([Ilia Shakhov](https://github.com/pixcc)).
 * ... [#11207](https://github.com/ydb-platform/ydb/pull/11207) ([Roman Udovichenko](https://github.com/rvu1024)).
 * ... [#11219](https://github.com/ydb-platform/ydb/pull/11219) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Add YQL highlighting tests. [#11234](https://github.com/ydb-platform/ydb/pull/11234) ([Victor Smirnov](https://github.com/vityaman)).
@@ -600,8 +597,6 @@
 * Optimized purecalc memory usage. [#11394](https://github.com/ydb-platform/ydb/pull/11394) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Supported COALESCE and IF pushdown. [#11397](https://github.com/ydb-platform/ydb/pull/11397) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#11401](https://github.com/ydb-platform/ydb/pull/11401) ([Alexey Efimov](https://github.com/adameat)).
-* Add field LogMessage to structure TError of ticket parser for return special message for log. [#11403](https://github.com/ydb-platform/ydb/pull/11403) ([Andrey Molotkov](https://github.com/molotkov-and)).
-* Return special error messages for write to log from ldap auth provider. [#11404](https://github.com/ydb-platform/ydb/pull/11404) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * Switch actor system to lock-free mailboxes with intrusive event lists. [#11419](https://github.com/ydb-platform/ydb/pull/11419) ([Aleksei Borzenkov](https://github.com/snaury)).
 * Evwrite optimizations. [#11428](https://github.com/ydb-platform/ydb/pull/11428) ([Nikita Vasilev](https://github.com/nikvas0)).
 * Supported OR split during pushdown. [#11439](https://github.com/ydb-platform/ydb/pull/11439) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
@@ -609,7 +604,7 @@
 * Support PG literals in KQP. [#11446](https://github.com/ydb-platform/ydb/pull/11446) ([Ivan Nikolaev](https://github.com/lex007in)).
 * ... [#11450](https://github.com/ydb-platform/ydb/pull/11450) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#11470](https://github.com/ydb-platform/ydb/pull/11470) ([Alexey Efimov](https://github.com/adameat)).
-* # Docker image. [#11472](https://github.com/ydb-platform/ydb/pull/11472) ([Aleksei Kobzev](https://github.com/kobzonega)).
+* Docker image. [#11472](https://github.com/ydb-platform/ydb/pull/11472) ([Aleksei Kobzev](https://github.com/kobzonega)).
 * Replace usage of `CPP_STYLE_TEST_16` with `STYLE_CPP`. [#11523](https://github.com/ydb-platform/ydb/pull/11523) ([andrei-levitskii](https://github.com/andrei-levitskii)).
 * Supported mod pushdown. [#11543](https://github.com/ydb-platform/ydb/pull/11543) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Fix for [yq-2950](https://st.yandex-team.ru/yq-2950). [#11608](https://github.com/ydb-platform/ydb/pull/11608) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
@@ -642,6 +637,7 @@
 * [YQL-19309] Switch YT provider to DQ nodes from yql/essentials. [#12158](https://github.com/ydb-platform/ydb/pull/12158) ([Andrey Neporada](https://github.com/nepal)).
 * Improve WriteActor: - move serialization to fwd actor - remove table resolve - fixed segfault. [#12167](https://github.com/ydb-platform/ydb/pull/12167) ([Nikita Vasilev](https://github.com/nikvas0)).
 * [YQL-19309] Sync with Arcadia. [#12219](https://github.com/ydb-platform/ydb/pull/12219) ([Andrey Neporada](https://github.com/nepal)).
+* User for .tmp/sessions dir. [#12244](https://github.com/ydb-platform/ydb/pull/12244) ([Nikita Vasilev](https://github.com/nikvas0)).
 * ... [#12285](https://github.com/ydb-platform/ydb/pull/12285) ([Vitaly Stoyan](https://github.com/vitstn)).
 * [YQL-19206] Sync with Arcadia. [#12300](https://github.com/ydb-platform/ydb/pull/12300) ([Andrey Neporada](https://github.com/nepal)).
 * Add some more direct read cache proxy counters. [#12317](https://github.com/ydb-platform/ydb/pull/12317) ([FloatingCrowbar](https://github.com/FloatingCrowbar)).
@@ -667,6 +663,7 @@
 * Abort volatile transactions during graceful restarts. [#12689](https://github.com/ydb-platform/ydb/pull/12689) ([Aleksei Borzenkov](https://github.com/snaury)).
 * Add test to check counters are created for newly added consumer. [#12711](https://github.com/ydb-platform/ydb/pull/12711) ([FloatingCrowbar](https://github.com/FloatingCrowbar)).
 * Change algorithm for create fingerprints of certificates from sha1 to sha256. [#12723](https://github.com/ydb-platform/ydb/pull/12723) ([Andrey Molotkov](https://github.com/molotkov-and)).
+* [ydbd_slice] change docker image distribution with usage of docker save + scp/rsync + ctr import - [ydbd_slice] add docker-push option. [#12797](https://github.com/ydb-platform/ydb/pull/12797) ([Aleksei Kobzev](https://github.com/kobzonega)).
 * Now Put requests with blobs of 0 size are validated and rejected with ERROR status. [#12881](https://github.com/ydb-platform/ydb/pull/12881) ([Sergey Belyakov](https://github.com/serbel324)).
 * Rename block-4-2 to block-4-2-8-nodes. [#12888](https://github.com/ydb-platform/ydb/pull/12888) ([Alexander Petrukhin](https://github.com/shmel1k)).
 * Improved slices template configuration. [#12899](https://github.com/ydb-platform/ydb/pull/12899) ([Alexander Petrukhin](https://github.com/shmel1k)).
@@ -675,7 +672,6 @@
 * User can change self password by yourself. [#12983](https://github.com/ydb-platform/ydb/pull/12983) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * Process follower updates in chunks to definitely avoid hitting commit size limit. [#13023](https://github.com/ydb-platform/ydb/pull/13023) ([vporyadke](https://github.com/vporyadke)).
 * New column `CreatedAt` was added to schemeshard localdb in table `Sids`. [#13044](https://github.com/ydb-platform/ydb/pull/13044) ([Andrey Molotkov](https://github.com/molotkov-and)).
-* Added the TxInFly and TxCompleteLag metrics for the PQ tablet. [#13072](https://github.com/ydb-platform/ydb/pull/13072) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * New functions added. [#13120](https://github.com/ydb-platform/ydb/pull/13120) ([jsjant](https://github.com/jsjant)).
 * Prepare login lockout info in order to use it in system view. [#13123](https://github.com/ydb-platform/ydb/pull/13123) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * Added confirmation for ydbd_slice install/clear/format. [#13146](https://github.com/ydb-platform/ydb/pull/13146) ([Alexander Petrukhin](https://github.com/shmel1k)).
@@ -685,12 +681,48 @@
 * Support folders in S3 URIs for CS tiers. [#13337](https://github.com/ydb-platform/ydb/pull/13337) ([Semyon](https://github.com/swalrus1)).
 * ... [#13386](https://github.com/ydb-platform/ydb/pull/13386) ([Alexey Efimov](https://github.com/adameat)).
 * Added NodeInterlace to `TScore` so that in case there are multiple VDisks in one rack (and group's DomainInterlace is > 0) next PDisk would not be selected from nodes that already have disks from this group. [#13458](https://github.com/ydb-platform/ydb/pull/13458) ([Semyon Danilov](https://github.com/SammyVimes)).
+* The keys in the block cache are synchronized with the blob keys in the partition. [#13553](https://github.com/ydb-platform/ydb/pull/13553) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
+* Add python tests to test viewer backend. [#13605](https://github.com/ydb-platform/ydb/pull/13605) ([Alexey Efimov](https://github.com/adameat)).
 * Coordinator plan resolution can now be configured using immediate control board. [#13721](https://github.com/ydb-platform/ydb/pull/13721) ([Aleksei Borzenkov](https://github.com/snaury)).
 * [Schema object limits](https://ydb.tech/docs/en/concepts/limits-ydb#schema-object) are now available as metrics. [#13723](https://github.com/ydb-platform/ydb/pull/13723) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * Https://nebius.atlassian.net/browse/nbydb-770 add max-age to session cookie depending on iam response specification said that set-cookie max-age attribute is unsigned 31 bit. [#13732](https://github.com/ydb-platform/ydb/pull/13732) ([Andrei Rykov](https://github.com/StekPerepolnen)).
 * Maintain access to populated tiers removed from TTL on CS. [#13733](https://github.com/ydb-platform/ydb/pull/13733) ([Semyon](https://github.com/swalrus1)).
 * Default level of cost based optimization is set to 2, which means the cost based optimizer will only work on queries that include at least one column shard. ... [#13740](https://github.com/ydb-platform/ydb/pull/13740) ([Pavel Velikhov](https://github.com/pavelvelikhov)).
 * This feature will help to easily add additional params to local_ydb in docker. [#13789](https://github.com/ydb-platform/ydb/pull/13789) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
+* Add content-length to multipart query responses. [#13800](https://github.com/ydb-platform/ydb/pull/13800) ([Alexey Efimov](https://github.com/adameat)).
+* Support operations via QueryService such as `ALTER OBJECT ____ (TYPE TABLESTORE)`. [#13834](https://github.com/ydb-platform/ydb/pull/13834) ([Semyon](https://github.com/swalrus1)).
+* Improve tests, add tests for different databases kinds fix some issues as result. [#13888](https://github.com/ydb-platform/ydb/pull/13888) ([Alexey Efimov](https://github.com/adameat)).
+* Fix ambiguous exceptions from Kafka API during the authentication process. [#13929](https://github.com/ydb-platform/ydb/pull/13929) ([Andrey Serebryanskiy](https://github.com/a-serebryanskiy)).
+* Improved templates and fixed storage settings. [#13951](https://github.com/ydb-platform/ydb/pull/13951) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Limit number of simultaneous tablet deletions to prevent a deletion of a massive table from causing OOM-failures. [#13993](https://github.com/ydb-platform/ydb/pull/13993) ([vporyadke](https://github.com/vporyadke)).
+* ... [#14002](https://github.com/ydb-platform/ydb/pull/14002) ([VPolka](https://github.com/VPolka)).
+* Return pqrb tablets on diagnostics page. [#14056](https://github.com/ydb-platform/ydb/pull/14056) ([Alexey Efimov](https://github.com/adameat)).
+* Supported parallel s3 import and fixed write actor hanging. [#14060](https://github.com/ydb-platform/ydb/pull/14060) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Fixed storage settings. [#14065](https://github.com/ydb-platform/ydb/pull/14065) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Fix a problem where during cluster update node drain was sometimes performed twice, leading to node being marked as down after update. [#14125](https://github.com/ydb-platform/ydb/pull/14125) ([vporyadke](https://github.com/vporyadke)).
+* Maximum number of columns in a primary key has increased from 20 to 30. [#14219](https://github.com/ydb-platform/ydb/pull/14219) ([azevaykin](https://github.com/azevaykin)).
+* Support auth authorization in kafka proxy + set proper timestamp in kafka fetch actor (fix). [#14220](https://github.com/ydb-platform/ydb/pull/14220) ([FloatingCrowbar](https://github.com/FloatingCrowbar)).
+* YDB FQ: moving `ListSplits` call to optimization phase. [#14228](https://github.com/ydb-platform/ydb/pull/14228) ([Vitaly Isaev](https://github.com/vitalyisaev2)).
+* Don't limit volume of evicted data in OLAP tables. [#14277](https://github.com/ydb-platform/ydb/pull/14277) ([Semyon](https://github.com/swalrus1)).
+* Improved tenants flags. [#14279](https://github.com/ydb-platform/ydb/pull/14279) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Evwrite better errors. [#14320](https://github.com/ydb-platform/ydb/pull/14320) ([Nikita Vasilev](https://github.com/nikvas0)).
+* Add network throughput aggregation (per-database and per-cluster). [#14364](https://github.com/ydb-platform/ydb/pull/14364) ([Alexey Efimov](https://github.com/adameat)).
+* ... [#14398](https://github.com/ydb-platform/ydb/pull/14398) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
+* Save ErrorReasons of erroneous subrequests in DSProxy and print them when requests failed to EBS_DISINTEGRATED optimistic state. [#14425](https://github.com/ydb-platform/ydb/pull/14425) ([Sergey Belyakov](https://github.com/serbel324)).
+* The ALTER USER user LOGIN query should unban the user who has been banned for exceeding the limit of authentication attempts. [#14444](https://github.com/ydb-platform/ydb/pull/14444) ([flown4qqqq](https://github.com/flown4qqqq)).
+* Если выполняется запрос GRANT/REVOKE ... user, то user ищется только в текущем схемшарде. Это создает некоторые не понимания со стороны пользователя, поэтому хочется уточнять, что мы не просто "не нашли пользователя", а "не нашли пользователя в данной бд". [#14458](https://github.com/ydb-platform/ydb/pull/14458) ([flown4qqqq](https://github.com/flown4qqqq)).
+* Fixed storage and tenants creation (made them more robust). [#14472](https://github.com/ydb-platform/ydb/pull/14472) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* YDB FQ: move `ListSplits` call from the request execution to the request optimization phase. [#14497](https://github.com/ydb-platform/ydb/pull/14497) ([Vitaly Isaev](https://github.com/vitalyisaev2)).
+* Replaced the unsafe `dd` command with the safer `ydbd admin bs disk obliterate` command. [#14498](https://github.com/ydb-platform/ydb/pull/14498) ([Konstantin Nikiforov](https://github.com/melazyk)).
+* Track EVICTED and SPLIT_COMPACTED portion stats in separate counters. [#14543](https://github.com/ydb-platform/ydb/pull/14543) ([Semyon](https://github.com/swalrus1)).
+* Supported connections and bindings * Supported read from files by using PQ / S3 providers. [#14552](https://github.com/ydb-platform/ydb/pull/14552) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Updated node priorities logic to avoid issues when system tablets remain in a datacenter even when all nodes of the datacenter are in a crash loop. [#14554](https://github.com/ydb-platform/ydb/pull/14554) ([vporyadke](https://github.com/vporyadke)).
+* Changed session token request authorization from basic to bearer. [#14587](https://github.com/ydb-platform/ydb/pull/14587) ([Andrei Rykov](https://github.com/StekPerepolnen)).
+* Ydbd identifies node type when node_type not assign in actor_system_config. [#14799](https://github.com/ydb-platform/ydb/pull/14799) ([kruall](https://github.com/kruall)).
+* Added features for FQ-run. [#14826](https://github.com/ydb-platform/ydb/pull/14826) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* EVENTS_PER_MAILBOX only make problems with high-load sessions. We made this limit unreachable for stopping processing only by time quote. [#14843](https://github.com/ydb-platform/ydb/pull/14843) ([kruall](https://github.com/kruall)).
+* Refactor two S3Buffers into one that supports all features. It allows to use different combinations of checksums, compression and encryption parameters for serialization of export data. [#14862](https://github.com/ydb-platform/ydb/pull/14862) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
+* There was storage config in create request, but it was absent in describe result. Now, we added storage config in describe result. [#14880](https://github.com/ydb-platform/ydb/pull/14880) ([kruall](https://github.com/kruall)).
 
 #### Bugfix
 * Fixed default for --null-value in ydb import file csv/tsv commands and improved error text. [#3936](https://github.com/ydb-platform/ydb/pull/3936) ([Bulat](https://github.com/Gazizonoki)).
@@ -709,36 +741,29 @@
 * Handle empty GC commands correctly. [#6398](https://github.com/ydb-platform/ydb/pull/6398) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * Fix bugs in coordinator state migration. [#6401](https://github.com/ydb-platform/ydb/pull/6401) ([Aleksei Borzenkov](https://github.com/snaury)).
 * Fix VDisk replication stuck sensor bug. [#6405](https://github.com/ydb-platform/ydb/pull/6405) ([Alexander Rutkovsky](https://github.com/alexvru)).
-* ... [#6409](https://github.com/ydb-platform/ydb/pull/6409) ([vporyadke](https://github.com/vporyadke)).
 * ... [#6414](https://github.com/ydb-platform/ydb/pull/6414) ([Oleg Doronin](https://github.com/dorooleg)).
 * ... [#6432](https://github.com/ydb-platform/ydb/pull/6432) ([Vitaly Stoyan](https://github.com/vitstn)).
-* Fix problem with empty errors in http handlers. [#6441](https://github.com/ydb-platform/ydb/pull/6441) ([Alexey Efimov](https://github.com/adameat)).
 * The PQ tablet sent a response to the SS. At that moment, `Hive' was running it on another node. The tablet was restored to the WAIT_RS state and waited for predicates from other participants. [#6449](https://github.com/ydb-platform/ydb/pull/6449) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Previously, errors from spilling caused a deadlock. Error handling has now been added. [#6454](https://github.com/ydb-platform/ydb/pull/6454) ([Filitov Mikhail](https://github.com/lll-phill-lll)).
 * Fix a bug where tablets could get stuck in boot queue. [#6491](https://github.com/ydb-platform/ydb/pull/6491) ([vporyadke](https://github.com/vporyadke)).
-* Fix a bug where tablets total counter was not updated on followers deletion. [#6492](https://github.com/ydb-platform/ydb/pull/6492) ([vporyadke](https://github.com/vporyadke)).
 * ... [#6497](https://github.com/ydb-platform/ydb/pull/6497) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
-* Fix null pointer dereference during node registration in `Node Broker`. [#6516](https://github.com/ydb-platform/ydb/pull/6516) ([Ilia Shakhov](https://github.com/pixcc)).
 * ... [#6521](https://github.com/ydb-platform/ydb/pull/6521) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Fix getting oauth2 key file credentials from environment. Silly error. [#6550](https://github.com/ydb-platform/ydb/pull/6550) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * ... [#6585](https://github.com/ydb-platform/ydb/pull/6585) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * ... [#6586](https://github.com/ydb-platform/ydb/pull/6586) ([vporyadke](https://github.com/vporyadke)).
 * Continue to emit resolved timestamp after table merge. [#6594](https://github.com/ydb-platform/ydb/pull/6594) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
-* Fix a bug where some nodes could remain down after a downgrade. [#6613](https://github.com/ydb-platform/ydb/pull/6613) ([vporyadke](https://github.com/vporyadke)).
 * Changed memory calculation for TEvFreeItems. [#6625](https://github.com/ydb-platform/ydb/pull/6625) ([mregrock](https://github.com/mregrock)).
 * Fixed endless retries for external error. [#6626](https://github.com/ydb-platform/ydb/pull/6626) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#6634](https://github.com/ydb-platform/ydb/pull/6634) ([Roman Udovichenko](https://github.com/rvu1024)).
 * YDB FQ: distinguish dedicated and serverless YDBs via 'storageConfig' section. [#6703](https://github.com/ydb-platform/ydb/pull/6703) ([Vitaly Isaev](https://github.com/vitalyisaev2)).
 * ... [#6711](https://github.com/ydb-platform/ydb/pull/6711) ([yumkam](https://github.com/yumkam)).
 * Fixed error failed to execute callable ResWrite. [#6752](https://github.com/ydb-platform/ydb/pull/6752) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* Fix handling of backups of too massive databases (in terms of number of tables and number of table partitions). [#6760](https://github.com/ydb-platform/ydb/pull/6760) ([ijon](https://github.com/ijon)).
 * Disable outgoing cache for mvp meta. [#6806](https://github.com/ydb-platform/ydb/pull/6806) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#6821](https://github.com/ydb-platform/ydb/pull/6821) ([Anton Martsenyuk](https://github.com/antoniox)).
 * The PQ tablet performed the transaction. I received the value of the predicate from the partition and waited for RS from other tablets. At this time, Hive was restarting it on another node. After the restart, the tablet restored the transaction and continued to execute it. I received all RS and sent the message `TEvTxCommit` to the partition. As a result, the program crashed, since the partition did not know anything about this transaction after the restart. [#6831](https://github.com/ydb-platform/ydb/pull/6831) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * ... [#6846](https://github.com/ydb-platform/ydb/pull/6846) ([Vitaly Stoyan](https://github.com/vitstn)).
 * ... [#6881](https://github.com/ydb-platform/ydb/pull/6881) ([Vitaly Stoyan](https://github.com/vitstn)).
 * ... [#6894](https://github.com/ydb-platform/ydb/pull/6894) ([Vitaly Stoyan](https://github.com/vitstn)).
-* Fix for dead nodes always passing filter fixes [#6608](https://github.com/ydb-platform/ydb/issues/6608). [#6912](https://github.com/ydb-platform/ydb/pull/6912) ([Alexey Efimov](https://github.com/adameat)).
 * Don't make a lock on zero memory change. [#6926](https://github.com/ydb-platform/ydb/pull/6926) ([Vitalii Gridnev](https://github.com/gridnevvvit)).
 * ... [#6930](https://github.com/ydb-platform/ydb/pull/6930) ([Innokentii Mokin](https://github.com/Enjection)).
 * ... [#6941](https://github.com/ydb-platform/ydb/pull/6941) ([Andrey Molotkov](https://github.com/molotkov-and)).
@@ -748,18 +773,15 @@
 * Fix storage info. [#6960](https://github.com/ydb-platform/ydb/pull/6960) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#6978](https://github.com/ydb-platform/ydb/pull/6978) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Fixed resource pools permissions validation: * https://github.com/ydb-platform/ydb/pull/6989/files#diff-c22bfd9bf5593c8954ffe6e0c48529572eeaf460d44dc7bfece7ea6859b19ff5L395-R397 * https://github.com/ydb-platform/ydb/pull/6989/files#diff-acbe24321404698ebde9ee88b975c07511a9ef7ee29393ba47cf4024d3385ec8R494-R497. [#6989](https://github.com/ydb-platform/ydb/pull/6989) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* Replace HTTP control characters with alternative ones while displaying exceptions. [#7014](https://github.com/ydb-platform/ydb/pull/7014) ([Cthulhu](https://github.com/the-ancient-1)).
 * The partitioning predicate is not saved for the transaction. After recovery, the tablet resends commands to the partitions to calculate the predicate. [#7015](https://github.com/ydb-platform/ydb/pull/7015) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Fix unit tests counters validation. [#7030](https://github.com/ydb-platform/ydb/pull/7030) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#7044](https://github.com/ydb-platform/ydb/pull/7044) ([Pavel Velikhov](https://github.com/pavelvelikhov)).
 * ... [#7051](https://github.com/ydb-platform/ydb/pull/7051) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * Fix for sls feature flag. [#7057](https://github.com/ydb-platform/ydb/pull/7057) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* ... [#7060](https://github.com/ydb-platform/ydb/pull/7060) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * ... [#7076](https://github.com/ydb-platform/ydb/pull/7076) ([Innokentii Mokin](https://github.com/Enjection)).
 * Fix incompatibility bug. [#7079](https://github.com/ydb-platform/ydb/pull/7079) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * Fix distconf startup bug. [#7094](https://github.com/ydb-platform/ydb/pull/7094) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * ... [#7097](https://github.com/ydb-platform/ydb/pull/7097) ([Oleg Doronin](https://github.com/dorooleg)).
-* Fix viewer redirects when we make a call to newer node via older one. [#7103](https://github.com/ydb-platform/ydb/pull/7103) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#7109](https://github.com/ydb-platform/ydb/pull/7109) ([Innokentii Mokin](https://github.com/Enjection)).
 * The user's token may be empty. The program did not take this into account and the call to `AddOffsetToTransaction` failed with an error. [#7117](https://github.com/ydb-platform/ydb/pull/7117) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Due to the fact that the field force_io_pool_threads could be unassigned, the generation of the dynamic config was interrupted with an error. [#7138](https://github.com/ydb-platform/ydb/pull/7138) ([kruall](https://github.com/kruall)).
@@ -767,7 +789,6 @@
 * Correct temporary PDisk start sequence. [#7156](https://github.com/ydb-platform/ydb/pull/7156) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * Fix PDisk distconf metadata storage. [#7175](https://github.com/ydb-platform/ydb/pull/7175) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * Fixed logs in local docker container. [#7185](https://github.com/ydb-platform/ydb/pull/7185) ([Nikita-Levuskin](https://github.com/Nikita-Levuskin)).
-* Fix a bug where static group issues could not appear in healthcheck. [#7212](https://github.com/ydb-platform/ydb/pull/7212) ([vporyadke](https://github.com/vporyadke)).
 * Mvp - disable offload merge. [#7228](https://github.com/ydb-platform/ydb/pull/7228) ([Alexey Efimov](https://github.com/adameat)).
 * Fix ORDER BY missing column. [#7240](https://github.com/ydb-platform/ydb/pull/7240) ([Andrey Neporada](https://github.com/nepal)).
 * Fir for https://st.yandex-team.ru/yq-3427. [#7259](https://github.com/ydb-platform/ydb/pull/7259) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
@@ -783,7 +804,6 @@
 * ... [#7421](https://github.com/ydb-platform/ydb/pull/7421) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Fix flaky Aggregation_ResultCountAll_Filter test. [#7423](https://github.com/ydb-platform/ydb/pull/7423) ([Artem Alekseev](https://github.com/fexolm)).
 * ... [#7427](https://github.com/ydb-platform/ydb/pull/7427) ([Alexey Ozeritskiy](https://github.com/resetius)).
-* Fix passing of configuration to ticket parser. It expects cert path instead of cert data. [#7445](https://github.com/ydb-platform/ydb/pull/7445) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * Fix for https://st.yandex-team.ru/yq-3428. [#7450](https://github.com/ydb-platform/ydb/pull/7450) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * ... [#7452](https://github.com/ydb-platform/ydb/pull/7452) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Treat inactive pdisks as alive in healthcheck. [#7466](https://github.com/ydb-platform/ydb/pull/7466) ([vporyadke](https://github.com/vporyadke)).
@@ -801,13 +821,11 @@
 * ... [#7643](https://github.com/ydb-platform/ydb/pull/7643) ([Oleg Doronin](https://github.com/dorooleg)).
 * ... [#7651](https://github.com/ydb-platform/ydb/pull/7651) ([Sergey Belyakov](https://github.com/serbel324)).
 * Fixed a bug where a transaction with a read from a topic does not send a TEvReadSetAck. [#7676](https://github.com/ydb-platform/ydb/pull/7676) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
-* The value of the constant in the code was different from the value in the proto-file. [#7695](https://github.com/ydb-platform/ydb/pull/7695) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Fixed an issue where a SELECT query could produce unexpected duplicate rows. [#7697](https://github.com/ydb-platform/ydb/pull/7697) ([Aleksei Borzenkov](https://github.com/snaury)).
 * ... [#7727](https://github.com/ydb-platform/ydb/pull/7727) ([yumkam](https://github.com/yumkam)).
 * ... [#7798](https://github.com/ydb-platform/ydb/pull/7798) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Fix segfault that appeared after https://github.com/ydb-platform/ydb/commit/6576464d6b8dca046c27847c1ff60fc6748f329d (https://github.com/ydb-platform/ydb/pull/5982). [#7808](https://github.com/ydb-platform/ydb/pull/7808) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * ... [#7809](https://github.com/ydb-platform/ydb/pull/7809) ([Oleg Doronin](https://github.com/dorooleg)).
-* ... [#7815](https://github.com/ydb-platform/ydb/pull/7815) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * Fixed unit test KqpLimits::ComputeActorMemoryAllocationFailureQueryService with resource pools. [#7873](https://github.com/ydb-platform/ydb/pull/7873) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Improve s3 url escape. [#7881](https://github.com/ydb-platform/ydb/pull/7881) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Fix error attempt to read after eof. [#7889](https://github.com/ydb-platform/ydb/pull/7889) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
@@ -831,7 +849,6 @@
 * ... [#8175](https://github.com/ydb-platform/ydb/pull/8175) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Allow append to a table with same column groups. [#8176](https://github.com/ydb-platform/ydb/pull/8176) ([Roman Udovichenko](https://github.com/rvu1024)).
 * Fixes that an unset feature flags in dynamic config overrides a feature flags in static config for CMS. [#8238](https://github.com/ydb-platform/ydb/pull/8238) ([Ilia Shakhov](https://github.com/pixcc)).
-* Fixed database checking. [#8251](https://github.com/ydb-platform/ydb/pull/8251) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#8277](https://github.com/ydb-platform/ydb/pull/8277) ([Vitaly Stoyan](https://github.com/vitstn)).
 * ... [#8285](https://github.com/ydb-platform/ydb/pull/8285) ([Filitov Mikhail](https://github.com/lll-phill-lll)).
 * Fix for false-postives in storage healthcheck. [#8291](https://github.com/ydb-platform/ydb/pull/8291) ([vporyadke](https://github.com/vporyadke)).
@@ -839,14 +856,12 @@
 * To reflect cors headers fix. [#8315](https://github.com/ydb-platform/ydb/pull/8315) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#8333](https://github.com/ydb-platform/ydb/pull/8333) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Fix segfault in autocomplete handler when redirecting to a database closes [#8345](https://github.com/ydb-platform/ydb/issues/8345). [#8367](https://github.com/ydb-platform/ydb/pull/8367) ([Alexey Efimov](https://github.com/adameat)).
-* Fixed cleanup table retries. [#8369](https://github.com/ydb-platform/ydb/pull/8369) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#8408](https://github.com/ydb-platform/ydb/pull/8408) ([Oleg Doronin](https://github.com/dorooleg)).
 * Fix aggregation of table stats for OLAP tables. [#8417](https://github.com/ydb-platform/ydb/pull/8417) ([Semyon](https://github.com/swalrus1)).
 * ... [#8422](https://github.com/ydb-platform/ydb/pull/8422) ([yumkam](https://github.com/yumkam)).
 * Fix segfault in tenantinfo handler closes [#8448](https://github.com/ydb-platform/ydb/issues/8448). [#8449](https://github.com/ydb-platform/ydb/pull/8449) ([Alexey Efimov](https://github.com/adameat)).
 * Fix segfault for heap iterator test. [#8473](https://github.com/ydb-platform/ydb/pull/8473) ([mregrock](https://github.com/mregrock)).
 * Add optional to feature flags to reflect absence of values. [#8510](https://github.com/ydb-platform/ydb/pull/8510) ([Alexey Efimov](https://github.com/adameat)).
-* The entry for `WriteId` was not saved if there was an empty list of partitions in `TTxWriteInfo`. As a result, after restoring the tablet, `Y_VERIFY` was triggered. [#8517](https://github.com/ydb-platform/ydb/pull/8517) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Clickhouse is now always able to parse timestamp data parsed by arrow library. [#8547](https://github.com/ydb-platform/ydb/pull/8547) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * Fill final stats only once at the end of execution. [#8553](https://github.com/ydb-platform/ydb/pull/8553) ([Ivan](https://github.com/abyss7)).
 * ... [#8592](https://github.com/ydb-platform/ydb/pull/8592) ([Aleksei Borzenkov](https://github.com/snaury)).
@@ -863,11 +878,8 @@
 * ... [#8745](https://github.com/ydb-platform/ydb/pull/8745) ([Nikolay Shestakov](https://github.com/nshestakov)).
 * Do not ask hive for tablet info unless it's a database node list do not merge whiteboard info in viewer service by default. [#8790](https://github.com/ydb-platform/ydb/pull/8790) ([Alexey Efimov](https://github.com/adameat)).
 * Disable metadata objects on serverless. [#8806](https://github.com/ydb-platform/ydb/pull/8806) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* After restarting, the PQ tablet can re-send the message `TEvTxCalcPredicate` to the partition. Currently, the actor of the partition does not check the `PlanStep` messages. This is a mistake. Since if he has already completed this transaction before, the predicate will be calculated incorrectly. As a result, the transaction may be partially completed. [#8809](https://github.com/ydb-platform/ydb/pull/8809) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * ... [#8827](https://github.com/ydb-platform/ydb/pull/8827) ([Vitaly Stoyan](https://github.com/vitstn)).
-* Fix erroneous finish on TDqInputMergeBlockStreamValue. [#8834](https://github.com/ydb-platform/ydb/pull/8834) ([Andrey Neporada](https://github.com/nepal)).
 * Fix resolved timestamp emitted too early for some displaced upserts. [#8847](https://github.com/ydb-platform/ydb/pull/8847) ([Aleksei Borzenkov](https://github.com/snaury)).
-* Fix reporting of initial VDisk status to SysView. [#8853](https://github.com/ydb-platform/ydb/pull/8853) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * ... [#8894](https://github.com/ydb-platform/ydb/pull/8894) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Fix wrong YQL_ENSURE in PushdownComplexFiltersOverAggregate. [#8899](https://github.com/ydb-platform/ydb/pull/8899) ([Andrey Neporada](https://github.com/nepal)).
 * Do not try to call IsComplete() on Arguments. [#8901](https://github.com/ydb-platform/ydb/pull/8901) ([Andrey Neporada](https://github.com/nepal)).
@@ -891,7 +903,6 @@
 * ... [#9118](https://github.com/ydb-platform/ydb/pull/9118) ([Oleg Doronin](https://github.com/dorooleg)).
 * NodeBroker now sends deltas when listing recently added nodes. [#9122](https://github.com/ydb-platform/ydb/pull/9122) ([Aleksei Borzenkov](https://github.com/snaury)).
 * Fix some bugs in jsonpath. [#9146](https://github.com/ydb-platform/ydb/pull/9146) ([Vadim Averin](https://github.com/avevad)).
-* Fix disabled use virtual addressing option for import from S3. [#9162](https://github.com/ydb-platform/ydb/pull/9162) ([Ilia Shakhov](https://github.com/pixcc)).
 * Limit inflight coordination service session requests. [#9168](https://github.com/ydb-platform/ydb/pull/9168) ([Aleksei Borzenkov](https://github.com/snaury)).
 * YDB FQ: mitigate DNS server misbehaving error in Docker-based YDB Connector test. [#9172](https://github.com/ydb-platform/ydb/pull/9172) ([Vitaly Isaev](https://github.com/vitalyisaev2)).
 * Another yet antlr build fix for windows. [#9173](https://github.com/ydb-platform/ydb/pull/9173) ([Bulat](https://github.com/Gazizonoki)).
@@ -899,7 +910,6 @@
 * Make sure we have properly aligned arrow buffers after deserialization. [#9179](https://github.com/ydb-platform/ydb/pull/9179) ([Andrey Neporada](https://github.com/nepal)).
 * CTAS fixed for script executions. [#9228](https://github.com/ydb-platform/ydb/pull/9228) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#9229](https://github.com/ydb-platform/ydb/pull/9229) ([Vitaly Stoyan](https://github.com/vitstn)).
-* ... [#9231](https://github.com/ydb-platform/ydb/pull/9231) ([VPolka](https://github.com/VPolka)).
 * There is an extra check in the code. [#9281](https://github.com/ydb-platform/ydb/pull/9281) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Fix CopyToChunked for empty batch. [#9288](https://github.com/ydb-platform/ydb/pull/9288) ([Nikita Vasilev](https://github.com/nikvas0)).
 * Corrected the iterator validation for the VDiskState.find(). [#9309](https://github.com/ydb-platform/ydb/pull/9309) ([mregrock](https://github.com/mregrock)).
@@ -908,12 +918,10 @@
 * Highlight YQL comments in YDB CLI interactive mode. [#9359](https://github.com/ydb-platform/ydb/pull/9359) ([Victor Smirnov](https://github.com/vityaman)).
 * Fixed a bug where an invariant could be violated in SchemeShard after the CDC initial scan. [#9360](https://github.com/ydb-platform/ydb/pull/9360) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * ... [#9384](https://github.com/ydb-platform/ydb/pull/9384) ([kruall](https://github.com/kruall)).
-* The value of `PartitionsInited` changed for all partitions. As a result, after the first entry in the transaction, the `DescripeTopic` operation hung with the `IncludeStats` flag. [#9392](https://github.com/ydb-platform/ydb/pull/9392) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * When creating a topic or a consumer, if the user does not specify the `--supported-codecs` option, then the `Codecs__` field remains empty. [#9419](https://github.com/ydb-platform/ydb/pull/9419) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Scheme operations (e.g. AlterTable) are now forbidden on backup tables. [#9431](https://github.com/ydb-platform/ydb/pull/9431) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * ... [#9456](https://github.com/ydb-platform/ydb/pull/9456) ([Roman Udovichenko](https://github.com/rvu1024)).
 * Cleanup and fix antlr make files. Fixes win build. [#9459](https://github.com/ydb-platform/ydb/pull/9459) ([Andrey Neporada](https://github.com/nepal)).
-* There are many places where the field "remote_address" is empty. Fix this for these cases. [#9460](https://github.com/ydb-platform/ydb/pull/9460) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * Deleted an unnecessary function call in the `TSendMessageBatchReplyCallback` code. [#9476](https://github.com/ydb-platform/ydb/pull/9476) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * ... [#9499](https://github.com/ydb-platform/ydb/pull/9499) ([Oleg Doronin](https://github.com/dorooleg)).
 * Fixed screts not found error handling. [#9501](https://github.com/ydb-platform/ydb/pull/9501) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
@@ -923,9 +931,7 @@
 * Fix maximum pdisks per node calculation. [#9563](https://github.com/ydb-platform/ydb/pull/9563) ([Alexey Efimov](https://github.com/adameat)).
 * Fix sorting of inner elements in viewer/nodes handler. [#9565](https://github.com/ydb-platform/ydb/pull/9565) ([Alexey Efimov](https://github.com/adameat)).
 * Fixed error duplicate session. [#9583](https://github.com/ydb-platform/ydb/pull/9583) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
-* The consumer's generation number is not stored in the transaction. Because of this, the consumer's reading position may be reset. [#9590](https://github.com/ydb-platform/ydb/pull/9590) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Recompilation with query from request can affect compile cache. [#9593](https://github.com/ydb-platform/ydb/pull/9593) ([VPolka](https://github.com/VPolka)).
-* Service parties do not need to process the config update. The PQ tablet should only send a message to the main partitions. [#9599](https://github.com/ydb-platform/ydb/pull/9599) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Fix handling of uncorrelated column name in ORDER BY. [#9602](https://github.com/ydb-platform/ydb/pull/9602) ([Andrey Neporada](https://github.com/nepal)).
 * Ydb/core/kqp/ut/olap/kqpolapsysview.statssysviewbytesdictstatactualization. [#9605](https://github.com/ydb-platform/ydb/pull/9605) ([Andrey Neporada](https://github.com/nepal)).
 * ... [#9625](https://github.com/ydb-platform/ydb/pull/9625) ([azevaykin](https://github.com/azevaykin)).
@@ -986,7 +992,6 @@
 * Fix stucking donor queries. [#10470](https://github.com/ydb-platform/ydb/pull/10470) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * ... [#10484](https://github.com/ydb-platform/ydb/pull/10484) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Do not convert google datetime to string in schema. [#10487](https://github.com/ydb-platform/ydb/pull/10487) ([Alexey Efimov](https://github.com/adameat)).
-* Because of unhandled double-notification the `IntrusiveList` external size became wrong, which leads to crashes and asserts. [#10499](https://github.com/ydb-platform/ydb/pull/10499) ([Ivan](https://github.com/abyss7)).
 * ... [#10522](https://github.com/ydb-platform/ydb/pull/10522) ([kruall](https://github.com/kruall)).
 * EntropyPool().Read() can generate data partially, and it returns read bytes, so it should be read inside while loop. [#10534](https://github.com/ydb-platform/ydb/pull/10534) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
 * Stabilize table order in test. [#10539](https://github.com/ydb-platform/ydb/pull/10539) ([Andrey Neporada](https://github.com/nepal)).
@@ -997,10 +1002,8 @@
 * ... [#10612](https://github.com/ydb-platform/ydb/pull/10612) ([Oleg Doronin](https://github.com/dorooleg)).
 * The default value for the `--codec` option of the `ydb topic write` command. [#10651](https://github.com/ydb-platform/ydb/pull/10651) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * Fix volatile transactions getting stuck after a restart. [#10679](https://github.com/ydb-platform/ydb/pull/10679) ([Aleksei Borzenkov](https://github.com/snaury)).
-* ... [#10696](https://github.com/ydb-platform/ydb/pull/10696) ([azevaykin](https://github.com/azevaykin)).
 * This unreverts https://github.com/ydb-platform/ydb/pull/9979 after https://github.com/ydb-platform/ydb/pull/10575. And fixes missed case when finalize is turn off, that was caught with yql tests. [#10707](https://github.com/ydb-platform/ydb/pull/10707) ([Vladluk](https://github.com/vladl2802)).
 * ... [#10712](https://github.com/ydb-platform/ydb/pull/10712) ([Nikolay Shestakov](https://github.com/nshestakov)).
-* Fix memory consumption restriction in stream RPC calls: execute scan query, execute query and yql script. [#10758](https://github.com/ydb-platform/ydb/pull/10758) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * ... [#10795](https://github.com/ydb-platform/ydb/pull/10795) ([Vitaly Stoyan](https://github.com/vitstn)).
 * ... [#10815](https://github.com/ydb-platform/ydb/pull/10815) ([azevaykin](https://github.com/azevaykin)).
 * Correct counting of resources in cluster and tenantinfo handlers. [#10819](https://github.com/ydb-platform/ydb/pull/10819) ([Alexey Efimov](https://github.com/adameat)).
@@ -1015,7 +1018,6 @@
 * ... [#10944](https://github.com/ydb-platform/ydb/pull/10944) ([Roman Udovichenko](https://github.com/rvu1024)).
 * Fixed use after free. [#10978](https://github.com/ydb-platform/ydb/pull/10978) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * In rare cases we can receive error and response together. closes [#10979](https://github.com/ydb-platform/ydb/issues/10979). [#10985](https://github.com/ydb-platform/ydb/pull/10985) ([Alexey Efimov](https://github.com/adameat)).
-* ... [#11017](https://github.com/ydb-platform/ydb/pull/11017) ([Vitaly Stoyan](https://github.com/vitstn)).
 * Fix possible race with NodeDisconnected and incoming messages. [#11024](https://github.com/ydb-platform/ydb/pull/11024) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * Fix block device size calculation. [#11028](https://github.com/ydb-platform/ydb/pull/11028) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * YT block input fix for dynamic tables. [#11040](https://github.com/ydb-platform/ydb/pull/11040) ([Mark Ziganshin](https://github.com/loochek)).
@@ -1036,11 +1038,9 @@
 * YDB nodes have different time counting. May occured situations when ticket cannot verify and get error "token verification failed: token expired" ... [#11212](https://github.com/ydb-platform/ydb/pull/11212) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * Support ANSI SQL syntax highlighting. [#11233](https://github.com/ydb-platform/ydb/pull/11233) ([Victor Smirnov](https://github.com/vityaman)).
 * Control memory consumption in run script actor. Unify memory consumption in execute query RPC and run script actor. [#11241](https://github.com/ydb-platform/ydb/pull/11241) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
-* Fix shard ranges sort. [#11257](https://github.com/ydb-platform/ydb/pull/11257) ([Nikita Vasilev](https://github.com/nikvas0)).
 * Fix crash in storage/groups - access of already released memory closes [#11263](https://github.com/ydb-platform/ydb/issues/11263). [#11268](https://github.com/ydb-platform/ydb/pull/11268) ([Alexey Efimov](https://github.com/adameat)).
 * Fix for [yq-3747](https://st.yandex-team.ru/yq-3747). [#11271](https://github.com/ydb-platform/ydb/pull/11271) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
 * Fix bootstrapper being unable to boot tablets in certain cases. [#11284](https://github.com/ydb-platform/ydb/pull/11284) ([Aleksei Borzenkov](https://github.com/snaury)).
-* Adding the ability to register dynamic nodes by certificate. We wont to know how node was registered in node broker. Flag AuthorizeByCertificate is used for this goal. [#11315](https://github.com/ydb-platform/ydb/pull/11315) ([Andrey Molotkov](https://github.com/molotkov-and)).
 * Ensure nodes manually set as up do not revert to down. [#11349](https://github.com/ydb-platform/ydb/pull/11349) ([vporyadke](https://github.com/vporyadke)).
 * ... [#11384](https://github.com/ydb-platform/ydb/pull/11384) ([Alexey Efimov](https://github.com/adameat)).
 * There was wrong name of YDB CLI option in doc. Fix it. [#11391](https://github.com/ydb-platform/ydb/pull/11391) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
@@ -1048,8 +1048,6 @@
 * Appears in REDUCE with multiple inputs if all of them are empty. [#11417](https://github.com/ydb-platform/ydb/pull/11417) ([Roman Udovichenko](https://github.com/rvu1024)).
 * Objects with thread storage duration are guaranteed to be destroyed **only** for the thread which calls exit. Therefore there is no guarantee that destruction will happen for objects associated with other threads. This may cause the [blockstore-server](https://github.com/ydb-platform/nbs/tree/main/cloud/blockstore/apps/server) to crash as described below: ``` VERIFY failed (2024-11-06T16:40:28.177019Z):. [#11422](https://github.com/ydb-platform/ydb/pull/11422) ([Mikhail Montsev](https://github.com/SvartMetal)).
 * Enforce equal groups in YtCopy and leading operation. [#11435](https://github.com/ydb-platform/ydb/pull/11435) ([Roman Udovichenko](https://github.com/rvu1024)).
-* Fix audit log not recording unsuccessful ldap logins. [#11438](https://github.com/ydb-platform/ydb/pull/11438) ([ijon](https://github.com/ijon)).
-* I guess it was added accidentally and so it need to be removed. [#11441](https://github.com/ydb-platform/ydb/pull/11441) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
 * EvWrite: add mvcc snapshot. [#11474](https://github.com/ydb-platform/ydb/pull/11474) ([Nikita Vasilev](https://github.com/nikvas0)).
 * A datashard could catch VERIFY during restart with scheme transaction inflight. [#11483](https://github.com/ydb-platform/ydb/pull/11483) ([azevaykin](https://github.com/azevaykin)).
 * Added column types validation. [#11487](https://github.com/ydb-platform/ydb/pull/11487) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
@@ -1079,7 +1077,6 @@
 * Fix blob recovery actor bug. [#11857](https://github.com/ydb-platform/ydb/pull/11857) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * ... [#11865](https://github.com/ydb-platform/ydb/pull/11865) ([yumkam](https://github.com/yumkam)).
 * ... [#11869](https://github.com/ydb-platform/ydb/pull/11869) ([Innokentii Mokin](https://github.com/Enjection)).
-* ... [#11886](https://github.com/ydb-platform/ydb/pull/11886) ([azevaykin](https://github.com/azevaykin)).
 * ... [#11900](https://github.com/ydb-platform/ydb/pull/11900) ([Nikolay Shestakov](https://github.com/nshestakov)).
 * Fix [#11193](https://github.com/ydb-platform/ydb/issues/11193). [#11906](https://github.com/ydb-platform/ydb/pull/11906) ([flown4qqqq](https://github.com/flown4qqqq)).
 * A race between actors. The actor of the KP session is transferred to the `FinalCleanupState`. In this composition, he does not respond to the `TEvQueryRequest` message from the `TPartitionWriter` actor. [#11920](https://github.com/ydb-platform/ydb/pull/11920) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
@@ -1109,10 +1106,8 @@
 * Fixed commit for possible RW tx without writes (like 'update ... set .. where ...' touched no rows) - Fixed Volatile conditions. [#12279](https://github.com/ydb-platform/ydb/pull/12279) ([Nikita Vasilev](https://github.com/nikvas0)).
 * When a user tries to connect without the necessary permissions, this error is returned:. [#12287](https://github.com/ydb-platform/ydb/pull/12287) ([azevaykin](https://github.com/azevaykin)).
 * Fix PDisk didn't check TEvChunkWrite's offset and wrote data to with an unexpected offset. Add UT for that case. [#12298](https://github.com/ydb-platform/ydb/pull/12298) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
-* Dont consider indices with all pk fields in key. [#12315](https://github.com/ydb-platform/ydb/pull/12315) ([Mikhail Surin](https://github.com/ssmike)).
 * CBO at Level 2 was activated when some tables in the queries were not Data Shard tables, and this included AS_Table constructs and parameters. [#12322](https://github.com/ydb-platform/ydb/pull/12322) ([Pavel Velikhov](https://github.com/pavelvelikhov)).
 * Sometime PDisk looses replies, so add more debug assertions. [#12331](https://github.com/ydb-platform/ydb/pull/12331) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
-* The partition periodically transmits a set of `PQ/*` indicators to the PQ tablet. This is also done by the service partition for writing to the transaction. If the duration of the transaction is less than the period of transfer of indicators, then part of the data was lost. Now, the service partition transmits the accumulated indicators to the PQ tablet before deletion. [#12337](https://github.com/ydb-platform/ydb/pull/12337) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * In the `linux-x86_64-release-asan` configuration, the `ReadFromTopic` function does not have time to return the expected number of messages. Replaced with calls `Read_Exactly_N_Messages_From_Topic`. [#12364](https://github.com/ydb-platform/ydb/pull/12364) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * ... [#12391](https://github.com/ydb-platform/ydb/pull/12391) ([Alexey Efimov](https://github.com/adameat)).
 * MovedPatch uses some vectors that were allocated only during VPatch. Now they are also allocated during MovedPatch if they were not initially allocated. [#12418](https://github.com/ydb-platform/ydb/pull/12418) ([kruall](https://github.com/kruall)).
@@ -1125,7 +1120,6 @@
 * ... [#12516](https://github.com/ydb-platform/ydb/pull/12516) ([Vlad Kuznetsov](https://github.com/va-kuznecov)).
 * Fix GetBlock for BlobDepot. [#12525](https://github.com/ydb-platform/ydb/pull/12525) ([mregrock](https://github.com/mregrock)).
 * ... [#12568](https://github.com/ydb-platform/ydb/pull/12568) ([zverevgeny](https://github.com/zverevgeny)).
-* Bugfix in PQRB (potential loss of metrics for new consumers). [#12613](https://github.com/ydb-platform/ydb/pull/12613) ([FloatingCrowbar](https://github.com/FloatingCrowbar)).
 * Fix not working balancing command in some cases. [#12668](https://github.com/ydb-platform/ydb/pull/12668) ([kruall](https://github.com/kruall)).
 * Https://github.com/ydb-platform/ydb/issues/11923. [#12678](https://github.com/ydb-platform/ydb/pull/12678) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
 * Fixed `SCHEMESHARD_CDC_STREAM_SCAN_FINALIZER` actor leak. [#12679](https://github.com/ydb-platform/ydb/pull/12679) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
@@ -1133,6 +1127,7 @@
 * Fix error message [#10853](https://github.com/ydb-platform/ydb/issues/10853). [#12701](https://github.com/ydb-platform/ydb/pull/12701) ([Mikhail Surin](https://github.com/ssmike)).
 * Fixed fault for parsing errors without filter. [#12707](https://github.com/ydb-platform/ydb/pull/12707) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Fixed memory leak in filters. [#12739](https://github.com/ydb-platform/ydb/pull/12739) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* ... [#12744](https://github.com/ydb-platform/ydb/pull/12744) ([yumkam](https://github.com/yumkam)).
 * Fixed missing historical data. [#12757](https://github.com/ydb-platform/ydb/pull/12757) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * ... [#12777](https://github.com/ydb-platform/ydb/pull/12777) ([Alexey Efimov](https://github.com/adameat)).
 * Fix disconnected proxies unexpectedly registering in coordination service. [#12782](https://github.com/ydb-platform/ydb/pull/12782) ([Aleksei Borzenkov](https://github.com/snaury)).
@@ -1158,14 +1153,11 @@
 * ... [#13024](https://github.com/ydb-platform/ydb/pull/13024) ([Alexey Efimov](https://github.com/adameat)).
 * ... [#13034](https://github.com/ydb-platform/ydb/pull/13034) ([Alexey Efimov](https://github.com/adameat)).
 * Rename gcc_version to version. [#13053](https://github.com/ydb-platform/ydb/pull/13053) ([Dmitrii Dmitriev](https://github.com/dimdim1177)).
-* The service partition can receive the `TEvGetWriteInfoRequest` message in the `StateInit` state. In this case, it postpones the message to the `PendingEvents` queue. When the service partition switches to the `StateIdle` state she sends herself all the accumulated messages. The service partition may receive a `TEvGetWriteInfoRequest` message with an empty sender address in the `StateIdle` state. As a result, the responses `TEvGetWriteInfoResponse` and `TEvGetWriteInfoError` are lost. [#13066](https://github.com/ydb-platform/ydb/pull/13066) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
-* Fixes creating unrestorable S3 backups when splitting and merging the table. [#13067](https://github.com/ydb-platform/ydb/pull/13067) ([Ilia Shakhov](https://github.com/pixcc)).
 * Fix deferred PDisk start logic with distconf. [#13082](https://github.com/ydb-platform/ydb/pull/13082) ([Alexander Rutkovsky](https://github.com/alexvru)).
 * Fix SelfManagement section absence check. [#13087](https://github.com/ydb-platform/ydb/pull/13087) ([mregrock](https://github.com/mregrock)).
 * Fixed pq source sensors names. [#13088](https://github.com/ydb-platform/ydb/pull/13088) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
 * Fix linking in nodewarden. [#13105](https://github.com/ydb-platform/ydb/pull/13105) ([mregrock](https://github.com/mregrock)).
 * ... [#13118](https://github.com/ydb-platform/ydb/pull/13118) ([yumkam](https://github.com/yumkam)).
-* After the transaction is completed, the program pushes forward the `ExecStep`. The transaction itself is not deleted until it receives a `TEvReadSetAck` from other tablets. After restarting, the tablet excludes transactions with `Step < ExecStep`. As a result, the transaction may hang in other tablets. [#13134](https://github.com/ydb-platform/ydb/pull/13134) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
 * [ydbd_slice] fixed Namespace error on ydbd_slice update. [#13171](https://github.com/ydb-platform/ydb/pull/13171) ([Alexander Petrukhin](https://github.com/shmel1k)).
 * Fix ColumnShardArbiter shard sets. [#13214](https://github.com/ydb-platform/ydb/pull/13214) ([Nikita Vasilev](https://github.com/nikvas0)).
 * ... [#13229](https://github.com/ydb-platform/ydb/pull/13229) ([Alexey Efimov](https://github.com/adameat)).
@@ -1191,8 +1183,60 @@
 * Fix metadata handling in configs. [#13741](https://github.com/ydb-platform/ydb/pull/13741) ([Innokentii Mokin](https://github.com/Enjection)).
 * Fix baremetal none-1-node template. [#13742](https://github.com/ydb-platform/ydb/pull/13742) ([Konstantin Nikiforov](https://github.com/melazyk)).
 * Original PR: https://github.com/ydb-platform/ydb/pull/13658. [#13761](https://github.com/ydb-platform/ydb/pull/13761) ([Bulat](https://github.com/Gazizonoki)).
+* Kill tablet on BS failures instead of aborting node process. [#13766](https://github.com/ydb-platform/ydb/pull/13766) ([Vadim Averin](https://github.com/avevad)).
 * Allow to work without volatile - Don't create a lot of actors at one mailbox - Wait for all shards to commit - Changed error for undelivered message to buffer actor. [#13786](https://github.com/ydb-platform/ydb/pull/13786) ([Nikita Vasilev](https://github.com/nikvas0)).
 * Fix getting max pk in a portion as eviction border on CS. [#13806](https://github.com/ydb-platform/ydb/pull/13806) ([Semyon](https://github.com/swalrus1)).
 * Fix weight actualization delay in CS optimizer. [#13812](https://github.com/ydb-platform/ydb/pull/13812) ([Semyon](https://github.com/swalrus1)).
 * Fix unexpected message. [#13813](https://github.com/ydb-platform/ydb/pull/13813) ([Nikita Vasilev](https://github.com/nikvas0)).
-* When loading metadata from the YDB side, optional type was no longer added to the data type. [#13815](https://github.com/ydb-platform/ydb/pull/13815) ([azevaykin](https://github.com/azevaykin)).
+* Fix redirects for serverless databases. [#13856](https://github.com/ydb-platform/ydb/pull/13856) ([Alexey Efimov](https://github.com/adameat)).
+* Two transactions. In the head of the first one is `PartNo != 0`. During the commit, the partition gathers them together to write them in one operation. The final key does not take into account the `PartNo` from the head of the first transaction. [#13863](https://github.com/ydb-platform/ydb/pull/13863) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
+* Handle S3 errors in GC on CS. [#13890](https://github.com/ydb-platform/ydb/pull/13890) ([Semyon](https://github.com/swalrus1)).
+* Fixed url escaping for s3 insert. [#13891](https://github.com/ydb-platform/ydb/pull/13891) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* After ydb restart TQueryClient pool counter shows phantom sessions, that may lead to CLIENT_RESOURCE_EXHAUSTED error. [#13901](https://github.com/ydb-platform/ydb/pull/13901) ([Bulat](https://github.com/Gazizonoki)).
+* ... [#13909](https://github.com/ydb-platform/ydb/pull/13909) ([yumkam](https://github.com/yumkam)).
+* Исправлена ошибка `Key is out of range`, возникающая из-за разделения и слияния партиций таблицы во время загрузки таблицы из S3-совместимого хранилища. [#13910](https://github.com/ydb-platform/ydb/pull/13910) ([Ilia Shakhov](https://github.com/pixcc)).
+* ... [#13917](https://github.com/ydb-platform/ydb/pull/13917) ([yumkam](https://github.com/yumkam)).
+* Fix ranges & points mix in read actor. [#13925](https://github.com/ydb-platform/ydb/pull/13925) ([Nikita Vasilev](https://github.com/nikvas0)).
+* ... [#13934](https://github.com/ydb-platform/ydb/pull/13934) ([Egor Tarasov](https://github.com/Jorres)).
+* ... [#13935](https://github.com/ydb-platform/ydb/pull/13935) ([Vitaly Stoyan](https://github.com/vitstn)).
+* Fixed consistency issues related to caching deleted ranges. [#13936](https://github.com/ydb-platform/ydb/pull/13936) ([Aleksei Borzenkov](https://github.com/snaury)).
+* Fixed multi statement select. [#13946](https://github.com/ydb-platform/ydb/pull/13946) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Fix for crash. closes [#13945](https://github.com/ydb-platform/ydb/issues/13945). prevents any other crashes. [#13975](https://github.com/ydb-platform/ydb/pull/13975) ([Alexey Efimov](https://github.com/adameat)).
+* ... [#13983](https://github.com/ydb-platform/ydb/pull/13983) ([VPolka](https://github.com/VPolka)).
+* Avoid verify in empty span on resolve errors. [#14016](https://github.com/ydb-platform/ydb/pull/14016) ([Alexey Efimov](https://github.com/adameat)).
+* Fixed hanging in kqp write actor. [#14017](https://github.com/ydb-platform/ydb/pull/14017) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Fix TTL-actualization of locked portions. [#14028](https://github.com/ydb-platform/ydb/pull/14028) ([Semyon](https://github.com/swalrus1)).
+* Unlink buffer actor. [#14046](https://github.com/ydb-platform/ydb/pull/14046) ([Nikita Vasilev](https://github.com/nikvas0)).
+* Before this PR https://github.com/ydb-platform/ydb/pull/14101/files#diff-baedb7407d57fe1aebc64aed1bf0550aba089d8491969f87b7c38f6fe7ac6a18L490 `queryPlan` local variable could be destroyed before global `program`, which saved link to `queryPlan`. [#14101](https://github.com/ydb-platform/ydb/pull/14101) ([Marina Pereskokova](https://github.com/Krisha11)).
+* The test consumes a lot of memory. Breaks the integration. Temporarily commented it out. [#14160](https://github.com/ydb-platform/ydb/pull/14160) ([Alek5andr-Kotov](https://github.com/Alek5andr-Kotov)).
+* ... [#14169](https://github.com/ydb-platform/ydb/pull/14169) ([Alexey Efimov](https://github.com/adameat)).
+* ... [#14184](https://github.com/ydb-platform/ydb/pull/14184) ([Alexey Efimov](https://github.com/adameat)).
+* Fixed actor_system_config settings in ydbd_slice templates. [#14190](https://github.com/ydb-platform/ydb/pull/14190) ([Alexander Petrukhin](https://github.com/shmel1k)).
+* Fix for requiring token for login page. [#14246](https://github.com/ydb-platform/ydb/pull/14246) ([Alexey Efimov](https://github.com/adameat)).
+* Fixed a bug where some errors could be ignored when restoring from a local backup. [#14280](https://github.com/ydb-platform/ydb/pull/14280) ([Ilnaz Nizametdinov](https://github.com/CyberROFL)).
+* ... [#14338](https://github.com/ydb-platform/ydb/pull/14338) ([Aleksey Myasnikov](https://github.com/asmyasnikov)).
+* ... [#14361](https://github.com/ydb-platform/ydb/pull/14361) ([Alexey Efimov](https://github.com/adameat)).
+* Fix lock hash type. [#14379](https://github.com/ydb-platform/ydb/pull/14379) ([Nikita Vasilev](https://github.com/nikvas0)).
+* Ignore empty TTL settings in schemas on CS startup. [#14393](https://github.com/ydb-platform/ydb/pull/14393) ([Semyon](https://github.com/swalrus1)).
+* ... [#14395](https://github.com/ydb-platform/ydb/pull/14395) ([Innokentii Mokin](https://github.com/Enjection)).
+* ... [#14404](https://github.com/ydb-platform/ydb/pull/14404) ([Innokentii Mokin](https://github.com/Enjection)).
+* ... [#14406](https://github.com/ydb-platform/ydb/pull/14406) ([Innokentii Mokin](https://github.com/Enjection)).
+* Fixed overflow in CalculateNextAttemptDelay * Fixed missing config setting. [#14415](https://github.com/ydb-platform/ydb/pull/14415) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Fixed health check for multi tenant mode * Fixed race during RM initialization * Fixed retries for script queries and workload manager. [#14427](https://github.com/ydb-platform/ydb/pull/14427) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* ... [#14433](https://github.com/ydb-platform/ydb/pull/14433) ([Innokentii Mokin](https://github.com/Enjection)).
+* #14430. [#14447](https://github.com/ydb-platform/ydb/pull/14447) ([kruall](https://github.com/kruall)).
+* Fixed fault on sink error. [#14457](https://github.com/ydb-platform/ydb/pull/14457) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Remove EDS on init of scenario tests. [#14475](https://github.com/ydb-platform/ydb/pull/14475) ([Semyon](https://github.com/swalrus1)).
+* Fix the order of parameters parsing for TLS connections. [#14476](https://github.com/ydb-platform/ydb/pull/14476) ([Ivan Blinkov](https://github.com/blinkov)).
+* Don't ack readsets too early on volatile tx abort. [#14495](https://github.com/ydb-platform/ydb/pull/14495) ([Aleksei Borzenkov](https://github.com/snaury)).
+* Fix lost data for stream EvWrite. [#14538](https://github.com/ydb-platform/ydb/pull/14538) ([Nikita Vasilev](https://github.com/nikvas0)).
+* Values of partitioned columns are now correct in queries with explicit partitioning. [#14545](https://github.com/ydb-platform/ydb/pull/14545) ([Ivan Sukhov](https://github.com/evanevanevanevannnn)).
+* Fix delete type annotation. [#14561](https://github.com/ydb-platform/ydb/pull/14561) ([Nikita Vasilev](https://github.com/nikvas0)).
+* Fixed pragmas passing for CTAS. [#14604](https://github.com/ydb-platform/ydb/pull/14604) ([Pisarenko Grigoriy](https://github.com/GrigoriyPA)).
+* Fix metering flag behaviour in mixed-versions cluster. [#14615](https://github.com/ydb-platform/ydb/pull/14615) ([Mikhail Surin](https://github.com/ssmike)).
+* Fix segfault in storage/groups handler. [#14623](https://github.com/ydb-platform/ydb/pull/14623) ([Alexey Efimov](https://github.com/adameat)).
+* Fixes this problem: https://st.yandex-team.ru/KIKIMR-22216. [#14638](https://github.com/ydb-platform/ydb/pull/14638) ([Pavel Velikhov](https://github.com/pavelvelikhov)).
+* There is no WorkingDirectory parameter in "move" scheme shard operations. Audit logs use this parameter to define database label in log. So I took directory for defining database from source path of move operations in order to fix lack of database in audit logs. [#14652](https://github.com/ydb-platform/ydb/pull/14652) ([Vasily Gerasimov](https://github.com/UgnineSirdis)).
+* Automatically retry the view creation on imports from S3 if the missing view dependency is reported when all other items have already been restored. [#14706](https://github.com/ydb-platform/ydb/pull/14706) ([Daniil Demin](https://github.com/jepett0)).
+* Fixed underflow in YDB C++ SDK decimal parser: https://github.com/ydb-platform/ydb-cpp-sdk/issues/379. [#14807](https://github.com/ydb-platform/ydb/pull/14807) ([Bulat](https://github.com/Gazizonoki)).
+* Correctly handle inf values in streaming query closes [#14837](https://github.com/ydb-platform/ydb/issues/14837). [#14875](https://github.com/ydb-platform/ydb/pull/14875) ([Alexey Efimov](https://github.com/adameat)).
