@@ -2,6 +2,15 @@
 
 ## Alek5andr-Kotov
 
+Убрали фиксы в транзакциях топик-таблица до их релиза внешним пользователям, убрали коммиты в CLI, убрали тесты, рефакторинги, мелкие фиксы
+  
+* [#10460](https://github.com/ydb-platform/ydb/pull/10460) You cannot simultaneously commit offsets in a transaction and out of a transaction. - Fixed simultaneous commit handling
+* [#11920](https://github.com/ydb-platform/ydb/pull/11920) A race between actors. The actor of the KP session is transferred to the `FinalCleanupState`. In this composition, he does not respond to the `TEvQueryRequest` message from the `TPartitionWriter` actor. - Fixed race between actors
+* [#12060](https://github.com/ydb-platform/ydb/pull/12060) MinStep value - transactions are ordered by (Step, TxId) - the name of the state instead of the number. - Improved transaction ordering
+* [#12220](https://github.com/ydb-platform/ydb/pull/12220) When a transaction is committed, the value of the AvgWriteBytes metric changes. This, in turn, can lead to a split of the partition. - Fixed issue with AvgWriteBytes metric changes
+* [#12905](https://github.com/ydb-platform/ydb/pull/12905) Fixed the errors: 1. The program did not take into account that it can receive a `TEvReadSet` more times than the number of senders in `TEvProposeTransaction`. Deleted the check from `Y_ABORT_UNLESS'. 2. Replaced the `Y_ABORT_UNLESS` checks with the `ForceFalse` flag. Instead of an abnormal termination, the program returns `ABORTED`. - Fixed TEvReadSet handling
+* [#13863](https://github.com/ydb-platform/ydb/pull/13863) Two transactions. In the head of the first one is `PartNo != 0`. During the commit, the partition gathers them together to write them in one operation. The final key does not take into account the `PartNo` from the head of the first transaction. - Fixed PartNo handling in transaction commits
+
 ## Aleksei Borzenkov (snaury)
 
 ## Aleksei Kobzev (kobzonega)
