@@ -53,8 +53,6 @@
 - [#12782](https://github.com/ydb-platform/ydb/pull/12782) Fix disconnected proxies unexpectedly registering in coordination service. - Fixed disconnected proxies registration issue
 - [#13444](https://github.com/ydb-platform/ydb/pull/13444) Fix uncommitted changes leak and clean them up on startup. - Fixed uncommitted changes leak
 - [#13721](https://github.com/ydb-platform/ydb/pull/13721) Coordinator plan resolution can now be configured using immediate control board. - Improved coordinator plan resolution
-- [#13936](https://github.com/ydb-platform/ydb/pull/13936) Fixed consistency issues related to caching deleted ranges. - Fixed consistency issues with cached deleted ranges
-- [#14495](https://github.com/ydb-platform/ydb/pull/14495) Don't ack readsets too early on volatile tx abort. - Fixed early readset acknowledgement
 
 ## Aleksei Kobzev (kobzonega)
 - [#3012](https://github.com/ydb-platform/ydb/pull/3012) Copy section `host_configs` into `config.yaml` configuration. - Added host_configs copying to config.yaml
