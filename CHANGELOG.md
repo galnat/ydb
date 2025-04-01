@@ -1,3 +1,113 @@
+# Release Notes 25.1.1 by Authors
+
+## Alek5andr-Kotov
+
+## Aleksei Borzenkov (snaury)
+
+## Aleksei Kobzev (kobzonega)
+
+## Aleksey Myasnikov (asmyasnikov)
+
+## Alexander Petrukhin (shmel1k)
+
+## Alexander Rutkovsky (alexvru)
+
+## Alexey Efimov (adameat)
+
+## Alexey Ozeritskiy (resetius)
+
+## Alexey Pozdniakov (APozdniakov)
+
+## Andrei Rykov (StekPerepolnen)
+
+## Andrey Molotkov (molotkov-and)
+
+## Andrey Neporada (nepal)
+
+## Andrey Serebryanskiy (a-serebryanskiy)
+
+## Artem Alekseev (fexolm)
+
+## azevaykin
+
+## Bulat (Gazizonoki)
+
+## Daniil Timizhev (dahbka-lis)
+
+## Dmitrii Dmitriev (dimdim1177)
+
+## Evgeniy Ivanov (eivanov89)
+
+## Fedor Miron (fedor-miron)
+
+## Filitov Mikhail (lll-phill-lll)
+
+## FloatingCrowbar
+
+## flown4qqqq
+
+## Grigorii Papashvili (lifthelm)
+
+## Ilia Shakhov (pixcc)
+
+## Ilnaz Nizametdinov (CyberROFL)
+
+## Innokentii Mokin (Enjection)
+
+## Ivan (abyss7)
+
+## Ivan Blinkov (blinkov)
+
+## Ivan Nikolaev (lex007in)
+
+## Ivan Sukhov (evanevanevanevannnn)
+
+## Mark Ziganshin (loochek)
+
+## Mikhail Surin (ssmike)
+
+## mregrock
+
+## Nikita Vasilev (nikvas0)
+
+## Nikolay Perfilov (pnv1)
+
+## Orlov Pavel (OrlovPavel)
+
+## Pavel Velikhov (pavelvelikhov)
+
+## Pisarenko Grigoriy (GrigoriyPA)
+
+## Semyon (swalrus1)
+
+## Sergey Belyakov (serbel324)
+
+## Timur Sufiyanov (skywalker-jpg)
+
+## Vadim Averin (avevad)
+
+## Vasily Gerasimov (UgnineSirdis)
+
+## Victor Smirnov (vityaman)
+
+## Vitaly Isaev (vitalyisaev2)
+
+## Vitaly Stoyan (vitstn)
+
+## Vlad Kuznetsov (va-kuznecov)
+
+## Vladislav Gogov (vlad-gogov)
+
+## vporyadke
+
+## Vladluk (vladl2802)
+
+## yumkam
+
+## zverevgeny
+
+## Олег (iddqdex)
+
 # By Authors
 
 ## Alek5andr-Kotov
