@@ -16,6 +16,7 @@
 ## Aleksei Kobzev (kobzonega)
 
 ## Aleksey Myasnikov (asmyasnikov)
+[#11764](https://github.com/ydb-platform/ydb/pull/11764) Added feature flag enable_antlr4_parser to enable the ANTLRv4 query parser instead ANTLRv3 parser.
 
 ## Alexander Petrukhin (shmel1k)
 
@@ -119,7 +120,7 @@
 
 # By Authors
 
-## Alek5andr-Kotov
+## Alek5andr-Kotov ✅
 - [#7117](https://github.com/ydb-platform/ydb/pull/7117) The user's token may be empty. The program did not take this into account and the call to `AddOffsetToTransaction` failed with an error. - Fixed user's token empty handling
 - [#7375](https://github.com/ydb-platform/ydb/pull/7375) Fixed bugs: 1. In the `TEvDeletePartitionDone` message handler of the PQ tablet, the `TEvPoison` message was not sent to the partition actor. 2. In the `TEvPoison` handler of the actor of the service partition, the `TEvPoison` message was not sent to the actor of the read quoter. - Fixed bugs in partition actor messaging
 - [#7482](https://github.com/ydb-platform/ydb/pull/7482) Error in transitions between transaction states. - Fixed error in transitions between transaction states
@@ -184,7 +185,7 @@
 - [#12920](https://github.com/ydb-platform/ydb/pull/12920) Fix `ydb_configure` generation for section `host_configs` in static config. - Fixed ydb_configure generation
 - [#10881](https://github.com/ydb-platform/ydb/pull/10881) Fix container label in vdisk metrics for grafana dashboard. - Fixed container label in vdisk metrics
 
-## Aleksey Myasnikov (asmyasnikov)
+## Aleksey Myasnikov (asmyasnikov) ✅
 - [#11764](https://github.com/ydb-platform/ydb/pull/11764) Feature flag `enable_antlr4_parser` helps to enable the ANTLRv4 parser inside docker container local-ydb. - Added feature flag for ANTLRv4 parser
 - [#12690](https://github.com/ydb-platform/ydb/pull/12690) Rollback some changes from [#12403](https://github.com/ydb-platform/ydb/issues/12403). - Rolled back changes from #12403
 - [#12733](https://github.com/ydb-platform/ydb/pull/12733) ... - Experimental feature improvements
