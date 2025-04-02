@@ -1,3 +1,26 @@
+## Version 25.1 {#25-1}
+
+### Version 25.1.1 {#25-1-1}
+
+Release date: 
+
+#### Functionality
+
+* Added support for granular timecast protocol https://github.com/ydb-platform/ydb/issues/6512
+* DataShard: in-memory state migration on graceful restart https://github.com/ydb-platform/ydb/issues/11561
+* FeatureFlags: support changing at runtime https://github.com/ydb-platform/ydb/issues/9748ё
+* Global data consistency in asynchronous replication https://github.com/ydb-platform/ydb/issues/11454
+* Import/export changefeed's configuration - feature-flag https://github.com/ydb-platform/ydb/issues/7054
+* Троттлинг входящей нагрузки на запись на VDisk - https://github.com/ydb-platform/ydb/issues/12510
+* Поддержка автопартиционирования топиков в CDC. Можно создать автопартиционированный поток изменений для строковой таблицы. При увеличении скорости потока изменений число партиций в автопартиционированном потоке изменений будет увеличиваться автоматически. Параметры автопартиционирования потока изменений задаются его свойствами как топика. Feature флаг выключен по умолчанию.
+* Поддержка автопартиционирования топиков для асинхронной репликации. Потоки изменений для строковых таблиц во вновь создаваемых асинхронных репликациях создаются автопартиционированными в случае, если на кластере-источнике включен флаг EnableTopicAutopartitioningForCDC, а на кластере-приемнике включен флаг EnableTopicAutopartitioningForReplication.
+
+#### YDB UI
+
+#### Performance
+
+#### Bug Fixes
+
 # Release Notes 25.1.1 by Authors
 
 ## Alek5andr-Kotov
@@ -13,6 +36,9 @@
 
 ## Aleksei Borzenkov (snaury)
 
+* +[#7986](https://github.com/ydb-platform/ydb/pull/7986) Support for new granular timecast protocol in mediator tablets. - Added support for granular timecast protocol
+* +[#8090](https://github.com/ydb-platform/ydb/pull/8090) Use granular mediator time that is not blocked by other tablets. - Implemented unblocked mediator time usage
+
 ## Aleksei Kobzev (kobzonega)
 
 ## Aleksey Myasnikov (asmyasnikov)
@@ -24,7 +50,7 @@
 
 ## Alexey Ozeritskiy (resetius)
 
-## Alexey Pozdniakov (APozdniakov)
+## Alexey Pozdniakov (APozdniakov) - с релизом аналитики
 
 ## Andrei Rykov (StekPerepolnen)
 
@@ -364,8 +390,7 @@
 - [#9609](https://github.com/ydb-platform/ydb/pull/9609) ... - New features
 - [#9707](https://github.com/ydb-platform/ydb/pull/9707) ... - New features
 
-## Alexey Pozdniakov (APozdniakov)
-- [#9090](https://github.com/ydb-platform/ydb/pull/9090) Support for DISTINCT clause for aggregation functions calculated over window. - Added DISTINCT clause for window functions
+## Alexey Pozdniakov (APozdniakov) - релизится вместе с аналитикой + Леша вручную принесет мне свои изменения из аркадии
 - [#9027](https://github.com/ydb-platform/ydb/pull/9027) Temporarily removed assert in a peephole optimisation. Now SELECTs without `HOP_START()` and `HOP_END()` can be used. - Temporarily removed assert in peephole optimization
 - [#9370](https://github.com/ydb-platform/ydb/pull/9370) GROUP BY HOP now supports static inputs like AS_TABLE. - Added static inputs support for GROUP BY HOP
 - [#10597](https://github.com/ydb-platform/ydb/pull/10597) `AFTER MATCH SKIP PAST LAST ROW` is default option now. - Made AFTER MATCH SKIP PAST LAST ROW default
