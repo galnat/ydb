@@ -68,8 +68,6 @@ Release date:
 
 ## azevaykin
 
-## Bulat (Gazizonoki)
-
 ## Daniil Timizhev (dahbka-lis)
 
 ## Evgeniy Ivanov (eivanov89)
@@ -105,8 +103,6 @@ Release date:
 ## mregrock
 
 ## Nikita Vasilev (nikvas0)
-
-## Nikolay Perfilov (pnv1)
 
 ## Orlov Pavel (OrlovPavel)
 
@@ -394,7 +390,7 @@ Release date:
 - [#9609](https://github.com/ydb-platform/ydb/pull/9609) ... - New features
 - [#9707](https://github.com/ydb-platform/ydb/pull/9707) ... - New features
 
-## Alexey Pozdniakov (APozdniakov) - релизится вместе с аналитикой + Леша вручную принесет мне свои изменения из аркадии
+## Alexey Pozdniakov (APozdniakov) ✅ - релизится вместе с аналитикой в 25.1.* + Леша вручную принесет мне свои изменения из аркадии
 - [#9027](https://github.com/ydb-platform/ydb/pull/9027) Temporarily removed assert in a peephole optimisation. Now SELECTs without `HOP_START()` and `HOP_END()` can be used. - Temporarily removed assert in peephole optimization
 - [#9370](https://github.com/ydb-platform/ydb/pull/9370) GROUP BY HOP now supports static inputs like AS_TABLE. - Added static inputs support for GROUP BY HOP
 - [#10597](https://github.com/ydb-platform/ydb/pull/10597) `AFTER MATCH SKIP PAST LAST ROW` is default option now. - Made AFTER MATCH SKIP PAST LAST ROW default
@@ -543,7 +539,7 @@ Release date:
 - [#14075](https://github.com/ydb-platform/ydb/pull/14075) Feature flag `EnableStrictAclCheck` turn on strict ACL checks: * `GRANT` or `REVOKE` requires the existence of a subject. * `DROP` requires that a subject does not have ACLs. - Added strict ACL check flag
 - [#14219](https://github.com/ydb-platform/ydb/pull/14219) Maximum number of columns in a primary key has increased from 20 to 30. - Increased primary key column limit to 30
 
-## Bulat (Gazizonoki)
+## Bulat (Gazizonoki) ✅ - все изменения касаются CLI и SDK
 - [#3936](https://github.com/ydb-platform/ydb/pull/3936) Fixed default for --null-value in ydb import file csv/tsv commands and improved error text. - Fixed default value for null-value option
 - [#7785](https://github.com/ydb-platform/ydb/pull/7785) Removed session creation per file and added saving for describe result before import start, that allows to load more than 50 files without "active sessions limit" error. - Removed per-file session creation
 - [#9089](https://github.com/ydb-platform/ydb/pull/9089) YDB CLI build fails due to this bug. - Fixed YDB CLI build error
@@ -811,7 +807,7 @@ Release date:
 - [#14538](https://github.com/ydb-platform/ydb/pull/14538) Fix lost data for stream EvWrite. - Fixed data loss in stream EvWrite
 - [#14561](https://github.com/ydb-platform/ydb/pull/14561) Fix delete type annotation. - Fixed delete type annotation
 
-## Nikolay Perfilov (pnv1)
+## Nikolay Perfilov (pnv1) ✅ - все изменения касаются CLI
 - [#9388](https://github.com/ydb-platform/ydb/pull/9388) Added parameters to `ydb sql` command - Refactored input options. - Added parameters to SQL command
 - [#11679](https://github.com/ydb-platform/ydb/pull/11679) Increased ydb import file csv throughput approximately from 40 to 70 MiB/s. - Improved CSV import performance
 - [#11864](https://github.com/ydb-platform/ydb/pull/11864) Increased ydb import file csv throughput approximately from 70 to 90 MiB/s. - Further CSV import performance improvements
