@@ -9,11 +9,11 @@ Release date:
 * Added support for granular timecast protocol https://github.com/ydb-platform/ydb/issues/6512
 * DataShard: in-memory state migration on graceful restart https://github.com/ydb-platform/ydb/issues/11561
 * FeatureFlags: support changing at runtime https://github.com/ydb-platform/ydb/issues/9748ё
-* Added global data consistency in asynchronous replication https://github.com/ydb-platform/ydb/issues/11454
+* Support for **consistent asynchronous replication** has been implemented, ensuring data integrity and consistency on the replica. This feature addresses recovery issues following system failures, particularly beneficial for databases containing mission-critical information where rapid recovery is essential. Добавлена поддержка **консистентной асинхронной репликации**, которая гарантирует целостность и согласованность данных на реплике. Решает проблему восстановления после сбоев, если база содержит критически важные данные и важна скорость восстановления. https://github.com/ydb-platform/ydb/issues/11454. 
 * Import/export changefeed's configuration - feature-flag https://github.com/ydb-platform/ydb/issues/7054
 * Троттлинг входящей нагрузки на запись на VDisk - https://github.com/ydb-platform/ydb/issues/12510
-* Поддержка автопартиционирования топиков в CDC. Можно создать автопартиционированный поток изменений для строковой таблицы. При увеличении скорости потока изменений число партиций в автопартиционированном потоке изменений будет увеличиваться автоматически. Параметры автопартиционирования потока изменений задаются его свойствами как топика. Feature флаг выключен по умолчанию.
-* Поддержка автопартиционирования топиков для асинхронной репликации. Потоки изменений для строковых таблиц во вновь создаваемых асинхронных репликациях создаются автопартиционированными в случае, если на кластере-источнике включен флаг EnableTopicAutopartitioningForCDC, а на кластере-приемнике включен флаг EnableTopicAutopartitioningForReplication.
+* **Поддержка автопартиционирования топиков в CDC**. Можно создать автопартиционированный поток изменений для строковой таблицы. При увеличении скорости потока изменений число партиций в автопартиционированном потоке изменений будет увеличиваться автоматически. Параметры автопартиционирования потока изменений задаются его свойствами как топика. Feature флаг выключен по умолчанию.
+* **Поддержка автопартиционирования топиков для асинхронной репликации**. Потоки изменений для строковых таблиц во вновь создаваемых асинхронных репликациях создаются автопартиционированными в случае, если на кластере-источнике включен флаг EnableTopicAutopartitioningForCDC, а на кластере-приемнике включен флаг EnableTopicAutopartitioningForReplication.
 * Добавилась явная метрика времени запуска таблетки - Залялов
 * 
 
