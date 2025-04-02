@@ -18,8 +18,6 @@
 ## Aleksey Myasnikov (asmyasnikov)
 [#11764](https://github.com/ydb-platform/ydb/pull/11764) Added feature flag enable_antlr4_parser to enable the ANTLRv4 query parser instead ANTLRv3 parser.
 
-## Alexander Petrukhin (shmel1k)
-
 ## Alexander Rutkovsky (alexvru)
 
 ## Alexey Efimov (adameat)
@@ -43,8 +41,6 @@
 ## Bulat (Gazizonoki)
 
 ## Daniil Timizhev (dahbka-lis)
-
-## Dmitrii Dmitriev (dimdim1177)
 
 ## Evgeniy Ivanov (eivanov89)
 
@@ -537,7 +533,8 @@
 - [#12669](https://github.com/ydb-platform/ydb/pull/12669) Add support for immediate commit and rollback with topics in BufferWriteActor. ... - Added immediate commit/rollback support
 - [#12686](https://github.com/ydb-platform/ydb/pull/12686) Add support for column tables with topics in BufferWriteActor. - Added column tables with topics support
 
-## Dmitrii Dmitriev (dimdim1177)
+## Dmitrii Dmitriev (dimdim1177) ✅
+Улучшения девтулзов - на внешних пользователей не влияют
 - [#10066](https://github.com/ydb-platform/ydb/pull/10066) Replace conanfile.txt by conanfile.py. - Replaced conanfile.txt with conanfile.py
 - [#10067](https://github.com/ydb-platform/ydb/pull/10067) Exporting CMake with skip platforms with errors. - Added CMake export with error skipping
 - [#10296](https://github.com/ydb-platform/ydb/pull/10296) Fix generating proto files in CMake. - Fixed proto file generation in CMake
