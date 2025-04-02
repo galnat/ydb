@@ -191,7 +191,8 @@
 - [#12733](https://github.com/ydb-platform/ydb/pull/12733) ... - Experimental feature improvements
 - [#14338](https://github.com/ydb-platform/ydb/pull/14338) ... - Various fixes
 
-## Alexander Petrukhin (shmel1k)
+## Alexander Petrukhin (shmel1k) ✅
+Нет коммитов, которые видны пользователю. 
 - [#12658](https://github.com/ydb-platform/ydb/pull/12658) Added more compatibilty with ydb configuration for ydbd_slice. - Improved YDB configuration compatibility
 - [#12888](https://github.com/ydb-platform/ydb/pull/12888) Rename block-4-2 to block-4-2-8-nodes. - Renamed erasure type for clarity
 - [#12899](https://github.com/ydb-platform/ydb/pull/12899) Improved slices template configuration. - Improved slices template configuration
@@ -471,8 +472,6 @@
 - [#12300](https://github.com/ydb-platform/ydb/pull/12300) [YQL-19206] Sync with Arcadia. - Further Arcadia synchronization
 
 ## Andrey Serebryanskiy (a-serebryanskiy)
-- [#11141](https://github.com/ydb-platform/ydb/pull/11141) Added new options to `ydb workload topic`: --tx-commit-interval and --tx-commit-messages, allowing you to specify commit interval either in milliseconds or in number of messages written. Also now you can load test YDB topics, using wide transactions that span over all partitions in the topic. This works both in write and in end-to-end workload scenarios. ... - Added transaction options for topics
-- [#11352](https://github.com/ydb-platform/ydb/pull/11352) New CLI flag here: --no-consumer. It allows user to read topic without creating a consumer in advance. Boosts the debugging through the CLI speed. ... - Added no-consumer flag for CLI
 - [#13929](https://github.com/ydb-platform/ydb/pull/13929) Fix ambiguous exceptions from Kafka API during the authentication process. - Fixed Kafka API authentication errors
 
 ## Artem Alekseev (fexolm)
