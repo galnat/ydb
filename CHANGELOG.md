@@ -140,7 +140,7 @@ Release date:
 
 ## Олег (iddqdex)
 
-# By Authors
+# RAW PR By Authors
 
 ## Alek5andr-Kotov ✅
 - [#7117](https://github.com/ydb-platform/ydb/pull/7117) The user's token may be empty. The program did not take this into account and the call to `AddOffsetToTransaction` failed with an error. - Fixed user's token empty handling
