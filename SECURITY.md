@@ -19,3 +19,5 @@ We will keep the reporter informed about the issue progress.
 ## Public Disclosure Timing
 
 A public disclosure date is negotiated by YDB maintainers and the bug submitter. We prefer to fully disclose the bug as soon as possible once a mitigation is available for YDB users. It is reasonable to delay disclosure when the bug or the fix is not yet fully understood, the solution is not well-tested, or for vendor coordination. The timeframe for disclosure is from immediate (especially if it's already publicly known) to 90 days. For a vulnerability with a straightforward mitigation, we expect report date to disclosure date to be on the order of 7 days.
+
+st
