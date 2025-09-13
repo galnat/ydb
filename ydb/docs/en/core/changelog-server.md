@@ -1,5 +1,36 @@
 # {{ ydb-short-name }} Server changelog
 
+
+## Version 25.2 {#25-2}
+
+### Version 25.2.1. {#25-2-1-}
+
+Release date: September , 2025.
+
+#### Functionality
+
+* Enabled by default:
+
+  * [vector index](./dev/vector-indexes.md) for approximate vector similarity search,
+  * supported in [YDB Topics Kafka API](https://ydb.tech/docs/en/reference/kafka-api/) client-side consumer balancing, [compacted topics](https://docs.confluent.io/kafka/design/log_compaction.html), [transactions](https://www.confluent.io/blog/transactions-apache-kafka/),
+  * parameterized [Decimal type](./yql/reference/types/primitive.md#numeric),
+  * automatic cleanup of temporary tables and directories during export to S3,
+  * support for changefeeds in backup and restore operations,
+  * the ability to [enable followers (read replicas)](./yql/reference/syntax/alter_table/indexes.md) for covered secondary indexes,
+
+
+
+#### Backward Incompatible Changes
+
+
+
+#### YDB UI
+
+#### Performance
+
+#### Bug Fixes
+
+
 ## Version 25.1 {#25-1}
 
 ### Release candidate 25.1.2.7 {#25-1-2-7-rc}
